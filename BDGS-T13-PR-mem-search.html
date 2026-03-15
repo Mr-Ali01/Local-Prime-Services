@@ -1,1384 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Local Service Experts Near You | Prime Local Search Results</title>
 
-<meta name="description" content="Browse verified local service experts on Prime Local. Compare ratings, pricing, and availability for home repairs, cleaning, appliance repair, and personal services near you.">
+    <meta name="description"
+        content="Browse verified local service experts on Prime Local. Compare ratings, pricing, and availability for home repairs, cleaning, appliance repair, and personal services near you.">
 
-<meta name="keywords" content="local service experts, service providers near me, home repair professionals, cleaning services, appliance repair experts, Prime Local search">
+    <meta name="keywords"
+        content="local service experts, service providers near me, home repair professionals, cleaning services, appliance repair experts, Prime Local search">
 
-<meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow">
 
-<link rel="canonical" href="https://www.primelocal.com/search" />
+    <link rel="canonical" href="https://www.primelocal.com/search" />
 
-<!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="Local Service Experts Near You | Prime Local">
-<meta property="og:description" content="Explore verified local professionals. Filter by category, ratings, and location to find the right expert for your needs.">
-<meta property="og:url" content="https://www.primelocal.com/search">
-<meta property="og:image" content="https://www.primelocal.com/assets/og/prime-local-search.jpg">
-<meta property="og:site_name" content="Prime Local">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Local Service Experts Near You | Prime Local">
+    <meta property="og:description"
+        content="Explore verified local professionals. Filter by category, ratings, and location to find the right expert for your needs.">
+    <meta property="og:url" content="https://www.primelocal.com/search">
+    <meta property="og:image" content="https://www.primelocal.com/assets/og/prime-local-search.jpg">
+    <meta property="og:site_name" content="Prime Local">
 
-    
+
     <!-- Core Assets -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert@1.1.3/dist/sweetalert.css">
 
-    <style>
-        :root {
-            --bdgs-t13-pr-primary: #0F172A; /* Midnight Navy */
-            --bdgs-t13-pr-secondary: #F59E0B; /* Vibrant Amber */
-            --bdgs-t13-pr-accent: #38BDF8; /* Sky Blue */
-            --bdgs-t13-pr-text: #1E293B;
-            --bdgs-t13-pr-text-light: #64748B;
-            --bdgs-t13-pr-text-muted: #94A3B8;
-            --bdgs-t13-pr-bg-white: #FFFFFF;
-            --bdgs-t13-pr-bg-soft: #F8FAFC;
-            --bdgs-t13-pr-bg-dark: #0F172A;
-            --bdgs-t13-pr-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            --bdgs-t13-pr-shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            --bdgs-t13-pr-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
-        body {
-            background-color: var(--bdgs-t13-pr-bg-soft);
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            color: var(--bdgs-t13-pr-text);
-            margin: 0;
-            overflow-x: hidden;
-            padding-top: 80px; /* Offset for fixed header */
-        }
-
-        .bdgs-t13-pr-theme-wrapper {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        /* --- Header Navigation --- */
-        .bdgs-t13-pr-navbar {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border: none;
-            padding: 10px 0;
-            box-shadow: var(--bdgs-t13-pr-shadow-sm);
-            transition: var(--bdgs-t13-pr-transition);
-            z-index: 1100;
-        }
-
-         .bdgs-t13-pr-navbar.scrolled {
-            padding: 12px 0;
-            box-shadow: var(--bdgs-t13-pr-shadow-sm);
-        }
-        
-        .bdgs-t13-pr-navbar .navbar-brand {
-            font-size: 26px;
-            font-weight: 800;
-            color: var(--bdgs-t13-pr-primary) !important;
-            letter-spacing: -1px;
-            height: auto;
-            padding: 15px;
-        }
-
-        .bdgs-t13-pr-navbar .navbar-brand span { color: var(--bdgs-t13-pr-secondary); }
-
-        .bdgs-t13-pr-nav-links li a {
-            color: var(--bdgs-t13-pr-text) !important;
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: var(--bdgs-t13-pr-transition);
-        }
-
-        .bdgs-t13-pr-btn-cta {
-            background: var(--bdgs-t13-pr-bg-white);
-            color: white !important;
-            border-radius: 50px;
-            padding: 10px 15px !important;
-            margin-left: 1px;
-            margin-top: 5px;
-            transition: var(--bdgs-t13-pr-transition);
-            border: none;
-        }
-
-        .bdgs-t13-pr-btn-cta:hover {
-            background: var(--bdgs-t13-pr-secondary) !important;
-            color: var(--bdgs-t13-pr-primary) !important;
-            transform: scale(1.05);
-        }
-
-         .bdgs-t13-pr-menu-link:hover{
-            color: var(--bdgs-t13-pr-secondary) !important;
-        }
-
-        /* --- Breadcrumbs --- */
-        .bdgs-t13-pr-breadcrumb-wrapper {
-            background: var(--bdgs-t13-pr-bg-white);
-            padding: 15px 0 0;
-        }
-
-        .bdgs-t13-pr-breadcrumb {
-            background: transparent;
-            padding: 0;
-            margin-bottom: 0;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .bdgs-t13-pr-breadcrumb li + li:before {
-            content: "\f105";
-            font-family: FontAwesome;
-            color: var(--bdgs-t13-pr-text-muted);
-            padding: 0 10px;
-        }
-
-        .bdgs-t13-pr-breadcrumb a {
-            color: var(--bdgs-t13-pr-text-light);
-            text-decoration: none;
-        }
-
-        .bdgs-t13-pr-breadcrumb .active {
-            color: var(--bdgs-t13-pr-primary);
-        }
-
-        /* --- Search Context Header --- */
-        .bdgs-t13-pr-context-header {
-            background: var(--bdgs-t13-pr-bg-white);
-            padding: 10px 0 25px;
-            border-bottom: 1px solid #E2E8F0;
-        }
-
-        .bdgs-t13-pr-results-count {
-            font-size: 20px;
-            font-weight: 800;
-            color: var(--bdgs-t13-pr-primary);
-            margin-bottom: 15px;
-        }
-
-        .bdgs-t13-pr-chip-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .bdgs-t13-pr-filter-chip {
-            background: #F1F5F9;
-            color: var(--bdgs-t13-pr-primary);
-            padding: 6px 14px;
-            border-radius: 50px;
-            font-size: 13px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            border: 1px solid #E2E8F0;
-            cursor: pointer;
-            transition: var(--bdgs-t13-pr-transition);
-        }
-
-        /* --- View Switcher Buttons --- */
-        .bdgs-t13-pr-view-switcher {
-            display: flex;
-            background: #F1F5F9;
-            padding: 4px;
-            border-radius: 12px;
-            gap: 4px;
-        }
-
-        .bdgs-t13-pr-view-trigger {
-            border: none;
-            background: transparent;
-            width: 40px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            color: var(--bdgs-t13-pr-text-light);
-            cursor: pointer;
-            transition: var(--bdgs-t13-pr-transition);
-        }
-
-        .bdgs-t13-pr-view-trigger.active {
-            background: white;
-            color: var(--bdgs-t13-pr-primary);
-            box-shadow: var(--bdgs-t13-pr-shadow-sm);
-        }
-
-        /* --- Grid Structure --- */
-        .bdgs-t13-pr-main-content { padding: 20px 0; }
-
-        /* Responsive Alignment Fix: Flexbox Row */
-        #results-grid {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        #results-grid > [class*='col-'] {
-            display: flex;
-            flex-direction: column;
-            width: 100%; /* Ensures proper width on xs */
-            transition: var(--bdgs-t13-pr-transition);
-        }
-
-        @media (min-width: 768px) {
-            #results-grid > .col-sm-6 { width: 50%; }
-        }
-
-        @media (min-width: 992px) {
-            #results-grid > .col-md-4 { width: 33.3333%; }
-        }
-
-        /* --- LIST VIEW SPECIAL STYLES --- */
-        #results-grid.bdgs-t13-pr-list-mode > [class*='col-'] {
-            width: 100% !important;
-        }
-
-        #results-grid.bdgs-t13-pr-list-mode .bdgs-t13-pr-result-card {
-            display: flex;
-            flex-direction: row;
-            margin-bottom: 10px;
-        }
-
-        #results-grid.bdgs-t13-pr-list-mode .bdgs-t13-pr-card-media {
-            width: 320px;
-            height: auto;
-            min-height: 240px;
-            flex-shrink: 0;
-        }
-
-        #results-grid.bdgs-t13-pr-list-mode .bdgs-t13-pr-card-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        @media (max-width: 767px) {
-            #results-grid.bdgs-t13-pr-list-mode .bdgs-t13-pr-result-card {
-                flex-direction: column;
-            }
-            #results-grid.bdgs-t13-pr-list-mode .bdgs-t13-pr-card-media {
-                width: 100%;
-                min-height: 200px;
-            }
-        }
-
-        /* --- Filter Panel --- */
-        .bdgs-t13-pr-filter-panel {
-            background: var(--bdgs-t13-pr-bg-white);
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: var(--bdgs-t13-pr-shadow-sm);
-            margin-bottom: 30px;
-        }
-
-        .bdgs-t13-pr-filter-title {
-            font-size: 16px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            color: var(--bdgs-t13-pr-primary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-bottom: 2px solid var(--bdgs-t13-pr-bg-soft);
-            padding-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .bdgs-t13-pr-filter-group { margin-bottom: 25px; }
-        .bdgs-t13-pr-filter-label {
-            display: block;
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--bdgs-t13-pr-primary);
-            margin-bottom: 12px;
-        }
-
-        /* Styled Rating Filter Cards */
-        .bdgs-t13-pr-rating-filter-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-
-        .bdgs-t13-pr-rating-option {
-            position: relative;
-        }
-
-        .bdgs-t13-pr-rating-option input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-        }
-
-        .bdgs-t13-pr-rating-card {
-            background: var(--bdgs-t13-pr-bg-soft);
-            border: 2px solid transparent;
-            border-radius: 12px;
-            padding: 10px;
-            text-align: center;
-            cursor: pointer;
-            transition: var(--bdgs-t13-pr-transition);
-            font-weight: 700;
-            font-size: 12px;
-            color: var(--bdgs-t13-pr-text-light);
-        }
-
-        .bdgs-t13-pr-rating-option input:checked + .bdgs-t13-pr-rating-card {
-            border-color: var(--bdgs-t13-pr-secondary);
-            background: white;
-            color: var(--bdgs-t13-pr-primary);
-            box-shadow: var(--bdgs-t13-pr-shadow-sm);
-        }
-
-        .bdgs-t13-pr-rating-card i {
-            color: var(--bdgs-t13-pr-secondary);
-            margin-right: 2px;
-        }
-
-        /* Trust Checkboxes */
-        .bdgs-t13-pr-trust-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .bdgs-t13-pr-trust-item {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--bdgs-t13-pr-text-light);
-            cursor: pointer;
-        }
-
-        .bdgs-t13-pr-trust-item input {
-            margin-right: 10px;
-            width: 18px;
-            height: 18px;
-            accent-color: var(--bdgs-t13-pr-primary);
-        }
-
-        /* --- Result Card Engine --- */
-        .bdgs-t13-pr-result-card {
-            background: var(--bdgs-t13-pr-bg-white);
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: var(--bdgs-t13-pr-shadow-sm);
-            margin-bottom: 30px;
-            position: relative;
-            transition: var(--bdgs-t13-pr-transition);
-            border: 1px solid #F1F5F9;
-            flex: 1; /* Allow cards to stretch height inside flex col */
-            width: 100%;
-        }
-
-        .bdgs-t13-pr-result-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--bdgs-t13-pr-shadow-lg);
-        }
-
-        .bdgs-t13-pr-card-media {
-            height: 200px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .bdgs-t13-pr-card-img {
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            transition: var(--bdgs-t13-pr-transition);
-        }
-
-        .bdgs-t13-pr-result-card:hover .bdgs-t13-pr-card-img { transform: scale(1.1); }
-
-        .bdgs-t13-pr-badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            z-index: 5;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-
-        .bdgs-t13-pr-badge-premium { background: var(--bdgs-t13-pr-primary); color: white; }
-        .bdgs-t13-pr-badge-top { background: #22C55E; color: white; }
-        .bdgs-t13-pr-badge-featured { background: var(--bdgs-t13-pr-secondary); color: var(--bdgs-t13-pr-primary); }
-        .bdgs-t13-pr-badge-sponsored { background: #6366F1; color: white; }
-
-        .bdgs-t13-pr-verify-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--bdgs-t13-pr-primary);
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            z-index: 2;
-        }
-
-        /* Member-Specific Enhancements */
-        .bdgs-t13-pr-shortlist-btn {
-            position: absolute;
-            top: 55px;
-            right: 15px;
-            width: 35px;
-            height: 35px;
-            background: rgba(255,255,255,0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            transition: 0.3s;
-            color: var(--bdgs-t13-pr-text-muted);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .bdgs-t13-pr-shortlist-btn.active {
-            color: #EF4444;
-            background: white;
-        }
-
-        /* Card Content Details */
-        .bdgs-t13-pr-location {
-            font-size: 13px;
-            color: var(--bdgs-t13-pr-text-light);
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .bdgs-t13-pr-location i { color: var(--bdgs-t13-pr-secondary); }
-
-        .bdgs-t13-pr-card-desc {
-            display: none; /* Hidden in Grid View by default */
-            font-size: 13px;
-            color: var(--bdgs-t13-pr-text-light);
-            line-height: 1.6;
-        }
-
-        .bdgs-t13-pr-list-mode .bdgs-t13-pr-card-desc {
-            display: block; /* Visible only in List View */
-        }
-
-        .bdgs-t13-pr-price-block {
-            
-            border-top: 1px solid #F1F5F9;
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .bdgs-t13-pr-price-value {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--bdgs-t13-pr-primary);
-        }
-
-        .bdgs-t13-pr-price-unit {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--bdgs-t13-pr-text-light);
-        }
-
-        .bdgs-t13-pr-price-context {
-            font-size: 11px;
-            font-weight: 700;
-            color: #22C55E;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .bdgs-t13-pr-card-content { padding: 25px; padding-top: 5px;  padding-bottom: 5px;}
-
-        .bdgs-t13-pr-card-title {
-            font-size: 18px;
-            font-weight: 800;
-            margin: 0 0 5px 0;
-            color: var(--bdgs-t13-pr-primary);
-        }
-
-        .bdgs-t13-pr-rating-row {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            margin-bottom: 3px;
-        }
-
-        .bdgs-t13-pr-stars { color: #F59E0B; font-size: 13px; }
-
-        /* BUTTONS */
-        .bdgs-t13-pr-card-actions {
-            display: flex;
-            gap: 15px;
-            margin-top: 10px;
-        }
-
-        .bdgs-t13-pr-btn {
-            flex: 1;
-            padding: 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 800;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: var(--bdgs-t13-pr-transition);
-            border: none;
-        }
-
-        .bdgs-t13-pr-btn-primary { background: var(--bdgs-t13-pr-primary); color: white; }
-        .bdgs-t13-pr-btn-primary:hover { transform: translateY(-3px); background: var(--bdgs-t13-pr-secondary); color: var(--bdgs-t13-pr-primary); }
-
-        .bdgs-t13-pr-btn-outline {
-            background: transparent;
-            border: 2px solid var(--bdgs-t13-pr-primary);
-            color: var(--bdgs-t13-pr-primary);
-        }
-        .bdgs-t13-pr-btn-outline:hover {
-            background: var(--bdgs-t13-pr-primary);
-            color: white;
-        }
-
-        /* --- Pagination Styling --- */
-        .bdgs-t13-pr-pagination-wrapper {
-            margin-top: 40px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .bdgs-t13-pr-pagination {
-            display: flex;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            gap: 10px;
-        }
-        .contact-btn,.msg-btn{
-            width: 100px;
-            height: 50px;
-        }
-        .bdgs-t13-pr-page-item {
-            cursor: pointer;
-        }
-
-        .bdgs-t13-pr-page-link {
-            width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: white;
-            border: 2px solid #F1F5F9;
-            border-radius: 12px;
-            color: var(--bdgs-t13-pr-primary);
-            font-weight: 800;
-            font-size: 14px;
-            transition: var(--bdgs-t13-pr-transition);
-            text-decoration: none !important;
-        }
-
-        .bdgs-t13-pr-page-item.active .bdgs-t13-pr-page-link {
-            background: var(--bdgs-t13-pr-primary);
-            border-color: var(--bdgs-t13-pr-primary);
-            color: white;
-            box-shadow: var(--bdgs-t13-pr-shadow-sm);
-        }
-
-        .bdgs-t13-pr-page-item:not(.active):hover .bdgs-t13-pr-page-link {
-            border-color: var(--bdgs-t13-pr-secondary);
-            color: var(--bdgs-t13-pr-secondary);
-        }
-
-        .bdgs-t13-pr-page-item.disabled .bdgs-t13-pr-page-link {
-            opacity: 0.5;
-            cursor: not-allowed;
-            pointer-events: none;
-        }
-
-        /* --- Footer Styles --- */
-        .bdgs-t13-pr-footer {
-            background: #020617;
-            padding: 20px 0 10px;
-            color: #94A3B8;
-            /* margin-top: auto; */
-        }
- /*FOOTER RESPONSIVE FIX
-========================= */
-
-.bdgs-t13-pr-footer {
-    /* padding: 50px 0 30px; */
-}
-
-/* Tablet & Mobile */
-@media (max-width: 991px) {
-
-    .bdgs-t13-pr-footer .row > div {
-        margin-bottom: 30px;
-    }
-
-    .bdgs-t13-pr-footer h3,
-    .bdgs-t13-pr-footer h5 {
-        margin-bottom: 12px;
-    }
-
-    .bdgs-t13-pr-footer p,
-    .bdgs-t13-pr-footer a {
-        font-size: 14px;
-    }
-
-    /* Center content on mobile */
-    .bdgs-t13-pr-footer {
-        text-align: center;
-    }
-
-    /* Social icons center */
-    .bdgs-t13-pr-footer div[style*="display: flex"] {
-        justify-content: center;
-    }
-
-    /* Remove Bootstrap offset on small screens */
-    .bdgs-t13-pr-footer .col-md-offset-1 {
-        margin-left: 0;
-    }
-}
-
-/* Mobile only */
-@media (max-width: 767px) {
-
-    .bdgs-t13-pr-footer .input-group {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .bdgs-t13-pr-footer .input-group-btn {
-        width: 100%;
-    }
-
-    .bdgs-t13-pr-footer .input-group-btn .btn {
-        width: 100%;
-    }
-
-    .bdgs-t13-pr-footer input.form-control {
-        width: 100%;
-    }
-}
-        .bdgs-t13-pr-footer h5 { margin-bottom: 25px; color: white; font-weight: 700; }
-        .bdgs-t13-pr-footer p { font-size: 14px; line-height: 1.6; }
-        .bdgs-t13-pr-footer ul li { margin-bottom: 12px; }
-        .bdgs-t13-pr-footer ul li a { color: #94A3B8; text-decoration: none; transition: 0.3s; }
-        .bdgs-t13-pr-footer ul li a:hover { color: white; padding-left: 5px; }
-
-        /* --- Mobile Toggle Styles --- */
-        .bdgs-t13-pr-mobile-filter-trigger {
-            display: none;
-            width: 100%;
-            margin-bottom: 20px;
-        }
-
-        .bdgs-t13-pr-btn-filter {
-            background: var(--bdgs-t13-pr-primary);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            padding: 14px;
-            font-weight: 800;
-            font-size: 14px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            box-shadow: var(--bdgs-t13-pr-shadow-sm);
-        }
-
-        .bdgs-t13-pr-close-filter {
-            display: none;
-            cursor: pointer;
-            font-size: 18px;
-            color: var(--bdgs-t13-pr-text-light);
-        }
-
-        .bdgs-t13-pr-filter-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(4px);
-            z-index: 1999;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .bdgs-t13-pr-filter-overlay.active {
-            display: block;
-            opacity: 1;
-        }
-
-        @media (max-width: 991px) {
-            .bdgs-t13-pr-mobile-filter-trigger {
-                display: block;
-            }
-
-            .bdgs-t13-pr-sidebar {
-                position: fixed;
-                top: 0;
-                left: -320px;
-                width: 300px;
-                height: 100%;
-                z-index: 2000;
-                background: var(--bdgs-t13-pr-bg-soft);
-                overflow-y: auto;
-                transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                padding: 0;
-                box-shadow: 10px 0 30px rgba(0,0,0,0.1);
-            }
-
-            .bdgs-t13-pr-sidebar.active {
-                left: 0;
-            }
-
-            .bdgs-t13-pr-filter-panel {
-                border-radius: 0;
-                min-height: 100%;
-                margin-bottom: 0;
-                box-shadow: none;
-            }
-
-            .bdgs-t13-pr-close-filter {
-                display: block;
-            }
-
-            body.filter-open {
-                overflow: hidden;
-            }
-        }
-
-        @media (max-width: 767px) {
-            body { padding-top: 60px; }
-            .bdgs-t13-pr-navbar .navbar-brand { font-size: 20px; }
-        }
-/* FIX: Medium screen compression (1000px–1200px) */
-@media (min-width: 992px) and (max-width: 1199px) {
-    #results-grid > .col-md-4 {
-        width: 50% !important;
-    }
-}
-
-    </style>
+    <link rel="stylesheet" href="css/BDGS-T13-PR-mem-search.css">
 </head>
+
 <body>
 
-<div class="bdgs-t13-pr-theme-wrapper">
-    <!-- Filter Overlay for Mobile -->
-    <div class="bdgs-t13-pr-filter-overlay" id="filter-overlay"></div>
+    <div class="bdgs-t13-pr-theme-wrapper">
+        <!-- Filter Overlay for Mobile -->
+        <div class="bdgs-t13-pr-filter-overlay" id="filter-overlay"></div>
 
-    <!-- Header -->
-       <!-- Navigation -->
-    <nav class="navbar navbar-default bdgs-t13-pr-navbar navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">PRIME<span>LOCAL</span></a>
-            </div>
-            <div class="collapse navbar-collapse" id="nav-collapse">
-                 <ul class="nav navbar-nav navbar-right bdgs-t13-pr-nav-links">
-                    <li><a href="index.html" class="bdgs-t13-pr-menu-link">Home</a></li>
-                    <li><a href="BDGS-T13-PR-core-p1.html" class="bdgs-t13-pr-menu-link">Explore Services</a></li>
-                    
-                    <li><a href="BDGS-T13-PR-about.html" class="bdgs-t13-pr-menu-link">About</a></li>
-                    <li><a href="BDGS-T13-PR-contact.html" class="bdgs-t13-pr-menu-link">Contact</a></li>
-                    <li><a href="BDGS-T13-PR-login-signup.html" class="bdgs-t13-pr-btn-cta">Get Listed</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+        <!-- Header -->
+        <!-- Navigation -->
+        <nav class="navbar navbar-default bdgs-t13-pr-navbar navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">PRIME<span>LOCAL</span></a>
+                </div>
+                <div class="collapse navbar-collapse" id="nav-collapse">
+                    <ul class="nav navbar-nav navbar-right bdgs-t13-pr-nav-links">
+                        <li><a href="index.html" class="bdgs-t13-pr-menu-link">Home</a></li>
+                        <li><a href="BDGS-T13-PR-core-p1.html" class="bdgs-t13-pr-menu-link">Explore Services</a></li>
 
-    <!-- Breadcrumbs Section -->
-    <section class="bdgs-t13-pr-breadcrumb-wrapper">
-        <div class="container">
-            <ol class="breadcrumb bdgs-t13-pr-breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Hyderabad</a></li>
-                <li class="active">All Categories</li>
-            </ol>
-        </div>
-    </section>
-    <!-- Context Header -->
-    <section class="bdgs-t13-pr-context-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- View Switcher (Top Right Integration) -->
-                    <div class="pull-right hidden-xs">
-                        <div class="bdgs-t13-pr-view-switcher">
-                            <button class="bdgs-t13-pr-view-trigger active" id="view-grid" title="Grid View">
-                                <i class="fa fa-th"></i>
-                            </button>
-                            <button class="bdgs-t13-pr-view-trigger" id="view-list" title="List View">
-                                <i class="fa fa-list"></i>
-                            </button>
+                        <li><a href="BDGS-T13-PR-about.html" class="bdgs-t13-pr-menu-link">About</a></li>
+                        <li><a href="BDGS-T13-PR-contact.html" class="bdgs-t13-pr-menu-link">Contact</a></li>
+                        <li><a href="BDGS-T13-PR-login-signup.html" class="bdgs-t13-pr-btn-cta">Get Listed</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Breadcrumbs Section -->
+        <section class="bdgs-t13-pr-breadcrumb-wrapper">
+            <div class="container">
+                <ol class="breadcrumb bdgs-t13-pr-breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Hyderabad</a></li>
+                    <li class="active">All Categories</li>
+                </ol>
+            </div>
+        </section>
+        <!-- Context Header -->
+        <section class="bdgs-t13-pr-context-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- View Switcher (Top Right Integration) -->
+                        <div class="pull-right hidden-xs">
+                            <div class="bdgs-t13-pr-view-switcher">
+                                <button class="bdgs-t13-pr-view-trigger active" id="view-grid" title="Grid View">
+                                    <i class="fa fa-th"></i>
+                                </button>
+                                <button class="bdgs-t13-pr-view-trigger" id="view-list" title="List View">
+                                    <i class="fa fa-list"></i>
+                                </button>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="bdgs-t13-pr-results-count" id="results-title">Verified Local Service Experts</div>
-                    <!-- <div class="bdgs-t13-pr-chip-container">
+                        <div class="bdgs-t13-pr-results-count" id="results-title">Verified Local Service Experts</div>
+                        <!-- <div class="bdgs-t13-pr-chip-container">
                         <div class="bdgs-t13-pr-filter-chip">All Categories <i class="fa fa-times"></i></div>
                         <div class="bdgs-t13-pr-filter-chip" id="chip-rating">3.5★ & Above <i class="fa fa-times"></i></div>
                         <span style="color: var(--bdgs-t13-pr-text-muted); font-size: 14px; align-self: center; margin-left: 10px;" id="total-count">48 experts found</span>
                     </div> -->
-                    <div class="bdgs-t13-pr-chip-container">
+                        <div class="bdgs-t13-pr-chip-container">
 
-    <!-- CATEGORY CHIP -->
-    <div class="bdgs-t13-pr-filter-chip hidden" id="chip-category">
-    <span class="chip-text"></span>
-    <i class="fa fa-times chip-remove hidden" data-type="category"></i>
-</div>
+                            <!-- CATEGORY CHIP -->
+                            <div class="bdgs-t13-pr-filter-chip hidden" id="chip-category">
+                                <span class="chip-text"></span>
+                                <i class="fa fa-times chip-remove hidden" data-type="category"></i>
+                            </div>
 
-<div class="bdgs-t13-pr-filter-chip hidden" id="chip-rating">
-    <span class="chip-text"></span>
-    <i class="fa fa-times chip-remove hidden" data-type="rating"></i>
-</div>
+                            <div class="bdgs-t13-pr-filter-chip hidden" id="chip-rating">
+                                <span class="chip-text"></span>
+                                <i class="fa fa-times chip-remove hidden" data-type="rating"></i>
+                            </div>
 
 
-    <span id="total-count"
-          style="color: var(--bdgs-t13-pr-text-muted); font-size:14px; align-self:center;">
-        0 experts found
-    </span>
-</div>
+                            <span id="total-count"
+                                style="color: var(--bdgs-t13-pr-text-muted); font-size:14px; align-self:center;">
+                                0 experts found
+                            </span>
+                        </div>
 
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Main Results Area -->
-    <main class="bdgs-t13-pr-main-content">
-        <div class="container">
-            <!-- Mobile Filter Trigger -->
-            <div class="bdgs-t13-pr-mobile-filter-trigger">
-                <button class="bdgs-t13-pr-btn-filter" id="open-filter">
-                    <i class="fa fa-sliders"></i> Search Filter
-                </button>
-            </div>
+        <!-- Main Results Area -->
+        <main class="bdgs-t13-pr-main-content">
+            <div class="container">
+                <!-- Mobile Filter Trigger -->
+                <div class="bdgs-t13-pr-mobile-filter-trigger">
+                    <button class="bdgs-t13-pr-btn-filter" id="open-filter">
+                        <i class="fa fa-sliders"></i> Search Filter
+                    </button>
+                </div>
 
-            <div class="row">
-                
-                <!-- Sidebar Filters -->
-                <aside class="col-md-3 bdgs-t13-pr-sidebar" id="sidebar-filter">
-                    <div class="bdgs-t13-pr-filter-panel">
-                        <div class="bdgs-t13-pr-filter-title">
-                            Filter Experts
-                            <i class="fa fa-times bdgs-t13-pr-close-filter" id="close-filter"></i>
-                        </div>
-                        
-                        <!-- Category Filter -->
-                        <div class="bdgs-t13-pr-filter-group">
-                            <label class="bdgs-t13-pr-filter-label">Service Category</label>
-                            <select class="form-control select2-filter" id="category-filter" style="width: 100%;">
-                                <option value="all">All Categories</option>
-                                <option value="home">Home Repairs</option>
-                                <option value="cleaning">Cleaning Services</option>
-                                <option value="appliance">Appliance Repair</option>
-                                <option value="personal">Personal Services</option>
-                            </select>
-                        </div>
+                <div class="row">
 
-                        <!-- Rating Filter by Cards -->
-                        <div class="bdgs-t13-pr-filter-group">
-                            <label class="bdgs-t13-pr-filter-label">Customer Rating</label>
-                            <div class="bdgs-t13-pr-rating-filter-grid">
-                                <div class="bdgs-t13-pr-rating-option">
-                                    <input type="radio" name="rating" id="r-all" value="all" checked>
-                                    <label for="r-all" class="bdgs-t13-pr-rating-card">Any</label>
-                                </div>
-                                <div class="bdgs-t13-pr-rating-option">
-                                    <input type="radio" name="rating" id="r-45" value="4.5">
-                                    <label for="r-45" class="bdgs-t13-pr-rating-card">4.5 <i class="fa fa-star"></i>+</label>
-                                </div>
-                                <div class="bdgs-t13-pr-rating-option">
-                                    <input type="radio" name="rating" id="r-40" value="4.0">
-                                    <label for="r-40" class="bdgs-t13-pr-rating-card">4.0 <i class="fa fa-star"></i>+</label>
-                                </div>
-                                <div class="bdgs-t13-pr-rating-option">
-                                    <input type="radio" name="rating" id="r-35" value="3.5">
-                                    <label for="r-35" class="bdgs-t13-pr-rating-card">3.5 <i class="fa fa-star"></i>+</label>
+                    <!-- Sidebar Filters -->
+                    <aside class="col-md-3 bdgs-t13-pr-sidebar" id="sidebar-filter">
+                        <div class="bdgs-t13-pr-filter-panel">
+                            <div class="bdgs-t13-pr-filter-title">
+                                Filter Experts
+                                <i class="fa fa-times bdgs-t13-pr-close-filter" id="close-filter"></i>
+                            </div>
+
+                            <!-- Category Filter -->
+                            <div class="bdgs-t13-pr-filter-group">
+                                <label class="bdgs-t13-pr-filter-label">Service Category</label>
+                                <select class="form-control select2-filter" id="category-filter" style="width: 100%;">
+                                    <option value="all">All Categories</option>
+                                    <option value="home">Home Repairs</option>
+                                    <option value="cleaning">Cleaning Services</option>
+                                    <option value="appliance">Appliance Repair</option>
+                                    <option value="personal">Personal Services</option>
+                                </select>
+                            </div>
+
+                            <!-- Rating Filter by Cards -->
+                            <div class="bdgs-t13-pr-filter-group">
+                                <label class="bdgs-t13-pr-filter-label">Customer Rating</label>
+                                <div class="bdgs-t13-pr-rating-filter-grid">
+                                    <div class="bdgs-t13-pr-rating-option">
+                                        <input type="radio" name="rating" id="r-all" value="all" checked>
+                                        <label for="r-all" class="bdgs-t13-pr-rating-card">Any</label>
+                                    </div>
+                                    <div class="bdgs-t13-pr-rating-option">
+                                        <input type="radio" name="rating" id="r-45" value="4.5">
+                                        <label for="r-45" class="bdgs-t13-pr-rating-card">4.5 <i
+                                                class="fa fa-star"></i>+</label>
+                                    </div>
+                                    <div class="bdgs-t13-pr-rating-option">
+                                        <input type="radio" name="rating" id="r-40" value="4.0">
+                                        <label for="r-40" class="bdgs-t13-pr-rating-card">4.0 <i
+                                                class="fa fa-star"></i>+</label>
+                                    </div>
+                                    <div class="bdgs-t13-pr-rating-option">
+                                        <input type="radio" name="rating" id="r-35" value="3.5">
+                                        <label for="r-35" class="bdgs-t13-pr-rating-card">3.5 <i
+                                                class="fa fa-star"></i>+</label>
+                                    </div>
                                 </div>
                             </div>
+
+                            <!-- Trust & Verification Features -->
+                            <div class="bdgs-t13-pr-filter-group">
+                                <label class="bdgs-t13-pr-filter-label">Trust & Safety</label>
+                                <ul class="bdgs-t13-pr-trust-list">
+                                    <li class="bdgs-t13-pr-trust-item">
+                                        <input type="checkbox" id="f-verified" checked>
+                                        <label for="f-verified">Verified Experts</label>
+                                    </li>
+                                    <li class="bdgs-t13-pr-trust-item">
+                                        <input type="checkbox" id="f-licensed">
+                                        <label for="f-licensed">Licensed Professionals</label>
+                                    </li>
+                                    <li class="bdgs-t13-pr-trust-item">
+                                        <input type="checkbox" id="f-insured">
+                                        <label for="f-insured">Insured Services</label>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Apply Button for Mobile -->
+                            <div class="visible-xs visible-sm" style="margin-top: 20px;">
+                                <button class="bdgs-t13-pr-btn bdgs-t13-pr-btn-primary"
+                                    onclick="$('#close-filter').click()">Apply Filter</button>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <!-- Results Column -->
+                    <div class="col-md-9">
+                        <div class="row" id="results-grid">
+                            <!-- CARDS RENDERED BY JS -->
                         </div>
 
-                        <!-- Trust & Verification Features -->
-                        <div class="bdgs-t13-pr-filter-group">
-                            <label class="bdgs-t13-pr-filter-label">Trust & Safety</label>
-                            <ul class="bdgs-t13-pr-trust-list">
-                                <li class="bdgs-t13-pr-trust-item">
-                                    <input type="checkbox" id="f-verified" checked>
-                                    <label for="f-verified">Verified Experts</label>
-                                </li>
-                                <li class="bdgs-t13-pr-trust-item">
-                                    <input type="checkbox" id="f-licensed">
-                                    <label for="f-licensed">Licensed Professionals</label>
-                                </li>
-                                <li class="bdgs-t13-pr-trust-item">
-                                    <input type="checkbox" id="f-insured">
-                                    <label for="f-insured">Insured Services</label>
-                                </li>
+                        <!-- Pagination Container -->
+                        <div class="bdgs-t13-pr-pagination-wrapper">
+                            <ul class="bdgs-t13-pr-pagination" id="pagination-list">
+                                <!-- PAGINATION ITEMS RENDERED BY JS -->
                             </ul>
                         </div>
 
-                        <!-- Apply Button for Mobile -->
-                        <div class="visible-xs visible-sm" style="margin-top: 20px;">
-                            <button class="bdgs-t13-pr-btn bdgs-t13-pr-btn-primary" onclick="$('#close-filter').click()">Apply Filter</button>
+                        <!-- Empty State -->
+                        <div id="empty-state" style="display:none; text-align: center; padding: 60px;">
+                            <i class="fa fa-search" style="font-size: 48px; color: #cbd5e1; margin-bottom: 20px;"></i>
+                            <h3>No experts match your criteria</h3>
+                            <p>Try relaxing your filters or choosing a different category.</p>
                         </div>
                     </div>
-                </aside>
+                </div>
+            </div>
+        </main>
 
-                <!-- Results Column -->
-                <div class="col-md-9">
-                    <div class="row" id="results-grid">
-                        <!-- CARDS RENDERED BY JS -->
+        <!-- Footer -->
+        <footer class="bdgs-t13-pr-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3 style="color:white; font-weight: 900; margin-top: 0;">PRIME<span>LOCAL</span></h3>
+                        <p>Building the world's most trusted local service ecosystem. Every business is manually
+                            verified for your peace of mind.</p>
+                        <div style="display: flex; gap: 15px; margin-top: 15px; font-size: 20px;">
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                        </div>
                     </div>
-
-                    <!-- Pagination Container -->
-                    <div class="bdgs-t13-pr-pagination-wrapper">
-                        <ul class="bdgs-t13-pr-pagination" id="pagination-list">
-                            <!-- PAGINATION ITEMS RENDERED BY JS -->
+                    <div class="col-md-2 col-md-offset-1">
+                        <h5 style="color:white; font-weight: 700;">Marketplace</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="BDGS-T13-PR-core-p2.html" style="color:#94A3B8;">Jobs</a></li>
+                            <li><a href="BDGS-T13-PR-core-p1.html" style="color:#94A3B8;">Services</a></li>
+                            <li><a href="BDGS-T13-PR-testimonial.html" style="color:#94A3B8;">Reviews</a></li>
+                            <li><a href="BDGS-T13-PR-how-work.html" style="color:#94A3B8;">How It's work</a></li>
+                            <li><a href="BDGS-T13-PR-get-match.html" style="color:#94A3B8;">Get Match</a></li>
                         </ul>
                     </div>
-
-                    <!-- Empty State -->
-                    <div id="empty-state" style="display:none; text-align: center; padding: 60px;">
-                        <i class="fa fa-search" style="font-size: 48px; color: #cbd5e1; margin-bottom: 20px;"></i>
-                        <h3>No experts match your criteria</h3>
-                        <p>Try relaxing your filters or choosing a different category.</p>
+                    <div class="col-md-2">
+                        <h5 style="color:white; font-weight: 700;">Company</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="BDGS-T13-PR-about.html" style="color:#94A3B8;">About Us</a></li>
+                            <li><a href="BDGS-T13-PR-join.html" style="color:#94A3B8;">Join</a></li>
+                            <li><a href="BDGS-T13-PR-contact.html" style="color:#94A3B8;">Contact</a></li>
+                            <li><a href="BDGS-T13-PR-core-p2.html" style="color:#94A3B8;">Careers</a></li>
+                            <li><a href="BDGS-T13-PR-faq.html" style="color:#94A3B8;">FAQ</a></li>
+                        </ul>
                     </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bdgs-t13-pr-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h3 style="color:white; font-weight: 900; margin-top: 0;">PRIME<span>LOCAL</span></h3>
-                    <p>Building the world's most trusted local service ecosystem. Every business is manually verified for your peace of mind.</p>
-                        <div style="display: flex; gap: 15px; margin-top: 15px; font-size: 20px;">
-                        <a href="#"><i class="fa fa-linkedin"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-2 col-md-offset-1">
-                    <h5 style="color:white; font-weight: 700;">Marketplace</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="BDGS-T13-PR-core-p2.html" style="color:#94A3B8;">Jobs</a></li>
-                        <li><a href="BDGS-T13-PR-core-p1.html" style="color:#94A3B8;">Services</a></li>
-                        <li><a href="BDGS-T13-PR-testimonial.html" style="color:#94A3B8;">Reviews</a></li>
-                        <li><a href="BDGS-T13-PR-how-work.html" style="color:#94A3B8;">How It's work</a></li>
-                        <li><a href="BDGS-T13-PR-get-match.html" style="color:#94A3B8;">Get Match</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-2">
-                    <h5 style="color:white; font-weight: 700;">Company</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="BDGS-T13-PR-about.html" style="color:#94A3B8;">About Us</a></li>
-                        <li><a href="BDGS-T13-PR-join.html" style="color:#94A3B8;">Join</a></li>
-                        <li><a href="BDGS-T13-PR-contact.html" style="color:#94A3B8;">Contact</a></li>
-                        <li><a href="BDGS-T13-PR-core-p2.html" style="color:#94A3B8;">Careers</a></li>
-                        <li><a href="BDGS-T13-PR-faq.html" style="color:#94A3B8;">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <h5 style="color:white; font-weight: 700;">Stay Updated</h5>
-                    <div class="input-group">
-                        <input type="text" class="form-control" style="background: rgba(255,255,255,0.05); border: none; color: white; height: 45px;" placeholder="Email">
-                        <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button" style="background: var(--bdgs-t13-pr-secondary); color: black; border: none; height: 45px; font-weight: 700;">Subscribe</button>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <hr style="border-color: rgba(255,255,255,0.1); margin:20px 0 20px; width: 100%;">
-            <div class="text-center">
-                <p>&copy; 2024 Prime Local Directory Platform. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-</div>
-<!-- Core Scripts -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert@1.1.3/dist/sweetalert.min.js"></script>
-
-<script>
-    const experts = [
-      // HOME REPAIRS
-{ id: 1, cat: 'home', name: 'Apex Flow Plumbing', rating: 4.9, rev: 1200, price: '499', img: 'images/plumber.jpg', badge: 'premium', history: 'Hired 3 times · Last job Jan 2024', location: 'Brooklyn, New York, USA', desc: 'Verified master plumber specializing in high-pressure leak detection, emergency pipe repair, and full bathroom installations with guaranteed durability.' },
-
-
-
-
-{ id: 5, cat: 'home', name: 'Woodcraft Joiners', rating: 4.2, rev: 150, price: '800', img: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=400&q=80', badge: 'premium', location: 'Berlin, Germany', desc: 'Custom furniture design and precision woodwork. From modular kitchens to antique restoration, we bring wood to life.' },
-
-{ id: 6, cat: 'home', name: 'Safe Lock Systems', rating: 4.8, rev: 920, price: '600', img: 'https://images.unsplash.com/photo-1585128792020-803d29415281?w=400&q=80', badge: 'top', location: 'Chicago, Illinois, USA', desc: 'Advanced security solutions including biometric locks, digital safes, and emergency locksmith services for home and office.' },
-
-// CLEANING SERVICES
-{ id: 11, cat: 'cleaning', name: 'Sparkle Home Pros', rating: 4.9, rev: 2100, price: '299', img: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&q=80', badge: 'premium', location: 'San Diego, California, USA', desc: 'Premium deep cleaning for high-end apartments. Includes steam cleaning, sofa sanitization, and detailed kitchen scrubbing.' },
-
-{ id: 12, cat: 'cleaning', name: 'Deep Clean Squad', rating: 4.6, rev: 890, price: '999', img: 'https://images.unsplash.com/photo-1603712725038-e9334ae8f39f?w=400&q=80', badge: 'top', location: 'Toronto, Ontario, Canada', desc: 'Specialized move-in/move-out cleaning experts. We guarantee your security deposit back with our 100% spotless inspection checklist.' },
-
-{ id: 13, cat: 'cleaning', name: 'Maid Easy Hub', rating: 4.2, rev: 450, price: '150', img: 'https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?w=400&q=80', badge: 'featured', location: 'Dublin, Ireland', desc: 'Reliable daily and weekly maid services. All staff are background verified and trained in modern household management.' },
-
-{ id: 14, cat: 'cleaning', name: 'Carpet Revive', rating: 3.7, rev: 180, price: '400', img: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=400&q=80', badge: 'sponsored', location: 'Birmingham, England, UK', desc: 'Professional carpet shampooing and stain removal. Restoring the original look and smell of your expensive floor fabrics.' },
-
-{ id: 15, cat: 'cleaning', name: 'Office Shine', rating: 4.8, rev: 1200, price: '1500', img: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400&q=80', badge: 'premium', location: 'New York City, New York, USA', desc: 'Corporate sanitation and janitorial services. Maintaining a germ-free workspace for your team with eco-friendly chemicals.' },
-
-{ id: 16, cat: 'cleaning', name: 'Pool Clear Experts', rating: 4.5, rev: 330, price: '800', img: 'images/Pool-Clear-Experts.jpg', badge: 'top', location: 'Miami, Florida, USA', desc: 'Weekly pool maintenance including pH balancing, algae treatment, and filter cleaning for crystal clear water.' },
-
-// APPLIANCE REPAIR
-{ id: 21, cat: 'appliance', name: 'Fridge Fixer Pro', rating: 4.8, rev: 1500, price: '300', img: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&q=80', badge: 'premium', location: 'Seattle, Washington, USA', desc: 'Specialist in double-door and smart refrigerators. Genuine spare parts and onsite cooling repair within 4 hours.' },
-
-
-
-
-{ id: 24, cat: 'appliance', name: 'Oven & Range Tech', rating: 3.8, rev: 190, price: '450', img: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=400&q=80', badge: 'sponsored', location: 'Rome, Italy', desc: 'Fixing heating elements, thermostat issues, and faulty igniters in ovens and cooking ranges.' },
-
-{ id: 25, cat: 'appliance', name: 'Microwave Medics', rating: 4.0, rev: 210, price: '200', img: 'https://images.unsplash.com/photo-1588854337221-4cf9fa96059c?w=400&q=80', badge: 'premium', location: 'Amsterdam, Netherlands', desc: 'Specialized in magnetron and keypad repairs for all microwave models. Fast service at your doorstep.' },
-
-{ id: 26, cat: 'appliance', name: 'TV Repair Hub', rating: 4.6, rev: 730, price: '800', img: 'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400&q=80', badge: 'top', location: 'Los Angeles, California, USA', desc: 'Certified LED/OLED TV technicians. Panel replacement, backlight fixing, and sound issues handled with original parts.' },
-
-// PERSONAL SERVICES
-{ id: 31, cat: 'personal', name: 'Math Mastery Tutor', rating: 4.9, rev: 800, price: '1000', img: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&q=80', badge: 'premium', location: 'Boston, Massachusetts, USA', desc: 'Expert mathematics tutoring for competitive exams. Personalized learning plans to help students excel in complex calculus and algebra.' },
-
-{ id: 32, cat: 'personal', name: 'Elite Fitness Coach', rating: 4.7, rev: 520, price: '1500', img: 'https://images.unsplash.com/photo-1554284126-aa88f22d8b74?w=400&q=80', badge: 'top', location: 'San Francisco, California, USA', desc: 'Certified personal trainer offering home workouts and nutrition guidance. achieve your weight loss or muscle gain goals with custom plans.' },
-
-{ id: 33, cat: 'personal', name: 'The Personal Chef', rating: 4.8, rev: 210, price: '5000', img: 'https://images.unsplash.com/photo-1543353071-873f17a7a088?w=400&q=80', badge: 'featured', location: 'London, England, UK', desc: 'Fine dining experience at home. specializing in multi-cuisine menus for intimate dinner parties and healthy meal prep.' },
-
-{ id: 34, cat: 'personal', name: 'Paws & Claws Groom', rating: 4.2, rev: 330, price: '600', img: 'https://images.unsplash.com/photo-1517849845537-4d257902454a?w=400&q=80', badge: 'sponsored', location: 'Madrid, Spain', desc: 'Full-service mobile pet grooming. Bathing, styling, and nail clipping at your doorstep to keep your pets happy and clean.' },
-
-{ id: 35, cat: 'personal', name: 'Yoga with Elena', rating: 4.6, rev: 420, price: '800', img: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&q=80', badge: 'premium', location: 'Zurich, Switzerland', desc: 'Holistic yoga sessions for physical and mental wellness. specializing in Hatha and vinyasa flow for all age groups.' },
-
-{ id: 36, cat: 'personal', name: 'Career Path Coach', rating: 4.5, rev: 150, price: '2500', img: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&q=80', badge: 'top', location: 'Vancouver, British Columbia, Canada', desc: 'Professional career counseling and resume building. Unlock your potential and land your dream job with expert guidance.' }
-
-        
-    ];
-
-    let filteredExperts = [];
-    let currentPage = 1;
-    const itemsPerPage = 9;
-
-    function renderCards(data) {
-        const grid = $('#results-grid');
-        grid.empty();
-        
-        if(data.length === 0) {
-            $('#empty-state').show();
-            $('#pagination-list').empty();
-            return;
-        }
-        
-        $('#empty-state').hide();
-        $('#total-count').text(`${filteredExperts.length} experts found`);
-
-        data.forEach(item => {
-            let badgeHtml = '';
-            if(item.badge) {
-                let label = item.badge.charAt(0).toUpperCase() + item.badge.slice(1);
-                if(label === 'Top') label = 'Top Rated';
-                badgeHtml = `<span class="bdgs-t13-pr-badge bdgs-t13-pr-badge-${item.badge}">${label}</span>`;
-            }
-
-            const priceMsg = item.history ? 'Same as last job' : 'Member price (Save $25)';
-            const ctaText = item.history ? 'Contact' : 'Contact';
-
-            const card = `
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <article class="bdgs-t13-pr-result-card">
-                        <div class="bdgs-t13-pr-card-media">
-                            <div class="bdgs-t13-pr-card-img" style="background-image: url('${item.img}')"></div>
-                            ${badgeHtml}
-                            <div class="bdgs-t13-pr-verify-badge"><i class="fa fa-check"></i></div>
-                            <div class="bdgs-t13-pr-shortlist-btn ${item.id === 1 ? 'active' : ''}" title="Add to Shortlist">
-                                <i class="fa fa-heart"></i>
-                            </div>
+                    <div class="col-md-3">
+                        <h5 style="color:white; font-weight: 700;">Stay Updated</h5>
+                        <div class="input-group">
+                            <input type="text" class="form-control"
+                                style="background: rgba(255,255,255,0.05); border: none; color: white; height: 45px;"
+                                placeholder="Email">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button"
+                                    style="background: var(--bdgs-t13-pr-secondary); color: black; border: none; height: 45px; font-weight: 700;">Subscribe</button>
+                            </span>
                         </div>
-                        <div class="bdgs-t13-pr-card-content">
-                            <h3 class="bdgs-t13-pr-card-title">${item.name}</h3>
-                            <div class="bdgs-t13-pr-rating-row">
-                                <div class="bdgs-t13-pr-stars">
-                                    <i class="fa fa-star"></i>
-                                    <span style="font-weight: 800; color: #1e293b;">${item.rating}</span>
-                                </div>
-                                <span class="bdgs-t13-pr-review-count">(${item.rev} Reviews)</span>
-                            </div>
-
-                            <div class="bdgs-t13-pr-location">
-                                <i class="fa fa-map-marker"></i> ${item.location || 'Hyderabad, India'}
-                            </div>
-
-                            <div class="bdgs-t13-pr-card-desc">
-                                ${item.desc || 'Reliable service provider with a proven track record of quality and customer satisfaction across the local area.'}
-                            </div>
-
-                            <div class="bdgs-t13-pr-price-block">
-                                <div class="bdgs-t13-pr-price-value">$${item.price}<span class="bdgs-t13-pr-price-unit">/session</span></div>
-                                <div class="bdgs-t13-pr-price-context"><i class="fa fa-tag"></i> ${priceMsg}</div>
-                            </div>
-
-                            <div class="bdgs-t13-pr-card-actions">
-                                <a href="BDGS-T13-PR-mem-profile.html">
-                                    <button class="bdgs-t13-pr-btn bdgs-t13-pr-btn-primary contact-btn">${ctaText}</button> </a>
-                                    <a href="BDGS-T13-PR-mem-profile.html">
-                                <button class="bdgs-t13-pr-btn bdgs-t13-pr-btn-outline msg-btn">Message</button>
-                                 </a>
-                            </div>
-                        </div>
-                    </article>
+                    </div>
                 </div>
-            `;
-            grid.append(card);
-        });
-    }
+                <hr style="border-color: rgba(255,255,255,0.1); margin:20px 0 20px; width: 100%;">
+                <div class="text-center">
+                    <p>&copy; 2024 Prime Local Directory Platform. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- Core Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert@1.1.3/dist/sweetalert.min.js"></script>
 
-    function renderPagination(totalItems) {
-        const totalPages = Math.ceil(totalItems / itemsPerPage);
-        const paginationList = $('#pagination-list');
-        paginationList.empty();
-
-        if (totalPages <= 1) return;
-
-        // Previous Button
-        paginationList.append(`
-            <li class="bdgs-t13-pr-page-item ${currentPage === 1 ? 'disabled' : ''}">
-                <a class="bdgs-t13-pr-page-link" onclick="changePage(${currentPage - 1})"><i class="fa fa-angle-left"></i></a>
-            </li>
-        `);
-
-        for (let i = 1; i <= totalPages; i++) {
-            paginationList.append(`
-                <li class="bdgs-t13-pr-page-item ${i === currentPage ? 'active' : ''}">
-                    <a class="bdgs-t13-pr-page-link" onclick="changePage(${i})">${i}</a>
-                </li>
-            `);
-        }
-
-        // Next Button
-        paginationList.append(`
-            <li class="bdgs-t13-pr-page-item ${currentPage === totalPages ? 'disabled' : ''}">
-                <a class="bdgs-t13-pr-page-link" onclick="changePage(${currentPage + 1})"><i class="fa fa-angle-right"></i></a>
-            </li>
-        `);
-    }
-
-    window.changePage = function(page) {
-        currentPage = page;
-        const startIndex = (currentPage - 1) * itemsPerPage;
-        const endIndex = startIndex + itemsPerPage;
-        const paginatedData = filteredExperts.slice(startIndex, endIndex);
-        
-        renderCards(paginatedData);
-        renderPagination(filteredExperts.length);
-        
-        // Scroll to top of results smoothly
-        $('html, body').animate({
-            scrollTop: $(".bdgs-t13-pr-context-header").offset().top - 100
-        }, 500);
-    };
-
-    $(document).ready(function() {
-        // Init Select2
-        $('.select2-filter').select2();
-
-        // Responsive Filter Toggle Logic
-        $('#open-filter').on('click', function() {
-            $('#sidebar-filter').addClass('active');
-            $('#filter-overlay').addClass('active');
-            $('body').addClass('filter-open');
-        });
-
-        $('#close-filter, #filter-overlay').on('click', function() {
-            $('#sidebar-filter').removeClass('active');
-            $('#filter-overlay').removeClass('active');
-            $('body').removeClass('filter-open');
-        });
-
-        // View Mode Toggler
-        $('.bdgs-t13-pr-view-trigger').on('click', function() {
-            const mode = $(this).attr('id');
-            $('.bdgs-t13-pr-view-trigger').removeClass('active');
-            $(this).addClass('active');
-
-            if(mode === 'view-list') {
-                $('#results-grid').addClass('bdgs-t13-pr-list-mode');
-            } else {
-                $('#results-grid').removeClass('bdgs-t13-pr-list-mode');
-            }
-        });
-
-        // function applyFilters() {
-        //     const cat = $('#category-filter').val();
-        //     const minRating = parseFloat($('input[name="rating"]:checked').val()) || 0;
-
-        //     filteredExperts = experts.filter(item => {
-        //         const matchCat = cat === 'all' || item.cat === cat;
-        //         const matchRating = minRating === 0 || item.rating >= minRating;
-        //         return matchCat && matchRating;
-        //     });
-
-        //     // Update UI feedback for rating chip
-        //     const ratingLabel = $('input[name="rating"]:checked').parent().find('label').text() || '3.5★ & Above';
-        //     $('#chip-rating').html(`${ratingLabel} <i class="fa fa-times"></i>`);
-
-        //     currentPage = 1;
-        //     changePage(1);
-        // }
-        function applyFilters() {
-    const cat = $('#category-filter').val();
-    const minRating = parseFloat($('input[name="rating"]:checked').val()) || 0;
-
-    filteredExperts = experts.filter(item => {
-        const matchCat = cat === 'all' || item.cat === cat;
-        const matchRating = minRating === 0 || item.rating >= minRating;
-        return matchCat && matchRating;
-    });
-
-    currentPage = 1;
-    changePage(1);
-
-    updateChips(); // 🔥 ADD THIS
-}
-
-        $('#category-filter').on('change', applyFilters);
-        $('input[name="rating"]').on('change', applyFilters);
-        $('.bdgs-t13-pr-trust-item input').on('change', applyFilters);
-
-        // Initial Apply
-        applyFilters();
-
-        $(document).on('click', '.contact-btn', function() {
-            swal({
-                title: "Connecting Expert",
-                text: "Establishing a secure connection...",
-                imageUrl: "https://i.gifer.com/ZZ5H.gif",
-                showConfirmButton: false,
-                timer: 2000
-            });
-        });
-
-        $(document).on('click', '.msg-btn', function() {
-            swal({
-                title: "Opening Chat",
-                text: "Launching your secure member messenger.",
-                type: "info",
-                timer: 1500,
-                showConfirmButton: false
-            });
-        });
-
-        $(document).on('click', '.bdgs-t13-pr-shortlist-btn', function() {
-            $(this).toggleClass('active');
-            const isActive = $(this).hasClass('active');
-            swal({
-                title: isActive ? "Added to Shortlist" : "Removed from Shortlist",
-                timer: 1000,
-                showConfirmButton: false
-            });
-        });
-
-        // Breadcrumb click handler
-        $('.bdgs-t13-pr-breadcrumb a').on('click', function(e) {
-            e.preventDefault();
-            swal("Redirecting", "Returning to " + $(this).text(), "info");
-        });
-function updateChips() {
-
-    /* CATEGORY */
-    const catVal = $('#category-filter').val();
-    const catText = $('#category-filter option:selected').text();
-
-    if (catVal && catVal !== 'all') {
-        $('#chip-category .chip-text').text(catText);
-        $('#chip-category').removeClass('hidden');
-        $('#chip-category .chip-remove').removeClass('hidden');
-    } else {
-        $('#chip-category .chip-text').text('');
-        $('#chip-category .chip-remove').addClass('hidden');
-        $('#chip-category').addClass('hidden');
-    }
-
-    /* RATING */
-    const ratingVal = $('input[name="rating"]:checked').val();
-
-    if (ratingVal && ratingVal !== 'all') {
-        $('#chip-rating .chip-text').text(`${ratingVal}★ & Above`);
-        $('#chip-rating').removeClass('hidden');
-        $('#chip-rating .chip-remove').removeClass('hidden');
-    } else {
-        $('#chip-rating .chip-text').text('');
-        $('#chip-rating .chip-remove').addClass('hidden');
-        $('#chip-rating').addClass('hidden');
-    }
-}
-
-
-
-$(document).on('click', '.chip-remove', function () {
-
-    const type = $(this).data('type');
-
-    if (type === 'category') {
-        $('#category-filter')
-            .val('all')
-            .trigger('change.select2');
-    }
-
-    if (type === 'rating') {
-        $('#r-all').prop('checked', true);
-    }
-
-    applyFilters();
-});
-
-
-    });
-   
-
-</script>
+    <script src="js/BDGS-T13-PR-mem-search.js"></script>
 
 </body>
+
 </html>

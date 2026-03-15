@@ -1,721 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Service Operational Guides | Prime Local Knowledge Hub</title>
+    <title>Service Operational Guides | Prime Local Knowledge Hub</title>
 
-<meta name="description" content="Explore operational service guides that explain how local services work on Prime Local. Learn service scope, pricing logic, verification standards, and provider workflows before contacting a professional.">
+    <meta name="description"
+        content="Explore operational service guides that explain how local services work on Prime Local. Learn service scope, pricing logic, verification standards, and provider workflows before contacting a professional.">
 
-<meta name="keywords" content="service guides, how local services work, Prime Local guides, verified service process, service pricing transparency">
+    <meta name="keywords"
+        content="service guides, how local services work, Prime Local guides, verified service process, service pricing transparency">
 
-<meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow">
 
-<link rel="canonical" href="https://www.primelocal.com/guides" />
+    <link rel="canonical" href="https://www.primelocal.com/guides" />
 
-<!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="Service Operational Guides | Prime Local">
-<meta property="og:description" content="Understand how Prime Local services operate. In-depth guides covering service scope, diagnostics, pricing logic, and verification standards.">
-<meta property="og:url" content="https://www.primelocal.com/guides">
-<meta property="og:image" content="https://www.primelocal.com/assets/og/prime-local-guides.jpg">
-<meta property="og:site_name" content="Prime Local">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Service Operational Guides | Prime Local">
+    <meta property="og:description"
+        content="Understand how Prime Local services operate. In-depth guides covering service scope, diagnostics, pricing logic, and verification standards.">
+    <meta property="og:url" content="https://www.primelocal.com/guides">
+    <meta property="og:image" content="https://www.primelocal.com/assets/og/prime-local-guides.jpg">
+    <meta property="og:site_name" content="Prime Local">
 
     <!-- Core Assets -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert@1.1.3/dist/sweetalert.css">
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
-        :root {
-            --pl-navy: #0F172A;
-            --pl-amber: #F59E0B;
-            --pl-sky: #38BDF8;
-            --pl-text: #1E293B;
-            --pl-text-light: #64748B;
-            --pl-bg: #F8FAFC;
-            --pl-border: #E2E8F0;
-            --pl-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            --pl-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-        }
-
-        body {
-            background-color: var(--pl-bg);
-            font-family: 'Inter', sans-serif;
-            color: var(--pl-text);
-            margin: 0;
-            overflow-x: hidden;
-            line-height: 1.6;
-            padding-top: 80px;
-        }
-
-      
-       
-               /* --- Navigation --- */
-        .bdgs-t13-pr-navbar {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border: none;
-            padding: 10px 0;
-            transition: var(--bdgs-t13-pr-transition);
-            z-index: 1000;
-            box-shadow: var(--bdgs-t13-pr-shadow-sm);
-
-        }
-
-        .bdgs-t13-pr-navbar.scrolled {
-            padding: 12px 0;
-            box-shadow: var(--bdgs-t13-pr-shadow-sm);
-        }
-
-        .bdgs-t13-pr-navbar .navbar-brand {
-            font-size: 26px;
-            font-weight: 800;
-            color: var(--bdgs-t13-pr-primary) !important;
-            letter-spacing: -1px;
-            height: auto;
-            padding: 15px;
-        }
-
-        .bdgs-t13-pr-navbar .navbar-brand span {
-            color: var(--bdgs-t13-pr-secondary);
-        }
-        /* .navbar-brand {
-            background-color: #F8FAFC;
-        } */
-        .bdgs-t13-pr-nav-links li a {
-            color: var(--bdgs-t13-pr-text) !important;
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: var(--bdgs-t13-pr-transition);
-        }
-
-        .bdgs-t13-pr-btn-cta {
-            background: var(--bdgs-t13-pr-white);
-            color: white !important;
-            border-radius: 50px;
-            padding: 10px 15px !important;
-            margin-left: 1px;
-            margin-top: 5px;
-            transition: var(--bdgs-t13-pr-transition);
-            border: none;
-        }
-
-        .bdgs-t13-pr-btn-cta:hover {
-            background: var(--bdgs-t13-pr-secondary) !important;
-            color: var(--bdgs-t13-pr-primary) !important;
-            transform: scale(1.05);
-        }
-
-        .bdgs-t13-pr-menu-link:hover{
-            color: var(--bdgs-t13-pr-secondary) !important;
-        } .bdgs-t13-pr-navbar {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border: none;
-            padding: 10px 0;
-            transition: var(--pr-transition);
-            z-index: 1000;
-            box-shadow: var(--pl-shadow-card);
-            /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
-
-        }
-
-        .bdgs-t13-pr-navbar.scrolled {
-            padding: 12px 0;
-            box-shadow: var(--pl-shadow-card);
-
-        }
-
-        .bdgs-t13-pr-navbar .navbar-brand {
-            font-size: 26px;
-            font-weight: 800;
-            color: var(--pl-navy) !important;
-            letter-spacing: -1px;
-            height: auto;
-            padding: 15px;
-        }
-
-        .bdgs-t13-pr-navbar .navbar-brand span {
-            color: var(--pl-amber);
-        }
-       
-        .bdgs-t13-pr-nav-links li a {
-            color: var(--pl-text) !important;
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: var(--pl-transition);
-        }
-
-        .bdgs-t13-pr-btn-cta {
-            background: var(--pl-bg);
-            color: white !important;
-            border-radius: 50px;
-            padding: 10px 15px !important;
-            margin-left: 1px;
-            margin-top: 5px;
-            transition: var(--pl-transition);
-            border: none;
-        }
-
-        .bdgs-t13-pr-btn-cta:hover {
-            background: var(--pl-amber) !important;
-            color: var(--pl-navy) !important;
-            transform: scale(1.05);
-        }
-
-        .bdgs-t13-pr-menu-link:hover{
-            color: var(--pl-amber) !important;
-        }
-
-        /* --- Page Header with Background Image --- */
-        .pl-hub-header {
-            padding: 100px 0 60px;
-            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            text-align: left;
-            color: white;
-            border-bottom: none;
-        }
-        .pl-hub-header h1 {
-            font-size: 48px;
-            font-weight: 900;
-            color: white;
-            margin-bottom: 15px;
-            letter-spacing: -1px;
-        }
-        .pl-hub-header p {
-            font-size: 18px;
-            color: rgba(255, 255, 255, 0.9);
-            max-width: 700px;
-            line-height: 1.6;
-        }
-
-        /* --- Category Filter Tabs --- */
-        .pl-filter-container {
-            padding: 40px 0 0;
-            display: flex;
-            gap: 12px;
-            overflow-x: auto;
-            white-space: nowrap;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-        .pl-filter-container::-webkit-scrollbar { display: none; }
-        
-        .pl-filter-btn {
-            padding: 12px 28px;
-            background: white;
-            border: 1px solid transparent;
-            border-radius: 100px;
-            font-weight: 800;
-            font-size: 12px;
-            color: var(--pl-navy);
-            cursor: pointer;
-            transition: var(--pl-transition);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        .pl-filter-btn:hover { background: var(--pl-amber); color: var(--pl-navy); transform: translateY(-2px); }
-        .pl-filter-btn.active { background: var(--pl-amber); color: var(--pl-navy); border-color: var(--pl-amber); }
-
-        /* --- Cards Grid --- */
-        .pl-guide-grid {
-            display: flex;
-            flex-wrap: wrap;
-            margin: 0 -15px 60px;
-        }
-        .pl-grid-col {
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            width: 33.333%; /* Desktop / High-res Laptop */
-        }
-
-        .pl-guide-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid var(--pl-border);
-            transition: var(--pl-transition);
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            text-decoration: none !important;
-        }
-        .pl-guide-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
-            border-color: var(--pl-amber);
-        }
-
-        .pl-card-img-wrap {
-            height: 200px;
-            overflow: hidden;
-            background: #f1f5f9;
-            flex-shrink: 0;
-        }
-        .pl-card-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        .pl-guide-card:hover .pl-card-img {
-            transform: scale(1.05);
-        }
-
-        .pl-card-content-wrap {
-            padding: 25px 30px 30px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .pl-card-label {
-            font-size: 10px;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--pl-amber);
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        .pl-guide-card h3 {
-            font-size: 20px;
-            font-weight: 800;
-            color: var(--pl-navy);
-            margin-bottom: 12px;
-            line-height: 1.3;
-        }
-
-        .pl-guide-card p {
-            font-size: 14px;
-            color: var(--pl-text-light);
-            margin-bottom: 25px;
-            flex-grow: 1;
-        }
-
-        .pl-card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 20px;
-            border-top: 1px solid #F1F5F9;
-        }
-
-        .pl-read-time {
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--pl-navy);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .pl-read-link {
-            font-size: 12px;
-            font-weight: 800;
-            color: var(--pl-navy);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .pl-guide-card:hover .pl-read-link { color: var(--pl-amber); }
-
-        /* --- Platform Section --- */
-        .pl-platform-section {
-            padding: 80px 0px;
-            padding-right: 30px;
-            background: var(--pl-navy);
-            color: white;
-            border-radius: 40px;
-            margin-bottom: 40px;
-        }
-        .pl-platform-section h2 { font-weight: 900; margin-bottom: 40px; text-align: center; }
-
-        .pl-platform-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 30px;
-            padding-right: 0px;
-            border-radius: 20px;
-            height: 100%;
-            transition: var(--pl-transition);
-        }
-        .pl-platform-card:hover {
-            background: rgba(255,255,255,0.08);
-            border-color: var(--pl-amber);
-        }
-        .pl-platform-card i { font-size: 24px; color: var(--pl-amber); margin-bottom: 20px; }
-        .pl-platform-card h4 { font-weight: 800; margin-bottom: 10px; color: white; }
-        .pl-platform-card p { font-size: 14px; opacity: 0.8; margin-bottom: 0; }
-
-        /* --- Closing Statement --- */
-        .pl-hub-closing {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 100px;
-            padding: 0 15px;
-        }
-        .pl-hub-closing p {
-            font-size: 16px;
-            color: var(--pl-text-light);
-            font-style: italic;
-        }
-
-        /* --- Footer --- */
-        .pl-footer {
-            background: #020617;
-            padding: 20px 0 10px;
-            color: #94A3B8;
-        }
-        .pl-footer h4 { color: white; font-weight: 900; margin-bottom: 25px; }
-        .pl-footer a { color: #94A3B8; text-decoration: none; display: block; margin-bottom: 12px; }
-        .pl-footer a:hover { color: var(--pl-amber); }
-
-        /* --- Responsive Queries Optimized for Laptop & Tablet --- */
-        
-        /* Small Laptops and Large Tablets */
-        @media (max-width: 1199px) {
-            .pl-grid-col { width: 50%; }
-            .pl-card-img-wrap { height: 220px; }
-        }
-
-        /* Tablet Viewports */
-        @media (max-width: 991px) {
-            .pl-grid-col { width: 50%; }
-            .pl-hub-header h1 { font-size: 36px; }
-            .pl-card-img-wrap { height: 200px; }
-            .pl-hub-header { padding: 80px 0 50px; background-attachment: scroll; }
-        }
-
-        /* Mobile Viewports */
-        @media (max-width: 767px) {
-            body { padding-top: 60px; }
-            .pl-grid-col { width: 100%; }
-            .pl-hub-header { padding: 60px 0 40px; }
-            .pl-hub-header h1 { font-size: 32px; }
-            .pl-hub-header p { font-size: 16px; }
-            .pl-card-img-wrap { height: 240px; }
-            .pl-platform-section { border-radius: 0; padding: 60px 0; }
-            .pl-platform-card { margin-bottom: 20px; }
-            .pl-filter-container { padding: 30px 15px 0; }
-        }
-
-        /* Small Phones */
-        @media (max-width: 480px) {
-            .pl-hub-header h1 { font-size: 28px; }
-            .pl-card-img-wrap { height: 180px; }
-            .pl-card-content-wrap { padding: 20px; }
-            .pl-guide-card h3 { font-size: 18px; }
-            .pl-footer { padding: 60px 0 30px; text-align: center; }
-            .pl-footer .row > div { margin-bottom: 30px; }
-        }
-        
-
-.pl-platform-section {
-    overflow: hidden; /* 🔥 CRITICAL */
-}
-.pl-platform-section *,
-.pl-platform-section *::before,
-.pl-platform-section *::after {
-    box-sizing: border-box;
-}
-.pl-platform-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-    margin-top: 40px;
-}
-
-.pl-platform-card{
-    margin-left:0px ;
-    /* width: 330px; */
-    /* padding: 20px; */
-}
-@media (max-width: 991px) {
-    .pl-platform-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 767px) {
-    .pl-platform-grid {
-        grid-template-columns: 1fr;
-    }
-}
-.pl-platform-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-}
-.pl-platform-section {
-    padding: 80px 0;
-    border-radius: 40px;
-    overflow: hidden;
-}
-
-
-    </style>
+    <link rel="stylesheet" href="css/BDGS-T13-PR-core-p1.css">
 </head>
+
 <body>
 
-<div class="bdgs-t13-pr-theme-wrapper">
-    <!-- Navigation -->
-    <!-- Navigation -->
-    <nav class="navbar navbar-default bdgs-t13-pr-navbar navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">PRIME<span>LOCAL</span></a>
-            </div>
-            <div class="collapse navbar-collapse" id="nav-collapse">
-                 <ul class="nav navbar-nav navbar-right bdgs-t13-pr-nav-links">
-                    <li><a href="index.html" class="bdgs-t13-pr-menu-link">Home</a></li>
-                    <li><a href="BDGS-T13-PR-core-p1.html" class="bdgs-t13-pr-menu-link">Explore Services</a></li>
-                    
-                    <li><a href="BDGS-T13-PR-about.html" class="bdgs-t13-pr-menu-link">About</a></li>
-                    <li><a href="BDGS-T13-PR-contact.html" class="bdgs-t13-pr-menu-link">Contact</a></li>
-                    <li><a href="BDGS-T13-PR-login-signup.html" class="bdgs-t13-pr-btn-cta">Get Listed</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <div class="bdgs-t13-pr-theme-wrapper">
+        <!-- Navigation -->
+        <!-- Navigation -->
+        <nav class="navbar navbar-default bdgs-t13-pr-navbar navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">PRIME<span>LOCAL</span></a>
+                </div>
+                <div class="collapse navbar-collapse" id="nav-collapse">
+                    <ul class="nav navbar-nav navbar-right bdgs-t13-pr-nav-links">
+                        <li><a href="index.html" class="bdgs-t13-pr-menu-link">Home</a></li>
+                        <li><a href="BDGS-T13-PR-core-p1.html" class="bdgs-t13-pr-menu-link">Explore Services</a></li>
 
-    <!-- Context Header -->
-    <header class="pl-hub-header">
-        <div class="container">
-            <h1>Operational Service Guides</h1>
-            <p>In-depth resources written to explain service scope, diagnostic phases, and our verification standards. These guides help you understand the mechanics of Prime Local before you contact a professional.</p>
-            
-            <div class="pl-filter-container">
-                <div class="pl-filter-btn active">All Guides</div>
-                <div class="pl-filter-btn">Home Repairs</div>
-                <div class="pl-filter-btn">Cleaning Services</div>
-                <div class="pl-filter-btn">Appliance Repair</div>
-                <div class="pl-filter-btn">Personal Services</div>
-                <div class="pl-filter-btn">Trust & Safety</div>
+                        <li><a href="BDGS-T13-PR-about.html" class="bdgs-t13-pr-menu-link">About</a></li>
+                        <li><a href="BDGS-T13-PR-contact.html" class="bdgs-t13-pr-menu-link">Contact</a></li>
+                        <li><a href="BDGS-T13-PR-login-signup.html" class="bdgs-t13-pr-btn-cta">Get Listed</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </header>
+        </nav>
 
-    <!-- Guides Grid -->
-    <main class="container" style="margin-top: 20px;">
-        <div class="pl-guide-grid">
-            
-            <!-- Home Repairs -->
-            <div class="pl-grid-col">
-                <a href="BDGS-T13-PR-core-d1.html" class="pl-guide-card">
-                    <div class="pl-card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1632759145351-1d592919f522?w=400&q=80" alt="Home Repair" class="pl-card-img">
-                    </div>
-                    <div class="pl-card-content-wrap">
-                        <span class="pl-card-label">Home Repairs</span>
-                        <h3>How Home Repair Services Work</h3>
-                        <p>Learn about plumbing, electrical, and structural repair cycles. Understand the diagnostic phase and our 15-point provider vetting process.</p>
-                        <div class="pl-card-footer">
-                            <span class="pl-read-time"><i class="fa fa-clock-o"></i> 8 Min Read</span>
-                            <span class="pl-read-link">Read Guide</span>
+        <!-- Context Header -->
+        <header class="pl-hub-header">
+            <div class="container">
+                <h1>Operational Service Guides</h1>
+                <p>In-depth resources written to explain service scope, diagnostic phases, and our verification
+                    standards. These guides help you understand the mechanics of Prime Local before you contact a
+                    professional.</p>
+
+                <div class="pl-filter-container">
+                    <div class="pl-filter-btn active">All Guides</div>
+                    <div class="pl-filter-btn">Home Repairs</div>
+                    <div class="pl-filter-btn">Cleaning Services</div>
+                    <div class="pl-filter-btn">Appliance Repair</div>
+                    <div class="pl-filter-btn">Personal Services</div>
+                    <div class="pl-filter-btn">Trust & Safety</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Guides Grid -->
+        <main class="container" style="margin-top: 20px;">
+            <div class="pl-guide-grid">
+
+                <!-- Home Repairs -->
+                <div class="pl-grid-col">
+                    <a href="BDGS-T13-PR-core-d1.html" class="pl-guide-card">
+                        <div class="pl-card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1632759145351-1d592919f522?w=400&q=80"
+                                alt="Home Repair" class="pl-card-img">
+                        </div>
+                        <div class="pl-card-content-wrap">
+                            <span class="pl-card-label">Home Repairs</span>
+                            <h3>How Home Repair Services Work</h3>
+                            <p>Learn about plumbing, electrical, and structural repair cycles. Understand the diagnostic
+                                phase and our 15-point provider vetting process.</p>
+                            <div class="pl-card-footer">
+                                <span class="pl-read-time"><i class="fa fa-clock-o"></i> 8 Min Read</span>
+                                <span class="pl-read-link">Read Guide</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Cleaning Services -->
+                <div class="pl-grid-col">
+                    <a href="BDGS-T13-PR-core-d1.html" class="pl-guide-card">
+                        <div class="pl-card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=800&q=80"
+                                alt="Cleaning Service" class="pl-card-img">
+                        </div>
+                        <div class="pl-card-content-wrap">
+                            <span class="pl-card-label">Cleaning Services</span>
+                            <h3>The Mechanics of Professional Cleaning</h3>
+                            <p>Clarifies the difference between maintenance and deep cleaning. Covers safety standards,
+                                bonded service expectations, and supply protocols.</p>
+                            <div class="pl-card-footer">
+                                <span class="pl-read-time"><i class="fa fa-clock-o"></i> 6 Min Read</span>
+                                <span class="pl-read-link">Read Guide</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Appliance Repair -->
+                <div class="pl-grid-col">
+                    <a href="BDGS-T13-PR-core-d1.html" class="pl-guide-card">
+                        <div class="pl-card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400&q=80"
+                                alt="Appliance Repair" class="pl-card-img">
+                        </div>
+                        <div class="pl-card-content-wrap">
+                            <span class="pl-card-label">Appliance Repair</span>
+                            <h3>Understanding Appliance Repair Cycles</h3>
+                            <p>How diagnostic fees work and why parts sourcing varies. Learn how we verify authorized
+                                brand certifications for local repair experts.</p>
+                            <div class="pl-card-footer">
+                                <span class="pl-read-time"><i class="fa fa-clock-o"></i> 7 Min Read</span>
+                                <span class="pl-read-link">Read Guide</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Personal Services -->
+                <div class="pl-grid-col">
+                    <a href="BDGS-T13-PR-core-d1.html" class="pl-guide-card">
+                        <div class="pl-card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80"
+                                alt="Personal Services" class="pl-card-img">
+                        </div>
+                        <div class="pl-card-content-wrap">
+                            <span class="pl-card-label">Personal Services</span>
+                            <h3>Vetting for Personal & Creative Services</h3>
+                            <p>A deep dive into how we audit credentials for tutors, trainers, and planners. Understand
+                                our child-safety and background check rigor.</p>
+                            <div class="pl-card-footer">
+                                <span class="pl-read-time"><i class="fa fa-clock-o"></i> 5 Min Read</span>
+                                <span class="pl-read-link">Read Guide</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Pricing Logic -->
+                <div class="pl-grid-col">
+                    <a href="BDGS-T13-PR-core-d1.html" class="pl-guide-card">
+                        <div class="pl-card-img-wrap">
+                            <img src="images/businesswoman-her-colleague-talking-while-using-touchpad-office-wearing-face-masks.jpg"
+                                alt="Trust and Pricing" class="pl-card-img">
+                        </div>
+                        <div class="pl-card-content-wrap">
+                            <span class="pl-card-label">Trust & Pricing</span>
+                            <h3>The Prime Local Pricing Standard</h3>
+                            <p>Explaining our transparency mandate. Why we require providers to list starting rates and
+                                how normalized quotes protect you from price creep.</p>
+                            <div class="pl-card-footer">
+                                <span class="pl-read-time"><i class="fa fa-clock-o"></i> 9 Min Read</span>
+                                <span class="pl-read-link">Read Guide</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Communication -->
+                <div class="pl-grid-col">
+                    <a href="BDGS-T13-PR-core-d1.html" class="pl-guide-card">
+                        <div class="pl-card-img-wrap">
+                            <img src="images/medium-shot-executive-men.jpg" alt="Communication" class="pl-card-img">
+                        </div>
+                        <div class="pl-card-content-wrap">
+                            <span class="pl-card-label">Platform Basics</span>
+                            <h3>Direct Communication Guidelines</h3>
+                            <p>What to expect after you send your first message. Guidelines for sharing project photos,
+                                scheduling diagnostic visits, and safe off-platform work.</p>
+                            <div class="pl-card-footer">
+                                <span class="pl-read-time"><i class="fa fa-clock-o"></i> 4 Min Read</span>
+                                <span class="pl-read-link">Read Guide</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Platform-Level Section -->
+            <section class="pl-platform-section">
+                <div class="pl-platform-inner">
+                    <h2>Platform Principles</h2>
+
+                    <div class="pl-platform-grid">
+                        <div class="pl-platform-card">
+                            <i class="fa fa-shield"></i>
+                            <h4>Our 15-Point Audit</h4>
+                            <p>Every guide in this hub is backed by the vetting framework we use to manually verify
+                                every business on our platform.</p>
+                        </div>
+
+                        <div class="pl-platform-card">
+                            <i class="fa fa-balance-scale"></i>
+                            <h4>Integrity in Reviews</h4>
+                            <p>Learn how we moderate community feedback to ensure every rating reflects a verified
+                                transaction and a real project outcome.</p>
+                        </div>
+
+                        <div class="pl-platform-card pl-new-card">
+                            <i class="fa fa-lock"></i>
+                            <h4>Data Privacy Standards</h4>
+                            <p>Understand how we protect your contact information and property details until you are
+                                ready to initiate a direct connection.</p>
                         </div>
                     </div>
-                </a>
+                </div>
+            </section>
+
+
+            <!-- Hub Closing -->
+            <div class="pl-hub-closing">
+                <p>These guides are designed to help you understand how Prime Local services work before you contact any
+                    professional. You can explore them at your own pace and choose what’s relevant to you.</p>
             </div>
 
-            <!-- Cleaning Services -->
-            <div class="pl-grid-col">
-                <a href="BDGS-T13-PR-core-d1.html" class="pl-guide-card">
-                    <div class="pl-card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=800&q=80" alt="Cleaning Service" class="pl-card-img">
-                    </div>
-                    <div class="pl-card-content-wrap">
-                        <span class="pl-card-label">Cleaning Services</span>
-                        <h3>The Mechanics of Professional Cleaning</h3>
-                        <p>Clarifies the difference between maintenance and deep cleaning. Covers safety standards, bonded service expectations, and supply protocols.</p>
-                        <div class="pl-card-footer">
-                            <span class="pl-read-time"><i class="fa fa-clock-o"></i> 6 Min Read</span>
-                            <span class="pl-read-link">Read Guide</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
+        </main>
 
-            <!-- Appliance Repair -->
-            <div class="pl-grid-col">
-                <a href="BDGS-T13-PR-core-d1.html" class="pl-guide-card">
-                    <div class="pl-card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400&q=80" alt="Appliance Repair" class="pl-card-img">
-                    </div>
-                    <div class="pl-card-content-wrap">
-                        <span class="pl-card-label">Appliance Repair</span>
-                        <h3>Understanding Appliance Repair Cycles</h3>
-                        <p>How diagnostic fees work and why parts sourcing varies. Learn how we verify authorized brand certifications for local repair experts.</p>
-                        <div class="pl-card-footer">
-                            <span class="pl-read-time"><i class="fa fa-clock-o"></i> 7 Min Read</span>
-                            <span class="pl-read-link">Read Guide</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Personal Services -->
-            <div class="pl-grid-col">
-                <a href="BDGS-T13-PR-core-d1.html" class="pl-guide-card">
-                    <div class="pl-card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80" alt="Personal Services" class="pl-card-img">
-                    </div>
-                    <div class="pl-card-content-wrap">
-                        <span class="pl-card-label">Personal Services</span>
-                        <h3>Vetting for Personal & Creative Services</h3>
-                        <p>A deep dive into how we audit credentials for tutors, trainers, and planners. Understand our child-safety and background check rigor.</p>
-                        <div class="pl-card-footer">
-                            <span class="pl-read-time"><i class="fa fa-clock-o"></i> 5 Min Read</span>
-                            <span class="pl-read-link">Read Guide</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Pricing Logic -->
-            <div class="pl-grid-col">
-                <a href="BDGS-T13-PR-core-d1.html" class="pl-guide-card">
-                    <div class="pl-card-img-wrap">
-                        <img src="images/businesswoman-her-colleague-talking-while-using-touchpad-office-wearing-face-masks.jpg" alt="Trust and Pricing" class="pl-card-img">
-                    </div>
-                    <div class="pl-card-content-wrap">
-                        <span class="pl-card-label">Trust & Pricing</span>
-                        <h3>The Prime Local Pricing Standard</h3>
-                        <p>Explaining our transparency mandate. Why we require providers to list starting rates and how normalized quotes protect you from price creep.</p>
-                        <div class="pl-card-footer">
-                            <span class="pl-read-time"><i class="fa fa-clock-o"></i> 9 Min Read</span>
-                            <span class="pl-read-link">Read Guide</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Communication -->
-            <div class="pl-grid-col">
-                <a href="BDGS-T13-PR-core-d1.html" class="pl-guide-card">
-                    <div class="pl-card-img-wrap">
-                        <img src="images/medium-shot-executive-men.jpg" alt="Communication" class="pl-card-img">
-                    </div>
-                    <div class="pl-card-content-wrap">
-                        <span class="pl-card-label">Platform Basics</span>
-                        <h3>Direct Communication Guidelines</h3>
-                        <p>What to expect after you send your first message. Guidelines for sharing project photos, scheduling diagnostic visits, and safe off-platform work.</p>
-                        <div class="pl-card-footer">
-                            <span class="pl-read-time"><i class="fa fa-clock-o"></i> 4 Min Read</span>
-                            <span class="pl-read-link">Read Guide</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-        </div>
-
-        <!-- Platform-Level Section -->
-        <section class="pl-platform-section">
-    <div class="pl-platform-inner">
-        <h2>Platform Principles</h2>
-
-        <div class="pl-platform-grid">
-            <div class="pl-platform-card">
-                <i class="fa fa-shield"></i>
-                <h4>Our 15-Point Audit</h4>
-                <p>Every guide in this hub is backed by the vetting framework we use to manually verify every business on our platform.</p>
-            </div>
-
-            <div class="pl-platform-card">
-                <i class="fa fa-balance-scale"></i>
-                <h4>Integrity in Reviews</h4>
-                <p>Learn how we moderate community feedback to ensure every rating reflects a verified transaction and a real project outcome.</p>
-            </div>
-
-            <div class="pl-platform-card pl-new-card">
-                <i class="fa fa-lock"></i>
-                <h4>Data Privacy Standards</h4>
-                <p>Understand how we protect your contact information and property details until you are ready to initiate a direct connection.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-        <!-- Hub Closing -->
-        <div class="pl-hub-closing">
-            <p>These guides are designed to help you understand how Prime Local services work before you contact any professional. You can explore them at your own pace and choose what’s relevant to you.</p>
-        </div>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="pl-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                     <h3 style="color:white; font-weight: 900; margin-top: 0;">PRIME<span>LOCAL</span></h3>
-                    <p>Building the world's most trusted local service ecosystem. Every business is manually verified for your peace of mind.</p>
+        <!-- Footer -->
+        <footer class="pl-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3 style="color:white; font-weight: 900; margin-top: 0;">PRIME<span>LOCAL</span></h3>
+                        <p>Building the world's most trusted local service ecosystem. Every business is manually
+                            verified for your peace of mind.</p>
                         <div style="display: flex; gap: 15px; margin-top: 15px; font-size: 20px;">
-                        <a href="#"><i class="fa fa-linkedin"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-facebook"></i></a>
                         </div>
-                </div>
-                <div class="col-md-2 col-md-offset-1">
-                     <h5 style="color:white; font-weight: 700;">Marketplace</h5>
-                       <ul class="list-unstyled">
-                        <li><a href="BDGS-T13-PR-core-p2.html" style="color:#94A3B8;">Careers</a></li>
-                        <li><a href="BDGS-T13-PR-core-p1.html" style="color:#94A3B8;">Services</a></li>
-                        <li><a href="BDGS-T13-PR-testimonial.html" style="color:#94A3B8;">Reviews</a></li>
-                        <li><a href="BDGS-T13-PR-how-work.html" style="color:#94A3B8;">How It's work</a></li>
-                        <li><a href="BDGS-T13-PR-get-match.html" style="color:#94A3B8;">Get Match</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-2">
-                     <h5 style="color:white; font-weight: 700;">Stay Updated</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="BDGS-T13-PR-about.html" style="color:#94A3B8;">About Us</a></li>
-                        <li><a href="BDGS-T13-PR-join.html" style="color:#94A3B8;">Join</a></li>
-                        <li><a href="BDGS-T13-PR-contact.html" style="color:#94A3B8;">Contact</a></li>
-                        <li><a href="BDGS-T13-PR-blog-read.html" style="color:#94A3B8;">Blogs</a></li>
-                        <li><a href="BDGS-T13-PR-faq.html" style="color:#94A3B8;">FAQ</a></li>
-                    </ul>
-                </div>
-             <div class="col-md-3">
-                    <h5 style="color:white; font-weight: 700;">Stay Updated</h5>
-                    <div class="input-group">
-                        <input type="text" class="form-control" style="background: rgba(255,255,255,0.05); border: none; color: white; height: 45px;" placeholder="Email">
-                        <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button" style="background: var(--pl-amber); color: black; border: none; height: 45px; font-weight: 700;">Subscribe</button>
-                        </span>
+                    </div>
+                    <div class="col-md-2 col-md-offset-1">
+                        <h5 style="color:white; font-weight: 700;">Marketplace</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="BDGS-T13-PR-core-p2.html" style="color:#94A3B8;">Careers</a></li>
+                            <li><a href="BDGS-T13-PR-core-p1.html" style="color:#94A3B8;">Services</a></li>
+                            <li><a href="BDGS-T13-PR-testimonial.html" style="color:#94A3B8;">Reviews</a></li>
+                            <li><a href="BDGS-T13-PR-how-work.html" style="color:#94A3B8;">How It's work</a></li>
+                            <li><a href="BDGS-T13-PR-get-match.html" style="color:#94A3B8;">Get Match</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2">
+                        <h5 style="color:white; font-weight: 700;">Stay Updated</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="BDGS-T13-PR-about.html" style="color:#94A3B8;">About Us</a></li>
+                            <li><a href="BDGS-T13-PR-join.html" style="color:#94A3B8;">Join</a></li>
+                            <li><a href="BDGS-T13-PR-contact.html" style="color:#94A3B8;">Contact</a></li>
+                            <li><a href="BDGS-T13-PR-blog-read.html" style="color:#94A3B8;">Blogs</a></li>
+                            <li><a href="BDGS-T13-PR-faq.html" style="color:#94A3B8;">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <h5 style="color:white; font-weight: 700;">Stay Updated</h5>
+                        <div class="input-group">
+                            <input type="text" class="form-control"
+                                style="background: rgba(255,255,255,0.05); border: none; color: white; height: 45px;"
+                                placeholder="Email">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button"
+                                    style="background: var(--pl-amber); color: black; border: none; height: 45px; font-weight: 700;">Subscribe</button>
+                            </span>
+                        </div>
                     </div>
                 </div>
+                <hr style="border-color: rgba(255,255,255,0.05); margin: 20px 0 20px;">
+                <div class="text-center" style="font-size: 12px; opacity: 0.5;">
+                    &copy; 2024 Prime Local Platform. All rights reserved. Professional Integrity Guaranteed.
+                </div>
             </div>
-            <hr style="border-color: rgba(255,255,255,0.05); margin: 20px 0 20px;">
-            <div class="text-center" style="font-size: 12px; opacity: 0.5;">
-                &copy; 2024 Prime Local Platform. All rights reserved. Professional Integrity Guaranteed.
-            </div>
-        </div>
-    </footer>
-</div>
+        </footer>
+    </div>
 
-<!-- Scripts -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 </body>
+
 </html>

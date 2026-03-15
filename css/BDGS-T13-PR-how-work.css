@@ -1,0 +1,274 @@
+:root {
+            --bdgs-t13-pr-primary: #0F172A; /* Midnight Navy */
+            --bdgs-t13-pr-secondary: #F59E0B; /* Vibrant Amber */
+            --bdgs-t13-pr-accent: #38BDF8; /* Sky Blue */
+            --bdgs-t13-pr-text: #1E293B;
+            --bdgs-t13-pr-text-light: #64748B;
+            --bdgs-t13-pr-bg-white: #FFFFFF;
+            --bdgs-t13-pr-bg-soft: #F8FAFC;
+            --bdgs-t13-pr-transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --bdgs-t13-pr-shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --bdgs-t13-pr-shadow-lg: 0 25px 50px -12px rgba(15, 23, 42, 0.1);
+        }
+
+        body {
+            background-color: var(--bdgs-t13-pr-bg-white);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--bdgs-t13-pr-text);
+            margin: 0;
+            overflow-x: hidden;
+            line-height: 1.7;
+            padding-top: 80px;
+        }
+
+        .bdgs-t13-pr-theme-wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- Production Reveal Engine --- */
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .reveal-left { opacity: 0; transform: translateX(-50px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .reveal-right { opacity: 0; transform: translateX(50px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        
+        .active { opacity: 1 !important; transform: translate(0, 0) !important; }
+
+        /* --- Production Navbar (Sync with Home) --- */
+       
+         .bdgs-t13-pr-navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: none;
+            padding: 10px 0;
+            transition: var(--bdgs-t13-pr-transition);
+            z-index: 1000;
+            box-shadow: var(--bdgs-t13-pr-shadow-sm);
+
+        }
+
+        .bdgs-t13-pr-navbar.scrolled {
+            padding: 12px 0;
+            box-shadow: var(--bdgs-t13-pr-shadow-sm);
+        }
+
+        .bdgs-t13-pr-navbar .navbar-brand {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--bdgs-t13-pr-primary) !important;
+            letter-spacing: -1px;
+            height: auto;
+            padding: 15px;
+        }
+
+        .bdgs-t13-pr-navbar .navbar-brand span {
+            color: var(--bdgs-t13-pr-secondary);
+        }
+        .bdgs-t13-pr-nav-links li a {
+            color: var(--bdgs-t13-pr-text) !important;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--bdgs-t13-pr-transition);
+        }
+
+        .bdgs-t13-pr-btn-cta {
+            background: var(--bdgs-t13-pr-white);
+            color: white !important;
+            border-radius: 50px;
+            padding: 10px 15px !important;
+            margin-left: 1px;
+            margin-top: 5px;
+            transition: var(--bdgs-t13-pr-transition);
+            border: none;
+        }
+
+        .bdgs-t13-pr-btn-cta:hover {
+            background: var(--bdgs-t13-pr-secondary) !important;
+            color: var(--bdgs-t13-pr-primary) !important;
+            transform: scale(1.05);
+        }
+
+        .bdgs-t13-pr-menu-link:hover{
+            color: var(--bdgs-t13-pr-secondary) !important;
+        }
+
+        /* --- Hero Section --- */
+        .bdgs-t13-pr-how-hero {
+            /* padding: 160px 0 100px; */
+            padding: 50px 0px;
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+        .bdgs-t13-pr-how-hero h1 {
+            font-size: 52px;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 25px;
+            letter-spacing: -2px;
+        }
+        .bdgs-t13-pr-how-hero p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* --- Journey Sections --- */
+        .bdgs-t13-pr-section { padding: 40px 0; padding-left: 0px; }
+        .bdgs-t13-pr-section-label {
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--bdgs-t13-pr-secondary);
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        /* --- CONNECTED STEPS DESIGN --- */
+        .bdgs-t13-pr-step-list {
+            list-style: none;
+            padding: 0;
+            margin: 40px 0;
+            position: relative;
+        }
+        /* The Connector Line */
+        .bdgs-t13-pr-step-list::before {
+            content: '';
+            position: absolute;
+            top: 30px; bottom: 30px;
+            left: 30px;
+            width: 2px;
+            background: #E2E8F0;
+            z-index: 0;
+        }
+
+        .bdgs-t13-pr-step-item {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 20px;
+            padding: 25px;
+            border-radius: 24px;
+            transition: var(--bdgs-t13-pr-transition);
+            border: 1px solid transparent;
+            position: relative;
+            z-index: 1;
+            background: transparent;
+        }
+        .bdgs-t13-pr-step-item:hover {
+            background: white;
+            border-color: #f1f5f9;
+            box-shadow: var(--bdgs-t13-pr-shadow-lg);
+            transform: translateX(10px);
+        }
+
+        .bdgs-t13-pr-step-num {
+            width: 60px; height: 60px;
+            background: var(--bdgs-t13-pr-primary);
+            color: white;
+            border-radius: 18px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 900;
+            flex-shrink: 0;
+            font-size: 24px;
+            transition: var(--bdgs-t13-pr-transition);
+            box-shadow: 0 4px 12px rgba(15,23,42,0.1);
+        }
+        .bdgs-t13-pr-step-item:hover .bdgs-t13-pr-step-num {
+            background: var(--bdgs-t13-pr-secondary);
+            color: var(--bdgs-t13-pr-primary);
+            transform: scale(1.1) rotate(-8deg);
+        }
+
+        .bdgs-t13-pr-step-content h4 {
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--bdgs-t13-pr-primary);
+            font-size: 20px;
+        }
+        .bdgs-t13-pr-step-content p {
+            color: var(--bdgs-t13-pr-text-light);
+            font-size: 15px;
+        }
+
+        /* Info Display Grid */
+        .bdgs-t13-pr-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .bdgs-t13-pr-info-item {
+            padding: 25px;
+            background: white;
+            border-radius: 20px;
+            font-weight: 700;
+            border: 1px solid #f1f5f9;
+            transition: var(--bdgs-t13-pr-transition);
+            display: flex; flex-direction: column; gap: 10px;
+        }
+        .bdgs-t13-pr-info-item:hover {
+            border-color: var(--bdgs-t13-pr-secondary);
+            transform: translateY(-5px);
+            box-shadow: var(--bdgs-t13-pr-shadow-lg);
+        }
+        .bdgs-t13-pr-info-item i { font-size: 22px; color: var(--bdgs-t13-pr-secondary); }
+
+        /* --- Does/Does Not Section --- */
+        .bdgs-t13-pr-boundary-card {
+            background: white;
+            border-radius: 40px;
+            padding: 40px 60px;
+            box-shadow: var(--bdgs-t13-pr-shadow-lg);
+            border: 1px solid #F1F5F9;
+        }
+        .bdgs-t13-pr-check-list li {
+            margin-bottom: 20px;
+            padding-left: 35px;
+            position: relative;
+            font-weight: 500;
+        }
+        .bdgs-t13-pr-check-list li::before {
+            content: "\f058";
+            font-family: FontAwesome;
+            position: absolute; left: 0; color: #22C55E; font-size: 18px;
+        }
+        .bdgs-t13-pr-cross-list li::before {
+            content: "\f057";
+            color: #EF4444;
+        }
+
+        /* --- Footer (Sync with Home) --- */
+        .bdgs-t13-pr-footer {
+            background: #020617;
+            padding: 20px 0 10px;
+            color: #94A3B8;
+        }
+        .bdgs-t13-pr-footer h3 { color: white; font-weight: 900; margin-bottom: 30px; }
+        .bdgs-t13-pr-footer h5 { color: white; font-weight: 700; margin-bottom: 25px; }
+        .bdgs-t13-pr-footer a { color: #94A3B8; text-decoration: none; transition: 0.3s; }
+        .bdgs-t13-pr-footer a:hover { color: var(--bdgs-t13-pr-secondary); padding-left: 5px; }
+
+        /* --- Responsive Logic --- */
+        @media (max-width: 991px) {
+            .bdgs-t13-pr-info-grid { grid-template-columns: 1fr; }
+            .bdgs-t13-pr-how-hero h1 { font-size: 38px; }
+            .bdgs-t13-pr-boundary-card { padding: 40px 25px; }
+            .bdgs-t13-pr-step-list::before { left: 45px; }
+            .bdgs-t13-pr-step-num { width: 50px; height: 50px; font-size: 20px; }
+        }
+
+        @media (max-width: 767px) {
+            .bdgs-t13-pr-how-hero { padding: 160px 0 80px; }
+            .bdgs-t13-pr-step-item { flex-direction: column; gap: 15px; }
+            .bdgs-t13-pr-step-list::before { display: none; }
+            .bdgs-t13-pr-step-item:hover { transform: translateY(-5px); }
+        }
