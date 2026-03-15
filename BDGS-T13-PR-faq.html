@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions | Prime Local - Help & Support</title>
+    
+    <!-- Core Assets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert@1.1.3/dist/sweetalert.css">
+
+    <style>
+        :root {
+            --bdgs-t13-pr-primary: #0F172A; /* Midnight Navy */
+            --bdgs-t13-pr-secondary: #F59E0B; /* Vibrant Amber */
+            --bdgs-t13-pr-accent: #38BDF8; /* Sky Blue */
+            --bdgs-t13-pr-text: #1E293B;
+            --bdgs-t13-pr-text-light: #64748B;
+            --bdgs-t13-pr-bg-white: #FFFFFF;
+            --bdgs-t13-pr-bg-soft: #F8FAFC;
+            --bdgs-t13-pr-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --bdgs-t13-pr-shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --bdgs-t13-pr-shadow-lg: 0 25px 50px -12px rgba(15, 23, 42, 0.08);
+        }
+
+        body {
+            background-color: var(--bdgs-t13-pr-bg-soft);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--bdgs-t13-pr-text);
+            margin: 0;
+            overflow-x: hidden;
+            line-height: 1.7;
+            padding-top: 80px;
+        }
+
+        .bdgs-t13-pr-theme-wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- Header Navigation --- */
+        
+   .bdgs-t13-pr-navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: none;
+            padding: 10px 0;
+            transition: var(--bdgs-t13-pr-transition);
+            z-index: 1000;
+            box-shadow: var(--bdgs-t13-pr-shadow-sm);
+
+        }
+
+        .bdgs-t13-pr-navbar.scrolled {
+            padding: 12px 0;
+            box-shadow: var(--bdgs-t13-pr-shadow-sm);
+        }
+
+        .bdgs-t13-pr-navbar .navbar-brand {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--bdgs-t13-pr-primary) !important;
+            letter-spacing: -1px;
+            height: auto;
+            padding: 15px;
+        }
+
+        .bdgs-t13-pr-navbar .navbar-brand span {
+            color: var(--bdgs-t13-pr-secondary);
+        }
+        /* .navbar-brand {
+            background-color: #F8FAFC;
+        } */
+        .bdgs-t13-pr-nav-links li a {
+            color: var(--bdgs-t13-pr-text) !important;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--bdgs-t13-pr-transition);
+        }
+
+        .bdgs-t13-pr-btn-cta {
+            background: var(--bdgs-t13-pr-white);
+            color: white !important;
+            border-radius: 50px;
+            padding: 10px 15px !important;
+            margin-left: 1px;
+            margin-top: 5px;
+            transition: var(--bdgs-t13-pr-transition);
+            border: none;
+        }
+
+        .bdgs-t13-pr-btn-cta:hover {
+            background: var(--bdgs-t13-pr-secondary) !important;
+            color: var(--bdgs-t13-pr-primary) !important;
+            transform: scale(1.05);
+        }
+
+        .bdgs-t13-pr-menu-link:hover{
+            color: var(--bdgs-t13-pr-secondary) !important;
+        }
+        /* --- FAQ Hero Section --- */
+        .bdgs-t13-pr-faq-hero {
+            padding: 80px 0 60px;
+            /* background: var(--bdgs-t13-pr-bg-white); */
+             background-image:
+        linear-gradient(
+            135deg,
+            rgba(0,0,0,0.6),
+            rgba(0,0,0,0.6)
+        ),
+        url("images/herosection1.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+            text-align: center;
+            border-bottom: 1px solid #E2E8F0;
+        }
+        .bdgs-t13-pr-faq-hero h1 {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--bdgs-t13-pr-bg-white);
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+        .bdgs-t13-pr-faq-hero p {
+            font-size: 18px;
+            color: var(--bdgs-t13-pr-bg-soft);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .bdgs-t13-pr-search-wrap {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .bdgs-t13-pr-search-input {
+            width: 100%;
+            height: 60px;
+            padding: 10px 25px 10px 60px;
+            border: 2px solid #F1F5F9;
+            background: #F8FAFC;
+            border-radius: 15px;
+            font-size: 16px;
+            outline: none;
+            transition: var(--bdgs-t13-pr-transition);
+        }
+        .bdgs-t13-pr-search-input:focus { border-color: var(--bdgs-t13-pr-primary); background: white; box-shadow: 0 10px 25px rgba(15, 23, 42, 0.05); }
+        .bdgs-t13-pr-search-wrap i {
+            position: absolute; left: 22px; top: 20px; color: var(--bdgs-t13-pr-primary); font-size: 20px;
+        }
+
+        /* --- Main FAQ Content Layout --- */
+        .bdgs-t13-pr-faq-section { padding: 60px 0; }
+
+        /* Left Sidebar */
+        .bdgs-t13-pr-sidebar {
+            position: sticky;
+            top: 120px;
+        }
+        .bdgs-t13-pr-category-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .bdgs-t13-pr-cat-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 25px;
+            border-radius: 12px;
+            color: var(--bdgs-t13-pr-text-light);
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none !important;
+            transition: var(--bdgs-t13-pr-transition);
+            margin-bottom: 5px;
+            border-left: 4px solid transparent;
+        }
+        .bdgs-t13-pr-cat-link:hover {
+            background: #F1F5F9;
+            color: var(--bdgs-t13-pr-primary);
+        }
+        .bdgs-t13-pr-cat-link.active {
+            background: white;
+            color: var(--bdgs-t13-pr-primary);
+            border-left-color: var(--bdgs-t13-pr-secondary);
+            box-shadow: var(--bdgs-t13-pr-shadow-sm);
+        }
+
+        /* Right Content: Accordion */
+        .bdgs-t13-pr-faq-content-area {
+            display: none;
+        }
+        .bdgs-t13-pr-faq-content-area.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .bdgs-t13-pr-cat-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--bdgs-t13-pr-primary);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .bdgs-t13-pr-cat-title i { color: var(--bdgs-t13-pr-secondary); }
+
+        .bdgs-t13-pr-accordion-item {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 15px;
+            border: 1px solid #F1F5F9;
+            overflow: hidden;
+            transition: var(--bdgs-t13-pr-transition);
+        }
+        .bdgs-t13-pr-accordion-item.open {
+            border-color: var(--bdgs-t13-pr-secondary);
+            box-shadow: var(--bdgs-t13-pr-shadow-lg);
+        }
+
+        .bdgs-t13-pr-accordion-header {
+            padding: 22px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+        .bdgs-t13-pr-accordion-header h5 {
+            margin: 0;
+            font-weight: 800;
+            font-size: 16px;
+            color: var(--bdgs-t13-pr-primary);
+            padding-right: 20px;
+        }
+
+        .bdgs-t13-pr-icon-state {
+            width: 24px; height: 24px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--bdgs-t13-pr-text-light);
+            transition: transform 0.3s ease;
+        }
+        .bdgs-t13-pr-accordion-item.open .bdgs-t13-pr-icon-state {
+            transform: rotate(45deg);
+            color: var(--bdgs-t13-pr-secondary);
+        }
+
+        .bdgs-t13-pr-accordion-body {
+            padding: 0 25px 25px 25px;
+            display: none;
+            color: var(--bdgs-t13-pr-text-light);
+            font-size: 15px;
+            border-top: 1px solid #F8FAFC;
+            padding-top: 20px;
+        }
+
+        /* --- Platform Meta Blocks --- */
+        .bdgs-t13-pr-meta-section {
+            background: var(--bdgs-t13-pr-bg-white);
+            /* padding: 100px 0; */
+            box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 40px 4px;
+            border-top: 1px solid #E2E8F0;
+        }
+        .bdgs-t13-pr-meta-card {
+            padding: 40px;
+            border-radius: 24px;
+            background: var(--bdgs-t13-pr-bg-soft);
+            height: 100%;
+            border: 1px solid #F1F5F9;
+        }
+        .bdgs-t13-pr-meta-card h4 { font-weight: 900; margin-bottom: 25px; color: var(--bdgs-t13-pr-primary); }
+
+        /* --- Enhanced Contact CTA Box --- */
+        .bdgs-t13-pr-cta-box {
+            margin-top: 30px;
+            padding: 60px 40px;
+            background: white;
+            border-radius: 30px;
+            border: 1px solid #F1F5F9;
+            box-shadow: var(--bdgs-t13-pr-shadow-sm);
+            transition: var(--bdgs-t13-pr-transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .bdgs-t13-pr-cta-box:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--bdgs-t13-pr-shadow-lg);
+            border-color: var(--bdgs-t13-pr-secondary);
+        }
+        .bdgs-t13-pr-cta-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--bdgs-t13-pr-secondary);
+            opacity: 0;
+            transition: 0.3s;
+        }
+        .bdgs-t13-pr-cta-box:hover::before { opacity: 1; }
+
+        .bdgs-t13-pr-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--bdgs-t13-pr-primary);
+            color: white !important;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 14px;
+            text-decoration: none !important;
+            transition: var(--bdgs-t13-pr-transition);
+            margin-top: 25px;
+            box-shadow: 0 4px 15px rgba(15, 23, 42, 0.15);
+        }
+        .bdgs-t13-pr-cta-btn:hover {
+            background: var(--bdgs-t13-pr-secondary);
+            color: var(--bdgs-t13-pr-primary) !important;
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+        }
+        .bdgs-t13-pr-cta-btn i {
+            transition: transform 0.3s ease;
+        }
+        .bdgs-t13-pr-cta-btn:hover i {
+            transform: translateX(8px);
+        }
+
+        /* --- Footer (Sync with Home) --- */
+        .bdgs-t13-pr-footer {
+            background: #020617;
+            padding: 20px 0 10px;
+            padding-top: 10px;
+            color: #94A3B8;
+        }
+        .bdgs-t13-pr-footer h3 { color: white; font-weight: 900; margin-bottom: 30px; }
+        .bdgs-t13-pr-footer h5 { color: white; font-weight: 700; margin-bottom: 25px; }
+        .bdgs-t13-pr-footer a { color: #94A3B8; text-decoration: none; transition: 0.3s; }
+        .bdgs-t13-pr-footer a:hover { color: var(--bdgs-t13-pr-secondary); }
+
+        @media (max-width: 991px) {
+            .bdgs-t13-pr-sidebar { position: static; margin-bottom: 40px; }
+            .bdgs-t13-pr-category-nav { display: flex; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 15px; gap: 10px; }
+            .bdgs-t13-pr-cat-link { white-space: nowrap; border-left: none; border-bottom: 4px solid transparent; }
+            .bdgs-t13-pr-cat-link.active { border-bottom-color: var(--bdgs-t13-pr-secondary); }
+            .bdgs-t13-pr-faq-hero h1 { font-size: 36px; }
+            .bdgs-t13-pr-cta-box { padding: 40px 20px; }
+        }
+
+        @media (max-width: 767px) {
+            .bdgs-t13-pr-faq-section { padding: 40px 0; }
+            .bdgs-t13-pr-meta-card { margin-bottom: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bdgs-t13-pr-theme-wrapper">
+    <!-- Navbar (Production Standard) -->
+    <!-- Navigation -->
+    <nav class="navbar navbar-default bdgs-t13-pr-navbar navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="BDGS-T13-PR-home.html">PRIME<span>LOCAL</span></a>
+            </div>
+            <div class="collapse navbar-collapse" id="nav-collapse">
+                <ul class="nav navbar-nav navbar-right bdgs-t13-pr-nav-links">
+                    <li><a href="BDGS-T13-PR-core-p1.html" class="bdgs-t13-pr-menu-link">Explore Services</a></li>
+                    <li><a href="BDGS-T13-PR-home.html" class="bdgs-t13-pr-menu-link">Categories</a></li>
+                    <li><a href="BDGS-T13-PR-about.html" class="bdgs-t13-pr-menu-link">About</a></li>
+                    <li><a href="BDGS-T13-PR-contact.html" class="bdgs-t13-pr-menu-link">Contact</a></li>
+                    <li><a href="BDGS-T13-PR-login-signup.html" class="bdgs-t13-pr-btn-cta">Get Listed</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Support Hero -->
+    <header class="bdgs-t13-pr-faq-hero">
+        <div class="container">
+            <h1>How can we help you?</h1>
+            <p>Search our support hub or browse by category to find detailed answers to your questions about Prime Local.</p>
+            
+            <!-- <div class="bdgs-t13-pr-search-wrap">
+                <i class="fa fa-search"></i>
+                <input type="text" id="faq-global-search" class="bdgs-t13-pr-search-input" placeholder="Search by keywords (e.g. license, booking, city)...">
+            </div> -->
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="bdgs-t13-pr-faq-section">
+        <div class="container">
+            <div class="row">
+                <!-- Sidebar Category Nav -->
+                <aside class="col-md-3">
+                    <div class="bdgs-t13-pr-sidebar">
+                        <ul class="bdgs-t13-pr-category-nav">
+                            <li><a href="#home" class="bdgs-t13-pr-cat-link active" data-target="home"><i class="fa fa-home"></i> Home Repairs</a></li>
+                            <li><a href="#cleaning" class="bdgs-t13-pr-cat-link" data-target="cleaning"><i class="fa fa-magic"></i> Cleaning Services</a></li>
+                            <li><a href="#appliance" class="bdgs-t13-pr-cat-link" data-target="appliance"><i class="fa fa-plug"></i> Appliance Repair</a></li>
+                            <li><a href="#personal" class="bdgs-t13-pr-cat-link" data-target="personal"><i class="fa fa-user"></i> Personal Services</a></li>
+                            <li><a href="#platform" class="bdgs-t13-pr-cat-link" data-target="platform"><i class="fa fa-globe"></i> Platform Usage</a></li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <!-- FAQ Content Blocks -->
+                <div class="col-md-9">
+                    
+                    <!-- Home Repairs (12 Questions) -->
+                    <div class="bdgs-t13-pr-faq-content-area active" id="faq-home">
+                        <h3 class="bdgs-t13-pr-cat-title"><i class="fa fa-home"></i> Home Repairs Support</h3>
+                        
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Are plumbers and electricians on the platform licensed?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Yes. Every Home Repair professional must submit current state or local trade licenses for manual verification before their profile is activated.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Is emergency same-day service available?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Many pros list "24/7" or "Same-Day" on their profiles. For urgent issues, we recommend calling these providers directly for the fastest response.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Do pros provide their own materials?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Pros bring standard tools. For large components (water heaters, panels), the pro will usually provide a quote for materials or you can supply them.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Are structural repairs covered?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Yes, we host verified contractors for foundation, roofing, and wall repairs. These pros are audited for specific heavy-duty certifications.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Do I need a permit for home repairs?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Permit requirements vary by city. Your verified pro can advise you on local building codes and handle permit filings if needed.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Can I see photos of previous work?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Every pro profile includes a "Portfolio" section with high-resolution photos of their past structural and repair projects for your review.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Is there a warranty on repair work?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Most Prime Local pros offer a 30 to 90-day workmanship warranty. Specific terms are listed under the "Policies" tab of each pro.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Do you have masonry specialists for marble?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Yes, we have verified masonry experts who specialize specifically in premium stone polishing and Italian marble tiling.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Are pros insured for property damage?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Manual verification includes checking for active general liability insurance to ensure your home is protected during repairs.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>How are estimates calculated?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Pros usually provide estimates based on labor hours and material costs. Some offer flat rates for standard jobs like switch replacements.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Can I hire for small handyperson tasks?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Yes. Many pros list "Handyperson" services for minor fixes like mounting TVs or fixing cabinet hinges with minimum call-out fees.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>What if I have an electrical emergency?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Filter results by "Emergency" or "Available Now" to find electricians who specialize in rapid fault finding and power restoration.</div>
+                        </div>
+                    </div>
+
+                    <!-- Cleaning Services (12 Questions) -->
+                    <div class="bdgs-t13-pr-faq-content-area" id="faq-cleaning">
+                        <h3 class="bdgs-t13-pr-cat-title"><i class="fa fa-magic"></i> Cleaning Support</h3>
+                        
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>What is included in a "Deep Clean"?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">A deep clean covers baseboards, inside appliances, scrubbing grout, and detailed dusting. Check individual checklists on pro profiles.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Do I need to be home for the session?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Recommended for the first visit. Many users provide lockbox codes or digital access for recurring weekly cleaning sessions.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Are cleaning supplies provided?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Standard pros bring their own chemicals and equipment. You can request eco-friendly or specific vacuum types via the message system.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>How long does a "Move-Out" clean take?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Deep move-out cleans typically take 4 to 8 hours depending on square footage to ensure a deposit-ready home.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Are your cleaning pros bonded?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Yes. We prioritize cleaning agencies that are fully bonded and insured for residential entry and key management.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Can I schedule a recurring weekly clean?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Yes. You can manage recurring bookings through your user dashboard and maintain the same cleaner for consistency.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>What is "Upholstery Care"?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">This involves steam-cleaning or dry-cleaning sofa fabrics, mattresses, and car interiors using specialized industrial equipment.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Do you offer post-construction cleaning?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Yes. Specialized crews handle paint debris, fine dust, and construction waste after home remodels.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Are the cleaning products safe for pets?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Many of our top-rated pros use non-toxic, eco-friendly products. You can filter pros by the "Eco-Friendly" tag.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Is tipping expected for cleaners?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Tipping is entirely optional but appreciated for exceptional service. You can tip directly after the session.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>How is key security managed?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Pros follow a strict protocol for key handling. We recommend using digital lock codes which can be reset for your safety.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>What if something is broken during cleaning?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Report it within 24 hours. Verified cleaning agencies carry liability insurance to cover property accidental damage.</div>
+                        </div>
+                    </div>
+
+                    <!-- Appliance Repair (11 Questions) -->
+                    <div class="bdgs-t13-pr-faq-content-area" id="faq-appliance">
+                        <h3 class="bdgs-t13-pr-cat-title"><i class="fa fa-plug"></i> Appliance Support</h3>
+                        
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Is there a fee just for the professional to visit?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Most pros charge a "Diagnostic Fee" to identify the issue. This is often waived if you hire them to perform the repair.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>How are replacement parts sourced?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Technicians typically source OEM (Original Equipment Manufacturer) parts from local hubs to ensure the fastest turnaround time.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Do pros fix premium smart brands?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Yes. We have specialists certified for brands like Sub-Zero, Viking, and smart LG or Samsung appliances.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Is repair better than replacement?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Technicians provide a "Repair vs Replace" assessment during diagnostics to help you decide based on unit age and efficiency.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Can AC gas be refilled same-day?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Yes. Authorized AC pros carry standard refrigerant gases and can perform refills and leak detection on-site.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Do you fix commercial restaurant equipment?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Yes. We have a specific sub-category for "Commercial Appliance" verified for industrial ovens and walk-in coolers.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>What if my washer is making a loud noise?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Loud banging usually indicates bearing or suspension issues. Washer Wizards can often fix this in a single visit.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Is there a warranty on replacement parts?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Parts typically carry a 1-year manufacturer warranty, and technicians offer a separate workmanship guarantee.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Can a pro help install a new dryer?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Yes. Safe electrical and venting installation is a standard service provided by our appliance technicians.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>How do I fix a dishwasher not draining?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Technicians can identify if it's a pump failure or a simple blockage in the drain hose during the first visit.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Do you fix broken TV panel screens?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">TV specialists can replace panels for LED and OLED units if parts are available. Search for "Electronics" in the appliance section.</div>
+                        </div>
+                    </div>
+
+                    <!-- Personal Services (11 Questions) -->
+                    <div class="bdgs-t13-pr-faq-content-area" id="faq-personal">
+                        <h3 class="bdgs-t13-pr-cat-title"><i class="fa fa-user"></i> Personal Services Support</h3>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>How are academic credentials verified?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Tutors are required to provide proof of degree or relevant certifications. We manually review these before granting the badge.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Are fitness sessions online or in-person?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Varies by pro. Individual profiles state if the expert travels to you, works at a studio, or offers virtual coaching.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Can I book a discovery or trial session?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Many tutors and language coaches offer a discounted first discovery session to ensure a good fit.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Do music instructors provide the instruments?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Usually not for home lessons. Studio-based instructors often provide large instruments like pianos or drum kits for use during the lesson.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>How do I track student progress?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Verified tutors provide monthly session summaries highlighting areas of mastery and homework via the platform.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Are there discounts for lesson bundles?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Yes. Many trainers and tutors offer 5 or 10-session packages at a discounted rate compared to one-off bookings.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Can I hire a pro for a small group?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Yes. Yoga instructors and language tutors often host sessions for 2-3 people at a specific "Group Rate."</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>What is the cancellation policy?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Standard practice is a 24-hour notice for 1:1 sessions. Policies are clearly stated on the pro's "Booking" tab.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Is my child safe with a verified tutor?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Every pro who interacts with minors must pass an enhanced multi-state background check before profile activation.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Can I switch instructors if it's not a fit?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Absolutely. You are not locked into any provider. You can connect with any expert in our directory at any time.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Do photography pros provide gear?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Yes. Photography pros provide high-end cameras and lighting. You only need to discuss the creative brief.</div>
+                        </div>
+                    </div>
+
+                    <!-- Platform Usage (11 Questions) -->
+                    <div class="bdgs-t13-pr-faq-content-area" id="faq-platform">
+                        <h3 class="bdgs-t13-pr-cat-title"><i class="fa fa-globe"></i> General Platform Questions</h3>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Is Prime Local free for customers?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Yes. Neighbors pay nothing to search, view verified data, or contact professionals. We charge service pros to be listed.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Why do I need to register?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Registration ensures community safety and allows you to track communication history and save a shortlist of favorite pros.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>How does the verification badge work?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">The badge is awarded only after our team manually audits a business's legal license, insurance, and professional standing.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Is my personal data secure?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Yes. We use industry-standard encryption for all platform communication and never share your contact details until you initiate contact.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>How are reviews moderated?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Every review is manually screened for authenticity. We cross-verify that a real interaction took place before publishing feedback.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>What if a pro asks for off-platform payment?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Paying directly is standard. However, always request an invoice or receipt via the Prime Local portal for your records.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>How do I report a safety concern?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">There is a "Report" button on every profile. Our safety team investigates all flags within 12 business hours.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>Can I book for multiple addresses?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Yes. You can manage several service locations (Home, Office, Rental) from your centralized user dashboard.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>How do I reset my password?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">Click "Forgot Password" on the login screen. A secure reset link will be sent to your registered email immediately.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>What cities are covered?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">We currently support major hubs like Houston, Chicago, and Hyderabad. More neighborhoods are added every month.</div>
+                        </div>
+                        <div class="bdgs-t13-pr-accordion-item">
+                            <div class="bdgs-t13-pr-accordion-header"><h5>How do I delete my profile?</h5><div class="bdgs-t13-pr-icon-state"><i class="fa fa-plus"></i></div></div>
+                            <div class="bdgs-t13-pr-accordion-body">You can request account deletion via settings. All data is purged according to our strict privacy policy.</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Platform Meta Sections -->
+    <section class="bdgs-t13-pr-meta-section">
+        <div class="container">
+            <!-- <div class="row"> -->
+            <!-- Enhanced Contact CTA Box -->
+            <div class="bdgs-t13-pr-cta-box text-center">
+                <h4 style="font-weight: 900; color: var(--bdgs-t13-pr-primary); font-size: 28px; ">Still have questions?</h4>
+                <p class="text-muted" style="font-size: 16px;">Our dedicated support team is available to help you navigate any issues.</p>
+                <a href="BDGS-T13-PR-contact.html" class="bdgs-t13-pr-cta-btn">
+                    Visit Contact Center <i class="fa fa-long-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Sync with Home) -->
+    <footer class="bdgs-t13-pr-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3 style="color:white; font-weight: 900; margin-top: 0;">PRIME<span>LOCAL</span></h3>
+                    <p>Building the world's most trusted local service ecosystem. Every business is manually verified for your peace of mind.</p>
+                        <div style="display: flex; gap: 15px; margin-top: 15px; font-size: 20px;">
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-md-offset-1">
+                    <h5 style="color:white; font-weight: 700;">Marketplace</h5>
+                      <ul class="list-unstyled">
+                        <li><a href="BDGS-T13-PR-core-p2.html" style="color:#94A3B8;">Careers</a></li>
+                        <li><a href="BDGS-T13-PR-core-p1.html" style="color:#94A3B8;">Services</a></li>
+                        <li><a href="BDGS-T13-PR-testimonial.html" style="color:#94A3B8;">Reviews</a></li>
+                        <li><a href="BDGS-T13-PR-how-work.html" style="color:#94A3B8;">How It's work</a></li>
+                        <li><a href="BDGS-T13-PR-get-match.html" style="color:#94A3B8;">Get Match</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 col-xs-6">
+                  
+                    <h5 style="color:white; font-weight: 700;">Company</h5>
+                       <ul class="list-unstyled">
+                        <li><a href="BDGS-T13-PR-about.html" style="color:#94A3B8;">About Us</a></li>
+                        <li><a href="BDGS-T13-PR-join.html" style="color:#94A3B8;">Join</a></li>
+                        <li><a href="BDGS-T13-PR-contact.html" style="color:#94A3B8;">Contact</a></li>
+                        <li><a href="BDGS-T13-PR-blog-read.html" style="color:#94A3B8;">Blogs</a></li>
+                        <li><a href="BDGS-T13-PR-faq.html" style="color:#94A3B8;">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 style="color:white; font-weight: 700;">Stay Updated</h5>
+                    <div class="input-group">
+                        <input type="text" class="form-control" style="background: rgba(255,255,255,0.05); border: none; color: white; height: 45px;" placeholder="Email">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button" style="background: var(--bdgs-t13-pr-secondary); color: black; border: none; height: 45px; font-weight: 700;">Subscribe</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.05); margin: 60px 0 30px;">
+            <div class="text-center" style="font-size: 13px; opacity: 0.5;">
+                &copy; 2024 Prime Local Directory Platform. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert@1.1.3/dist/sweetalert.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Sidebar Navigation Switcher
+        $('.bdgs-t13-pr-cat-link').on('click', function(e) {
+            e.preventDefault();
+            var target = $(this).data('target');
+            
+            $('.bdgs-t13-pr-cat-link').removeClass('active');
+            $(this).addClass('active');
+            
+            $('.bdgs-t13-pr-faq-content-area').removeClass('active');
+            $('#faq-' + target).addClass('active');
+
+            // Scroll to content on mobile
+            if($(window).width() < 992) {
+                $('html, body').animate({
+                    scrollTop: $("#faq-" + target).offset().top - 100
+                }, 500);
+            }
+        });
+
+        // Accordion Interaction
+        $('.bdgs-t13-pr-accordion-header').on('click', function() {
+            var $parent = $(this).closest('.bdgs-t13-pr-accordion-item');
+            var $body = $parent.find('.bdgs-t13-pr-accordion-body');
+            
+            // Close others
+            $('.bdgs-t13-pr-accordion-item').not($parent).removeClass('open').find('.bdgs-t13-pr-accordion-body').slideUp(300);
+            
+            // Toggle current
+            $parent.toggleClass('open');
+            $body.slideToggle(300);
+        });
+
+        // Global Search Filter
+        $('#faq-global-search').on('keyup', function() {
+            var value = $(this).val().toLowerCase();
+            if(value === "") {
+                $('.bdgs-t13-pr-accordion-item').show();
+                return;
+            }
+            
+            // Search through all categories
+            $('.bdgs-t13-pr-accordion-item').each(function() {
+                var text = $(this).text().toLowerCase();
+                $(this).toggle(text.indexOf(value) > -1);
+            });
+        });
+
+        // Sticky Navbar Effect
+        $(window).on('scroll', function() {
+            if ($(window).scrollTop() > 50) {
+                $('.bdgs-t13-pr-navbar').addClass('scrolled');
+            } else {
+                $('.bdgs-t13-pr-navbar').removeClass('scrolled');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

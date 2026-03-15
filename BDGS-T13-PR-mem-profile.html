@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Profile | Marcus Sterling - Prime Local</title>
+    
+    <!-- Core Assets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert@1.1.3/dist/sweetalert.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        :root {
+            --pl-navy: #0F172A;
+            --pl-amber: #F59E0B;
+            --pl-sky: #38BDF8;
+            --pl-text: #1E293B;
+            --pl-text-light: #64748B;
+            --pl-bg: #F8FAFC;
+            --pl-border: #E2E8F0;
+            --pl-transition: all 0.3s ease;
+            --pl-shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --bdgs-t13-pr-primary: #0F172A;
+            --bdgs-t13-pr-secondary: #F59E0B;
+        }
+
+        body {
+            background-color: var(--pl-bg);
+            font-family: 'Inter', sans-serif;
+            color: var(--pl-text);
+            margin: 0;
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        /* --- Header Navigation (Synced) --- */
+
+         .bdgs-t13-pr-navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: none;
+            padding: 10px 0;
+            transition: var(--bdgs-t13-pr-transition);
+            z-index: 1000;
+            box-shadow: var(--bdgs-t13-pr-shadow-sm);
+
+        }
+
+        .bdgs-t13-pr-navbar.scrolled {
+            padding: 12px 0;
+            box-shadow: var(--bdgs-t13-pr-shadow-sm);
+        }
+
+        .bdgs-t13-pr-navbar .navbar-brand {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--bdgs-t13-pr-primary) !important;
+            letter-spacing: -1px;
+            height: auto;
+            padding: 15px;
+        }
+
+        .bdgs-t13-pr-navbar .navbar-brand span {
+            color: var(--bdgs-t13-pr-secondary);
+        }
+        /* .navbar-brand {
+            background-color: #F8FAFC;
+        } */
+        .bdgs-t13-pr-nav-links li a {
+            color: var(--bdgs-t13-pr-text) !important;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--bdgs-t13-pr-transition);
+        }
+
+        .bdgs-t13-pr-btn-cta {
+            background: var(--bdgs-t13-pr-white);
+            color: white !important;
+            border-radius: 50px;
+            padding: 10px 15px !important;
+            margin-left: 1px;
+            margin-top: 5px;
+            transition: var(--bdgs-t13-pr-transition);
+            border: none;
+        }
+
+        .bdgs-t13-pr-btn-cta:hover {
+            background: var(--bdgs-t13-pr-secondary) !important;
+            color: var(--bdgs-t13-pr-primary) !important;
+            transform: scale(1.05);
+        }
+
+        .bdgs-t13-pr-menu-link:hover{
+            color: var(--bdgs-t13-pr-secondary) !important;
+        }
+
+        /* --- 1. Breadcrumbs --- */
+        .pl-breadcrumb-section {
+            background: white;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--pl-border);
+        }
+        .pl-breadcrumb {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .pl-breadcrumb li { display: inline; color: var(--pl-text-light); }
+        .pl-breadcrumb li a { color: var(--pl-text-light); text-decoration: none; }
+        .pl-breadcrumb li a:hover { color: var(--pl-navy); }
+        .pl-breadcrumb li + li:before { content: "\f105"; font-family: FontAwesome; padding: 0 10px; color: #cbd5e1; }
+
+        /* --- 2. Profile Header Card --- */
+        .pl-profile-header-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0 20px;
+            box-shadow: var(--pl-shadow-sm);
+            border: 1px solid var(--pl-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+        }
+        
+        .pl-identity-content {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            flex: 1;
+        }
+
+        .pl-header-left { display: flex; align-items: center; gap: 30px; }
+        .pl-profile-img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 4px solid var(--pl-bg); }
+        .pl-header-info h1 { font-size: 32px; font-weight: 900; color: var(--pl-navy); margin: 0 0 5px 0; letter-spacing: -1px; }
+        .pl-primary-cat { font-weight: 700; color: var(--pl-amber); text-transform: uppercase; font-size: 13px; letter-spacing: 1px; display: block; margin-bottom: 5px; }
+        .pl-biz-name { font-size: 18px; font-weight: 700; color: var(--pl-text-light); margin-bottom: 5px; }
+        .pl-loc-tag { font-size: 14px; color: var(--pl-text-light); font-weight: 500; }
+
+        .pl-header-actions { display: flex; gap: 10px; }
+        .pl-btn { border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 11px; padding: 10px 22px; transition: var(--pl-transition); border: none; cursor: pointer; white-space: nowrap; }
+        .pl-btn-primary { background: var(--pl-navy); color: white; }
+        .pl-btn-primary:hover { background: var(--pl-amber); color: var(--pl-navy); }
+        .pl-btn-outline { background: transparent; border: 2px solid var(--pl-navy); color: var(--pl-navy); }
+        .pl-btn-outline:hover { background: var(--pl-navy); color: white; }
+
+        .pl-header-right { text-align: right; min-width: 280px; }
+        .pl-rating-box { margin-bottom: 0; }
+        .pl-rating-num { font-size: 24px; font-weight: 900; color: var(--pl-navy); margin-right: 10px; }
+        .pl-stars { color: var(--pl-amber); font-size: 18px; }
+        .pl-rev-count { display: block; font-size: 13px; font-weight: 600; color: var(--pl-text-light); margin-top: 5px; }
+
+        /* --- 3. Connection Status Strip --- */
+        .pl-status-strip {
+            background: #F0F9FF;
+            border: 1px solid #BAE6FD;
+            border-radius: 12px;
+            padding: 15px 25px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .pl-status-text { font-weight: 700; color: #0369A1; font-size: 14px; }
+        .pl-status-link { font-weight: 800; color: #0369A1; text-decoration: underline; cursor: pointer; }
+
+        /* --- 4. Tab Navigation --- */
+        .pl-tab-nav {
+            display: flex;
+            border-bottom: 2px solid var(--pl-border);
+            margin-bottom: 40px;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none;
+        }
+        .pl-tab-nav::-webkit-scrollbar { display: none; }
+        .pl-tab-item {
+            padding: 15px 25px;
+            font-weight: 800;
+            font-size: 13px;
+            color: var(--pl-text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: var(--pl-transition);
+        }
+        .pl-tab-item.active { color: var(--pl-navy); border-bottom-color: var(--pl-navy); }
+        .pl-tab-item:hover:not(.active) { color: var(--pl-navy); background: rgba(0,0,0,0.02); }
+
+        /* --- Content Switching --- */
+        .tab-pane { display: none; }
+        .tab-pane.active { display: block; }
+
+        /* --- Grid Layout --- */
+        .pl-main-grid { margin-bottom: 100px; }
+
+        /* Sections / Cards */
+        .pl-section-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            border: 1px solid var(--pl-border);
+            box-shadow: var(--pl-shadow-sm);
+            margin-bottom: 30px;
+        }
+        .pl-card-title { font-size: 18px; font-weight: 900; color: var(--pl-navy); margin: 0 0 25px 0; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--pl-bg); padding-bottom: 15px; }
+
+        /* --- 5. Contact Info Card --- */
+        .pl-contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; }
+        .pl-info-field { margin-bottom: 5px; }
+        .pl-info-label { display: block; font-size: 11px; font-weight: 800; text-transform: uppercase; color: var(--pl-text-light); letter-spacing: 1px; }
+        .pl-info-value { font-size: 15px; font-weight: 600; color: var(--pl-navy); word-break: break-all; }
+        .pl-info-value a { color: var(--pl-navy); }
+
+        /* Specialties Style */
+        .pl-spec-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        .pl-spec-item { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--pl-navy); }
+        .pl-spec-item i { color: var(--pl-amber); }
+
+        /* Reviews Style */
+        .pl-review-item { padding: 20px 0; border-bottom: 1px solid #f1f5f9; }
+        .pl-review-item:last-child { border-bottom: none; }
+        .pl-rev-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+        .pl-rev-author { font-weight: 800; color: var(--pl-navy); }
+        .pl-rev-date { font-size: 12px; color: var(--pl-text-light); }
+        .pl-rev-text { font-size: 14px; color: #475569; font-style: italic; }
+
+        /* Jobs Style */
+        .pl-job-row { padding: 15px; background: #F8FAFC; border-radius: 12px; margin-bottom: 15px; border-left: 4px solid var(--pl-navy); }
+        .pl-job-title { font-weight: 800; color: var(--pl-navy); font-size: 15px; margin-bottom: 5px; display: block; }
+        .pl-job-meta { font-size: 12px; color: var(--pl-text-light); font-weight: 600; display: flex; gap: 15px; }
+
+        /* --- RIGHT SIDEBAR --- */
+        .pl-sidebar-sticky { position: sticky; top: 100px; }
+
+        /* Footer (Synced) */
+        .bdgs-t13-pr-footer {
+            background: #020617;
+            padding: 20px 0 10px;
+            color: #94A3B8;
+        }
+        .bdgs-t13-pr-footer h3 { color: white; font-weight: 900; margin-top: 0; }
+        .bdgs-t13-pr-footer h5 { color: white; font-weight: 700; margin-bottom: 25px; }
+        .bdgs-t13-pr-footer ul li a { color: #94A3B8; text-decoration: none; transition: 0.3s; }
+        .bdgs-t13-pr-footer ul li a:hover { color: white; padding-left: 5px; }
+
+        /* --- Responsive Styles --- */
+        @media (max-width: 991px) {
+            .pl-profile-header-card { flex-direction: column; text-align: center; padding: 30px; align-items: center; }
+            .pl-identity-content { width: 100%; align-items: center; }
+            .pl-header-left { flex-direction: column; gap: 20px; }
+            .pl-header-actions { flex-wrap: wrap; justify-content: center; }
+            .pl-header-right { text-align: center; min-width: 100%; border-top: 1px solid var(--pl-border); padding-top: 25px; }
+            .pl-sidebar-sticky { position: static; }
+            .pl-contact-grid, .pl-spec-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .pl-header-actions .pl-btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bdgs-t13-pr-theme-wrapper">
+    
+    <!-- Header -->
+    <nav class="navbar navbar-default bdgs-t13-pr-navbar navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="BDGS-T13-PR-home.html">PRIME<span>LOCAL</span></a>
+            </div>
+            <div class="collapse navbar-collapse" id="nav-collapse">
+                <ul class="nav navbar-nav navbar-right bdgs-t13-pr-nav-links">
+                    <li><a href="BDGS-T13-PR-core-p1.html" class="bdgs-t13-pr-menu-link">Explore Services</a></li>
+                    <li><a href="BDGS-T13-PR-home.html" class="bdgs-t13-pr-menu-link">Home</a></li>
+                    <li><a href="BDGS-T13-PR-about.html" class="bdgs-t13-pr-menu-link">About</a></li>
+                    <li><a href="BDGS-T13-PR-contact.html" class="bdgs-t13-pr-menu-link">Contact</a></li>
+                    <li><a href="BDGS-T13-PR-login-signup.html" class="bdgs-t13-pr-btn-cta">Get Listed</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumbs -->
+    <nav class="pl-breadcrumb-section">
+        <div class="container">
+            <ul class="pl-breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">United States</a></li>
+                <li><a href="#">Texas</a></li>
+                <li><a href="#">Houston</a></li>
+                <li><a href="member-search.html">Home Repairs</a></li>
+                <li style="color: var(--pl-navy);">Marcus Sterling</li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <!-- Profile Header Card -->
+        <header class="pl-profile-header-card">
+            <div class="pl-identity-content">
+                <!-- Identity Section (Top-Left) -->
+                <div class="pl-header-left">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&fit=crop" class="pl-profile-img" alt="Marcus Sterling">
+                    <div class="pl-header-info">
+                        <span class="pl-primary-cat">Master Electrician</span>
+                        <h1>Marcus Sterling</h1>
+                        <div class="pl-biz-name">Sterling Electrical Hub</div>
+                        <div class="pl-loc-tag"><i class="fa fa-map-marker"></i> Houston, TX, United States</div>
+                    </div>
+                </div>
+                
+                <!-- Action Buttons (Down of header-left) -->
+                <div class="pl-header-actions">
+                    <button class="pl-btn pl-btn-primary" onclick="triggerMessage()"><i class="fa fa-envelope-o"></i> Send Message</button>
+                    <button class="pl-btn pl-btn-outline"><i class="fa fa-pencil"></i> Write Review</button>
+                    <button class="pl-btn pl-btn-outline" id="reveal-phone-top"><i class="fa fa-phone"></i> See Phone Number</button>
+                </div>
+            </div>
+
+            <!-- Rating Section (Stays in Place) -->
+            <div class="pl-header-right">
+                <div class="pl-rating-box">
+                    <span class="pl-rating-num">4.9</span>
+                    <span class="pl-stars">
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                    </span>
+                    <span class="pl-rev-count">Based on 124 verified reviews</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Connection Status Strip -->
+        <div class="pl-status-strip">
+            <span class="pl-status-text"><i class="fa fa-check-circle"></i> Make a connection — This member is accepting messages</span>
+            <span class="pl-status-link" onclick="triggerMessage()">Send Message Now</span>
+        </div>
+
+        <!-- Tab Navigation -->
+        <nav class="pl-tab-nav">
+            <div class="pl-tab-item active" data-target="overview">Overview</div>
+            <div class="pl-tab-item" data-target="specialties">Specialties</div>
+            <div class="pl-tab-item" data-target="reviews">Reviews</div>
+            <div class="pl-tab-item" data-target="jobs">Jobs</div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <div class="row pl-main-grid">
+            
+            <div class="col-md-8">
+                
+                <!-- Overview Pane -->
+                <div id="pane-overview" class="tab-pane active">
+                    <section class="pl-section-card">
+                        <h2 class="pl-card-title">Contact Information</h2>
+                        <div class="pl-contact-grid">
+                            <div class="pl-info-field">
+                                <span class="pl-info-label">Company Name</span>
+                                <span class="pl-info-value">Sterling Electrical Hub</span>
+                            </div>
+                            <div class="pl-info-field">
+                                <span class="pl-info-label">Website URL</span>
+                                <span class="pl-info-value"><a href="#">www.sterlingelectrical.com</a></span>
+                            </div>
+                            <div class="pl-info-field">
+                                <span class="pl-info-label">Schedule Appointment</span>
+                                <span class="pl-info-value"><a href="#" style="color: var(--pl-sky);">Book Online via Calendar</a></span>
+                            </div>
+                            <div class="pl-info-field">
+                                <span class="pl-info-label">Phone Number</span>
+                                <span class="pl-info-value" id="phone-display">Click to Reveal <i class="fa fa-lock"></i></span>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="pl-section-card">
+                        <h2 class="pl-card-title">About</h2>
+                        <p>With over 15 years of technical trade experience, Marcus Sterling has established Sterling Electrical Hub as a premier provider of residential and commercial electrical solutions.</p>
+                    </section>
+                </div>
+
+                <!-- Specialties Pane -->
+                <div id="pane-specialties" class="tab-pane">
+                    <section class="pl-section-card">
+                        <h2 class="pl-card-title">Professional Specialties</h2>
+                        <div class="pl-spec-grid">
+                            <div class="pl-spec-item"><i class="fa fa-check"></i> Residential Wiring</div>
+                            <div class="pl-spec-item"><i class="fa fa-check"></i> Smart Home IoT Setup</div>
+                            <div class="pl-spec-item"><i class="fa fa-check"></i> Electrical Panel Upgrades</div>
+                            <div class="pl-spec-item"><i class="fa fa-check"></i> EV Charger Installation</div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Reviews Pane -->
+                <div id="pane-reviews" class="tab-pane">
+                    <section class="pl-section-card">
+                        <h2 class="pl-card-title">Recent Verified Reviews</h2>
+                        <div class="pl-review-item">
+                            <div class="pl-rev-header">
+                                <span class="pl-rev-author">Julian P.</span>
+                                <span class="pl-stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span>
+                            </div>
+                            <p class="pl-rev-text">"Marcus was extremely professional. He diagnosed our panel issue in minutes and fixed it the same day."</p>
+                            <span class="pl-rev-date">January 2024</span>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Jobs Pane -->
+                <div id="pane-jobs" class="tab-pane">
+                    <section class="pl-section-card">
+                        <h2 class="pl-card-title">Current & Past Projects</h2>
+                        <div class="pl-job-row">
+                            <span class="pl-job-title">Luxury Residential Panel Overhaul</span>
+                            <div class="pl-job-meta"><span><i class="fa fa-calendar"></i> Oct 2024</span> <span><i class="fa fa-tag"></i> Structural</span></div>
+                        </div>
+                    </section>
+                </div>
+
+            </div>
+
+            <!-- RIGHT: Sidebar Column -->
+            <aside class="col-md-4">
+                <div class="pl-sidebar-sticky">
+                    <div class="pl-section-card">
+                        <h2 class="pl-card-title" style="font-size: 15px;">Inquire Directly</h2>
+                        <form id="contact-member-form">
+                            <input type="text" class="form-control" style="margin-bottom:15px; height:45px;" placeholder="Your Name" required>
+                            <input type="email" class="form-control" style="margin-bottom:15px; height:45px;" placeholder="Email Address" required>
+                            <textarea class="form-control" style="margin-bottom:15px; height:100px; resize:none;" placeholder="Message..."></textarea>
+                            <button type="submit" class="pl-btn pl-btn-primary" style="width: 100%; height: 50px;">Send Inquiry</button>
+                        </form>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Footer -->
+   <footer class="bdgs-t13-pr-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3 style="color:white; font-weight: 900; margin-top: 0;">PRIME<span>LOCAL</span></h3>
+                    <p>Building the world's most trusted local service ecosystem. Every business is manually verified for your peace of mind.</p>
+                        <div style="display: flex; gap: 15px; margin-top: 15px; font-size: 20px;">
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-md-offset-1">
+                    <h5 style="color:white; font-weight: 700;">Marketplace</h5>
+                   <ul class="list-unstyled">
+                        <li><a href="BDGS-T13-PR-core-p2.html" style="color:#94A3B8;">Careers</a></li>
+                        <li><a href="BDGS-T13-PR-core-p1.html" style="color:#94A3B8;">Services</a></li>
+                        <li><a href="BDGS-T13-PR-testimonial.html" style="color:#94A3B8;">Reviews</a></li>
+                        <li><a href="BDGS-T13-PR-how-work.html" style="color:#94A3B8;">How It's work</a></li>
+                        <li><a href="BDGS-T13-PR-get-match.html" style="color:#94A3B8;">Get Match</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h5 style="color:white; font-weight: 700;">Company</h5>
+                 <ul class="list-unstyled">
+                        <li><a href="BDGS-T13-PR-about.html" style="color:#94A3B8;">About Us</a></li>
+                        <li><a href="BDGS-T13-PR-join.html" style="color:#94A3B8;">Join</a></li>
+                        <li><a href="BDGS-T13-PR-contact.html" style="color:#94A3B8;">Contact</a></li>
+                        <li><a href="BDGS-T13-PR-blog-read.html" style="color:#94A3B8;">Blogs</a></li>
+                        <li><a href="BDGS-T13-PR-faq.html" style="color:#94A3B8;">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 style="color:white; font-weight: 700;">Stay Updated</h5>
+                    <div class="input-group">
+                        <input type="text" class="form-control" style="background: rgba(255,255,255,0.05); border: none; color: white; height: 45px;" placeholder="Email">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button" style="background: var(--bdgs-t13-pr-secondary); color: black; border: none; height: 45px; font-weight: 700;">Subscribe</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.1); margin:20px 0 20px; width: 100%;">
+            <div class="text-center">
+                <p>&copy; 2024 Prime Local Directory Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert@1.1.3/dist/sweetalert.min.js"></script>
+
+<script>
+    function triggerMessage() {
+        $('html, body').animate({ scrollTop: $("#contact-member-form").offset().top - 150 }, 800);
+        $('#contact-member-form input:first').focus();
+    }
+
+    $(document).ready(function() {
+        // Tab Switching Logic
+        $('.pl-tab-item').on('click', function() {
+            const target = $(this).data('target');
+            $('.pl-tab-item').removeClass('active');
+            $(this).addClass('active');
+            
+            $('.tab-pane').removeClass('active');
+            $('#pane-' + target).addClass('active');
+        });
+
+        // Phone Reveal
+        $('#reveal-phone-top, #phone-display').on('click', function(e) {
+            e.preventDefault();
+            $('#phone-display').html('<a href="tel:+17135550198">+1 (713) 555-0198</a>').css('color', '#38BDF8');
+            swal({ title: "Phone Number Revealed", type: "success", timer: 1000, showConfirmButton: false });
+        });
+
+        // Form Submit
+        $('#contact-member-form').on('submit', function(e) {
+            e.preventDefault();
+            swal({ title: "Message Sent", text: "Inquiry transmitted to Marcus Sterling.", type: "success", confirmButtonColor: "#0F172A" });
+            this.reset();
+        });
+    });
+</script>
+
+</body>
+</html>

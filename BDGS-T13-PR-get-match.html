@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Matched | Prime Local - Quality Service Connections</title>
+    
+    <!-- Core Assets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert@1.1.3/dist/sweetalert.css">
+
+    <style>
+        :root {
+            --bdgs-t13-pr-primary: #0F172A; /* Midnight Navy */
+            --bdgs-t13-pr-secondary: #F59E0B; /* Vibrant Amber */
+            --bdgs-t13-pr-accent: #38BDF8; /* Sky Blue */
+            --bdgs-t13-pr-text: #1E293B;
+            --bdgs-t13-pr-text-light: #64748B;
+            --bdgs-t13-pr-bg-white: #FFFFFF;
+            --bdgs-t13-pr-bg-soft: #F1F5F9;
+            --bdgs-t13-pr-transition: all 0.3s ease;
+            --bdgs-t13-pr-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.1);
+        }
+
+        body {
+            background-color: var(--bdgs-t13-pr-bg-soft);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--bdgs-t13-pr-text);
+            margin: 0;
+            overflow-x: hidden;
+            padding-top: 80px;
+        }
+
+        .bdgs-t13-pr-theme-wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- Production Navbar (Shared) --- */
+       
+.bdgs-t13-pr-navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: none;
+            padding: 10px 0;
+            transition: var(--bdgs-t13-pr-transition);
+            z-index: 1000;
+            box-shadow: var(--bdgs-t13-pr-shadow-sm);
+
+        }
+
+        .bdgs-t13-pr-navbar.scrolled {
+            padding: 12px 0;
+            box-shadow: var(--bdgs-t13-pr-shadow-sm);
+        }
+
+        .bdgs-t13-pr-navbar .navbar-brand {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--bdgs-t13-pr-primary) !important;
+            letter-spacing: -1px;
+            height: auto;
+            padding: 15px;
+        }
+
+        .bdgs-t13-pr-navbar .navbar-brand span {
+            color: var(--bdgs-t13-pr-secondary);
+        }
+        /* .navbar-brand {
+            background-color: #F8FAFC;
+        } */
+        .bdgs-t13-pr-nav-links li a {
+            color: var(--bdgs-t13-pr-text) !important;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--bdgs-t13-pr-transition);
+        }
+
+        .bdgs-t13-pr-btn-cta {
+            background: var(--bdgs-t13-pr-white);
+            color: white !important;
+            border-radius: 50px;
+            padding: 10px 15px !important;
+            margin-left: 1px;
+            margin-top: 5px;
+            transition: var(--bdgs-t13-pr-transition);
+            border: none;
+        }
+
+        .bdgs-t13-pr-btn-cta:hover {
+            background: var(--bdgs-t13-pr-secondary) !important;
+            color: var(--bdgs-t13-pr-primary) !important;
+            transform: scale(1.05);
+        }
+
+        .bdgs-t13-pr-menu-link:hover{
+            color: var(--bdgs-t13-pr-secondary) !important;
+        }
+        /* --- Unified Split Section --- */
+        .bdgs-t13-pr-split-container {
+            display: flex;
+            background: white;
+            max-width: 1200px;
+            margin: 40px auto 100px;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--bdgs-t13-pr-shadow);
+            border: 1px solid #e2e8f0;
+            width: 95%; /* Responsive container width */
+        }
+
+        .bdgs-t13-pr-image-side {
+            flex: 1;
+            background: linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.6)), url('images/getmatch.jpg');
+            background-size: cover;
+            background-position: center;
+            /* padding: 60px; */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            min-height: 500px;
+        }
+
+        .bdgs-t13-pr-image-side h2 {
+            font-size: 38px;
+            font-weight: 900;
+            margin-bottom: 15px;
+            line-height: 1.1;
+        }
+
+        .bdgs-t13-pr-image-side p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .bdgs-t13-pr-form-side {
+            flex: 1.2;
+            padding: 60px;
+            overflow-y: auto;
+        }
+
+        .bdgs-t13-pr-form-side h3 {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--bdgs-t13-pr-primary);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .bdgs-t13-pr-form-side p {
+            color: var(--bdgs-t13-pr-text-light);
+            margin-bottom: 35px;
+        }
+
+        /* Form Controls */
+        .bdgs-t13-pr-form-group { margin-bottom: 25px; }
+        .bdgs-t13-pr-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--bdgs-t13-pr-primary);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .bdgs-t13-pr-input {
+            width: 100%;
+            height: 52px;
+            padding: 10px 18px;
+            border: 2px solid #f1f5f9;
+            border-radius: 12px;
+            font-size: 15px;
+            outline: none;
+            transition: var(--bdgs-t13-pr-transition);
+            background: #F8FAFC;
+        }
+
+        .bdgs-t13-pr-input:focus {
+            border-color: var(--bdgs-t13-pr-primary);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(15, 23, 42, 0.05);
+        }
+
+        .bdgs-t13-pr-textarea {
+            height: 100px;
+            resize: none;
+            padding-top: 15px;
+        }
+
+        /* Select2 Style Overrides for Premium Dropdowns */
+        .select2-container--default .select2-selection--single {
+            height: 52px !important;
+            background-color: #F8FAFC !important;
+            border: 2px solid #f1f5f9 !important;
+            border-radius: 12px !important;
+            display: flex;
+            align-items: center;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: var(--bdgs-t13-pr-text) !important;
+            padding-left: 18px !important;
+            font-weight: 500;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 50px !important;
+            right: 15px !important;
+        }
+
+        /* Action Button */
+        .bdgs-t13-pr-btn-submit {
+            width: 100%;
+            height: 60px;
+            background: var(--bdgs-t13-pr-secondary);
+            color: var(--bdgs-t13-pr-primary);
+            border: none;
+            border-radius: 15px;
+            font-size: 16px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            transition: var(--bdgs-t13-pr-transition);
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
+        }
+
+        .bdgs-t13-pr-btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+        }
+
+        /* --- Footer (Production Standard) --- */
+        .bdgs-t13-pr-footer {
+            background: #020617;
+            padding: 20px 0 10px;
+            color: #94A3B8;
+        }
+        .bdgs-t13-pr-footer h3 { color: white; font-weight: 900; margin-top: 0; margin-bottom: 15px; }
+        .bdgs-t13-pr-footer a { color: #94A3B8; text-decoration: none; transition: 0.3s; }
+        .bdgs-t13-pr-footer a:hover { color: white; }
+
+        /* --- Responsive Styles --- */
+        
+        /* Laptop/Medium Desktop Optimization (Fix for select overflow) */
+        @media (min-width: 992px) and (max-width: 1366px) {
+            .bdgs-t13-pr-split-container { margin: 20px auto 40px; }
+            .bdgs-t13-pr-image-side, .bdgs-t13-pr-form-side { padding: 40px; }
+            .bdgs-t13-pr-image-side { min-height: 500px; }
+            .bdgs-t13-pr-form-group { margin-bottom: 18px; }
+            .bdgs-t13-pr-form-side h3 { font-size: 22px; margin-bottom: 5px; }
+            .bdgs-t13-pr-form-side p { margin-bottom: 20px; font-size: 13px; }
+            .bdgs-t13-pr-image-side h2 { font-size: 28px; }
+        }
+
+        @media (max-width: 991px) {
+            .bdgs-t13-pr-split-container { 
+                flex-direction: column; 
+                margin: 20px auto 60px; 
+                border-radius: 20px; 
+            }
+            .bdgs-t13-pr-image-side { 
+                min-height: 300px; 
+                padding: 40px; 
+            }
+            .bdgs-t13-pr-form-side { 
+                padding: 40px 30px; 
+            }
+            .bdgs-t13-pr-image-side h2 {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            body {
+                padding-top: 70px;
+            }
+            .bdgs-t13-pr-image-side { 
+                min-height: 250px; 
+                padding: 30px; 
+            }
+            .bdgs-t13-pr-image-side h2 { 
+                font-size: 26px; 
+            }
+            .bdgs-t13-pr-image-side p {
+                font-size: 16px;
+            }
+            .bdgs-t13-pr-form-side { 
+                padding: 30px 20px; 
+            }
+            .bdgs-t13-pr-form-side h3 {
+                font-size: 22px;
+            }
+            .bdgs-t13-pr-form-side p {
+                margin-bottom: 25px;
+            }
+            .bdgs-t13-pr-split-container {
+                margin-bottom: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .bdgs-t13-pr-navbar .navbar-brand {
+                font-size: 22px;
+            }
+            .bdgs-t13-pr-btn-cta {
+                padding: 8px 18px !important;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bdgs-t13-pr-theme-wrapper">
+    <!-- Navbar -->
+     <!-- Navigation -->
+    <nav class="navbar navbar-default bdgs-t13-pr-navbar navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="BDGS-T13-PR-home.html">PRIME<span>LOCAL</span></a>
+            </div>
+            <div class="collapse navbar-collapse" id="nav-collapse">
+                <ul class="nav navbar-nav navbar-right bdgs-t13-pr-nav-links">
+                    <li><a href="BDGS-T13-PR-home.html" class="bdgs-t13-pr-menu-link">Home</a></li>
+                    <li><a href="BDGS-T13-PR-core-p1.html" class="bdgs-t13-pr-menu-link">Explore Services</a></li>
+                    
+                    <li><a href="BDGS-T13-PR-about.html" class="bdgs-t13-pr-menu-link">About</a></li>
+                    <li><a href="BDGS-T13-PR-contact.html" class="bdgs-t13-pr-menu-link">Contact</a></li>
+                    <li><a href="BDGS-T13-PR-login-signup.html" class="bdgs-t13-pr-btn-cta">Get Listed</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Unified Split Form Section -->
+    <main class="container">
+        <div class="bdgs-t13-pr-split-container">
+            
+            <!-- Left Side Imagery -->
+            <div class="bdgs-t13-pr-image-side">
+                <div>
+                    <h2>Connect with <br>Vetted Expertise.</h2>
+                    <p>Tell us what you need. Our algorithm connects you with the top 5% of verified local professionals in minutes.</p>
+                </div>
+            </div>
+
+            <!-- Right Side Form Content -->
+            <div class="bdgs-t13-pr-form-side">
+                <h3>Request Matching</h3>
+                <p>Provide your contact details and service requirements below.</p>
+
+                <form id="unified-match-form">
+                    <!-- CONTACT FIRST -->
+                    <div class="bdgs-t13-pr-form-group">
+                        <label class="bdgs-t13-pr-label">Your Full Name</label>
+                        <input type="text" class="bdgs-t13-pr-input" placeholder="John Doe" required>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="bdgs-t13-pr-form-group">
+                                <label class="bdgs-t13-pr-label">Email Address</label>
+                                <input type="email" class="bdgs-t13-pr-input" placeholder="name@email.com" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="bdgs-t13-pr-form-group">
+                                <label class="bdgs-t13-pr-label">Phone Number</label>
+                                <input type="tel" class="bdgs-t13-pr-input" placeholder="+91 00000 00000" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <hr style="margin: 30px 0; border-color: #f1f5f9;"> -->
+
+                    <!-- SERVICE OPTIONS (Dropdowns) -->
+                    <div class="bdgs-t13-pr-form-group">
+                        <label class="bdgs-t13-pr-label">Service Required</label>
+                        <select class="form-control select2-dropdown" name="service" required>
+                            <option value="" disabled selected>Choose a category...</option>
+                            <option value="home">Home Repairs & Maintenance</option>
+                            <option value="cleaning">Professional Cleaning Services</option>
+                            <option value="appliance">Appliance Fix & Installation</option>
+                            <option value="personal">Private Personal Services</option>
+                            <option value="other">Other Inquiry</option>
+                        </select>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="bdgs-t13-pr-form-group">
+                                <label class="bdgs-t13-pr-label">Zip Code or City</label>
+                                <input type="text" class="bdgs-t13-pr-input" placeholder="e.g. 77001" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="bdgs-t13-pr-form-group">
+                                <label class="bdgs-t13-pr-label">When is this needed?</label>
+                                <select class="form-control select2-dropdown" name="timing" required>
+                                    <option value="" disabled selected>Select scheduling...</option>
+                                    <option value="today">ASAP / Emergency (Today)</option>
+                                    <option value="week">Within this week</option>
+                                    <option value="planning">Just planning / Next Month</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Details -->
+                    <div class="bdgs-t13-pr-form-group">
+                        <label class="bdgs-t13-pr-label">Describe your project (Optional)</label>
+                        <textarea class="bdgs-t13-pr-input bdgs-t13-pr-textarea" placeholder="Provide more details for a more accurate match (e.g. 'Leaking sink in the guest bathroom')."></textarea>
+                    </div>
+
+                    <button type="submit" class="bdgs-t13-pr-btn-submit">Find Best Matches</button>
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bdgs-t13-pr-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>PRIME<span>LOCAL</span></h3>
+                    <p>Building the world's most trusted local service ecosystem. Every business is manually verified for your peace of mind.</p>
+                     <div style="display: flex; gap: 15px; margin-top: 15px; font-size: 20px;">
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-md-offset-1">
+                    <h5 style="color:white; font-weight: 700;">Marketplace</h5>
+                   <ul class="list-unstyled">
+                        <li><a href="BDGS-T13-PR-core-p2.html" style="color:#94A3B8;">Careers</a></li>
+                        <li><a href="BDGS-T13-PR-core-p1.html" style="color:#94A3B8;">Services</a></li>
+                        <li><a href="BDGS-T13-PR-testimonial.html" style="color:#94A3B8;">Reviews</a></li>
+                        <li><a href="BDGS-T13-PR-how-work.html" style="color:#94A3B8;">How It's work</a></li>
+                        <li><a href="BDGS-T13-PR-get-match.html" style="color:#94A3B8;">Get Match</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h5 style="color:white; font-weight: 700;">Company</h5>
+                        <ul class="list-unstyled">
+                        <li><a href="BDGS-T13-PR-about.html" style="color:#94A3B8;">About Us</a></li>
+                        <li><a href="BDGS-T13-PR-join.html" style="color:#94A3B8;">Join</a></li>
+                        <li><a href="BDGS-T13-PR-contact.html" style="color:#94A3B8;">Contact</a></li>
+                        <li><a href="BDGS-T13-PR-blog-read.html" style="color:#94A3B8;">Blogs</a></li>
+                        <li><a href="BDGS-T13-PR-faq.html" style="color:#94A3B8;">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 style="color:white; font-weight: 700;">Stay Updated</h5>
+                    <div class="input-group">
+                        <input type="text" class="form-control" style="background: rgba(255,255,255,0.05); border: none; color: white; height: 45px;" placeholder="Email">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button" style="background: var(--bdgs-t13-pr-secondary); color: black; border: none; height: 45px; font-weight: 700;">Subscribe</button>
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.05); margin: 20px 0 20px;">
+            <div class="text-center" style="font-size: 13px; opacity: 0.5;">
+                &copy; 2024 Prime Local Directory Platform. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert@1.1.3/dist/sweetalert.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Initialize Premium Dropdowns
+        $('.select2-dropdown').select2({
+            minimumResultsForSearch: Infinity,
+            dropdownAutoWidth: true,
+            width: '100%'
+        });
+
+        // Form Submission Interaction
+        $('#unified-match-form').on('submit', function(e) {
+            e.preventDefault();
+            
+            swal({
+                title: "Matching Experts...",
+                text: "We are auditing local schedules and quality ratings.",
+                imageUrl: "https://i.gifer.com/ZZ5H.gif",
+                showConfirmButton: false,
+                timer: 2500
+            }, function() {
+                swal({
+                    title: "Success!",
+                    text: "We've identified 3 top-rated experts for your project. Connection details have been sent to your email.",
+                    type: "success",
+                    confirmButtonColor: "#0F172A"
+                });
+            });
+        });
+
+        // Navbar Scroll Visual State
+        $(window).on('scroll', function() {
+            if ($(window).scrollTop() > 50) {
+                $('.bdgs-t13-pr-navbar').addClass('scrolled');
+            } else {
+                $('.bdgs-t13-pr-navbar').removeClass('scrolled');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

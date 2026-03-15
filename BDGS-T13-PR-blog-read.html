@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insights & Trends on Local Services | Prime Local Blog</title>
+
+<meta name="description" content="Explore expert insights, local service trends, and verified professional guides on Prime Local. Practical advice on home services, repairs, cleaning, appliances, and more.">
+
+<meta name="keywords" content="local service blog, home service insights, repair guides, cleaning tips, appliance maintenance, Prime Local blog">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://www.primelocal.com/blog" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Insights & Trends on Local Services | Prime Local">
+<meta property="og:description" content="Verified insights, professional guides, and local service trends to help you make confident decisions.">
+<meta property="og:url" content="https://www.primelocal.com/blog">
+<meta property="og:image" content="https://www.primelocal.com/assets/og/prime-local-blog.jpg">
+<meta property="og:site_name" content="Prime Local">
+
+    <!-- Core Assets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert@1.1.3/dist/sweetalert.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        :root {
+            --pl-navy: #0F172A;
+            --pl-amber: #F59E0B;
+            --pl-sky: #38BDF8;
+            --pl-text: #1E293B;
+            --pl-text-light: #64748B;
+            --pl-bg: #F8FAFC;
+            --pl-border: #E2E8F0;
+            --pl-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --pl-shadow-card: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+            --pl-radius: 16px;
+        }
+
+        body {
+            background-color: var(--pl-bg);
+            font-family: 'Inter', sans-serif;
+            color: var(--pl-text);
+            margin: 0;
+            overflow-x: hidden;
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+       
+       /* --- Navigation --- */
+        .bdgs-t13-pr-navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: none;
+            padding: 10px 0;
+            transition: var(--pr-transition);
+            z-index: 1000;
+            /* box-shadow: var(--pl-shadow-card); */
+
+        }
+
+        .bdgs-t13-pr-navbar.scrolled {
+            padding: 12px 0;
+            box-shadow: var(--pl-shadow-card);
+
+        }
+
+        .bdgs-t13-pr-navbar .navbar-brand {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--pl-navy) !important;
+            letter-spacing: -1px;
+            height: auto;
+            padding: 15px;
+        }
+
+        .bdgs-t13-pr-navbar .navbar-brand span {
+            color: var(--pl-amber);
+        }
+        /* .navbar-brand {
+            background-color: #F8FAFC;
+        } */
+        .bdgs-t13-pr-nav-links li a {
+            color: var(--pl-text) !important;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--pl-transition);
+        }
+
+        .bdgs-t13-pr-btn-cta {
+            background: var(--pl-bg);
+            color: white !important;
+            border-radius: 50px;
+            padding: 10px 15px !important;
+            margin-left: 1px;
+            margin-top: 5px;
+            transition: var(--pl-transition);
+            border: none;
+        }
+
+        .bdgs-t13-pr-btn-cta:hover {
+            background: var(--pl-amber) !important;
+            color: var(--pl-navy) !important;
+            transform: scale(1.05);
+        }
+
+        .bdgs-t13-pr-menu-link:hover{
+            color: var(--pl-amber) !important;
+        }
+        /* --- Editorial Hero --- */
+        .pl-blog-hero {
+            /* padding: 80px 0 60px; */
+            padding: 80px 0px;
+            text-align: center;
+            background: white;
+            border-bottom: 1px solid var(--pl-border);
+            background-image:
+        linear-gradient(
+            135deg,
+            rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.55)
+        ),
+        url("images/businesswoman-her-colleague-talking-while-using-touchpad-office-wearing-face-masks.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+        }
+        .pl-blog-hero h1 {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 900;
+            color: var(--pl-bg);
+            margin-bottom: 15px;
+            letter-spacing: -2px;
+        }
+        .pl-blog-hero p {
+            font-size: 18px;
+            color: var(--pl-border);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* --- Category Pills --- */
+        .pl-category-nav {
+            padding: 40px 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .pl-cat-pill {
+            padding: 10px 24px;
+            background: white;
+            border: 1px solid var(--pl-border);
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--pl-text-light);
+            cursor: pointer;
+            transition: var(--pl-transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .pl-cat-pill:hover { border-color: var(--pl-amber); color: var(--pl-navy); }
+        .pl-cat-pill.active { background: var(--pl-navy); color: white; border-color: var(--pl-navy); }
+
+        /* --- Main Layout Grid --- */
+        .pl-main-layout { padding-bottom: 100px; }
+        
+        /* Grid Alignment Fix for Blog Container */
+        #blogContainer {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        /* Ensure columns stretch to fill row height */
+        #blogContainer > div[class*='col-'] {
+            display: flex;
+            margin-bottom: 30px;
+        }
+        
+        /* Blog Cards */
+        .pl-blog-card {
+            background: white;
+            border-radius: var(--pl-radius);
+            overflow: hidden;
+            border: 1px solid var(--pl-border);
+            transition: var(--pl-transition);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            width: 100%; /* Ensure card fills flex parent */
+        }
+        .pl-blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--pl-shadow-card);
+            border-color: var(--pl-amber);
+        }
+        .pl-card-img-wrap {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .pl-card-img {
+            width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 1s ease;
+        }
+        .pl-blog-card:hover .pl-card-img { transform: scale(1.05); }
+        
+        .pl-cat-badge {
+            position: absolute;
+            top: 20px; left: 20px;
+            background: var(--pl-amber);
+            color: var(--pl-navy);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: 800;
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+
+        .pl-card-body { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .pl-card-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--pl-navy);
+            margin: 0 0 10px 0;
+            line-height: 1.3;
+        }
+        .pl-card-excerpt {
+            color: var(--pl-text-light);
+            font-size: 13px;
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .pl-card-footer {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-top: 5px;
+            border-top: 1px solid #F1F5F9;
+        }
+        .pl-author-img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
+        .pl-author-meta { font-size: 11px; font-weight: 700; color: var(--pl-navy); }
+        .pl-date-meta { font-size: 11px; color: var(--pl-text-light); font-weight: 500; }
+
+        /* --- Sticky Sidebar --- */
+        .pl-sidebar { position: sticky; top: 100px; }
+        .pl-sidebar-card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--pl-radius);
+            margin-bottom: 30px;
+            border: 1px solid var(--pl-border);
+        }
+        .pl-sidebar-title {
+            font-size: 13px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--pl-navy);
+            margin-bottom: 25px;
+            display: block;
+            border-bottom: 2px solid var(--pl-bg);
+            padding-bottom: 10px;
+        }
+
+        /* Profile Block */
+        .pl-profile-block { text-align: center; }
+        .pl-profile-img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid var(--pl-bg); }
+        .pl-profile-name { font-weight: 800; font-size: 18px; margin-bottom: 5px; }
+        .pl-profile-bio { font-size: 13px; color: var(--pl-text-light); margin-bottom: 20px; }
+        .pl-social-links { display: flex; justify-content: center; gap: 15px; font-size: 16px; color: var(--pl-navy); }
+
+        /* Featured Posts */
+        .pl-mini-post { display: flex; gap: 15px; margin-bottom: 20px; align-items: center; }
+        .pl-mini-thumb { width: 60px; height: 60px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
+        .pl-mini-title { font-size: 13px; font-weight: 700; color: var(--pl-navy); line-height: 1.4; }
+        .pl-mini-cat { font-size: 10px; font-weight: 800; color: var(--pl-amber); text-transform: uppercase; }
+
+        /* Experience Block */
+        .pl-exp-item { margin-bottom: 15px; font-size: 14px; }
+        .pl-exp-item strong { color: var(--pl-navy); display: block; }
+        .pl-exp-item span { font-size: 12px; color: var(--pl-text-light); }
+
+        /* Tags */
+        .pl-tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+        .pl-tag {
+            padding: 6px 12px; background: var(--pl-bg); border-radius: 6px;
+            font-size: 11px; font-weight: 700; color: var(--pl-text); cursor: pointer;
+        }
+        .pl-tag:hover { background: var(--pl-border); }
+
+        /* --- Pagination --- */
+        .pl-pagination {
+            display: flex; justify-content: center; gap: 10px; margin-top: 40px;
+        }
+        .pl-page-btn {
+            width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--pl-border);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 14px; cursor: pointer; transition: 0.3s;
+            background: white;
+        }
+        .pl-page-btn.active { background: var(--pl-navy); color: white; border-color: var(--pl-navy); }
+        .pl-page-btn:hover:not(.active) { border-color: var(--pl-amber); color: var(--pl-amber); }
+
+        /* --- Newsletter --- */
+        .pl-newsletter {
+            background: var(--pl-navy);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        .pl-newsletter h2 { font-weight: 900; margin-bottom: 15px; font-size: 32px; }
+        .pl-newsletter p { opacity: 0.7; margin-bottom: 40px; font-size: 16px; }
+        .pl-news-form { max-width: 500px; margin: 0 auto; display: flex; gap: 10px; }
+        .pl-news-input {
+            flex: 1; height: 56px; border-radius: 12px; border: none; padding: 0 25px;
+            color: var(--pl-navy); font-weight: 500;
+        }
+        .pl-news-btn {
+            background: var(--pl-amber); color: var(--pl-navy); border: none;
+            border-radius: 12px; font-weight: 800; padding: 0 30px; text-transform: uppercase;
+        }
+
+        /* --- Footer --- */
+        .pl-footer {
+            background: #020617;
+            padding: 20px 0 10px;
+            color: #94A3B8;
+        }
+        .pl-footer h4 { color: white; font-weight: 900; margin-bottom: 25px; }
+        .pl-footer a { color: #94A3B8; text-decoration: none; transition: 0.3s; display: block; margin-bottom: 12px; }
+        .pl-footer a:hover { color: var(--pl-amber); padding-left: 5px; }
+
+        @media (max-width: 991px) {
+            .pl-sidebar { position: static; margin-top: 60px; }
+            .pl-card-img-wrap { height: 200px; }
+            #blogContainer { flex-direction: row; }
+        }
+        @media (max-width: 767px) {
+            .pl-blog-hero { padding: 60px 15px; }
+            .pl-news-form { flex-direction: column; }
+            .pl-news-btn { height: 56px; }
+
+            #blogContainer > div[class*='col-'] { width: 100%; }
+        }
+          @media (min-width: 767px) {
+            .pl-news-input { height: 56px; }
+
+            /* .pl-blog-hero { padding: 60px 15px; } */
+            /* .pl-news-input { flex-direction: column; } */
+            /* .pl-news-btn { height: 56px; } */
+            /* #blogContainer > div[class*='col-'] { width: 100%; } */
+        }
+        #blog-link{
+            text-decoration: none;
+        }
+        
+    </style>
+</head>
+<body>
+
+<div class="bdgs-t13-pr-theme-wrapper">
+    <!-- Navigation -->
+    <!-- Navigation -->
+    <nav class="navbar navbar-default bdgs-t13-pr-navbar navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="BDGS-T13-PR-home.html">PRIME<span>LOCAL</span></a>
+            </div>
+            <div class="collapse navbar-collapse" id="nav-collapse">
+                <ul class="nav navbar-nav navbar-right bdgs-t13-pr-nav-links">
+                    <li><a href="BDGS-T13-PR-home.html" class="bdgs-t13-pr-menu-link">Home</a></li>
+                    <li><a href="BDGS-T13-PR-core-p1.html" class="bdgs-t13-pr-menu-link">Explore Services</a></li>
+                    
+                    <li><a href="BDGS-T13-PR-about.html" class="bdgs-t13-pr-menu-link">About</a></li>
+                    <li><a href="BDGS-T13-PR-contact.html" class="bdgs-t13-pr-menu-link">Contact</a></li>
+                    <li><a href="BDGS-T13-PR-login-signup.html" class="bdgs-t13-pr-btn-cta">Get Listed</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <header class="pl-blog-hero">
+        <div class="container">
+            <h1>Local Wisdom, Verified.</h1>
+            <p>Expert advice, neighborhood trends, and professional guides to help you navigate home management with total confidence.</p>
+        </div>
+    </header>
+
+    <!-- Categories -->
+    <section class="container">
+        <div class="pl-category-nav">
+            <div class="pl-cat-pill active" data-filter="all">All Topics</div>
+            <div class="pl-cat-pill" data-filter="Home Services">Home Services</div>
+            <div class="pl-cat-pill" data-filter="Repairs">Repairs</div>
+            <div class="pl-cat-pill" data-filter="Cleaning">Cleaning</div>
+            <div class="pl-cat-pill" data-filter="Appliances">Appliances</div>
+            <div class="pl-cat-pill" data-filter="Personal Services">Personal Services</div>
+            <div class="pl-cat-pill" data-filter="Business Tips">Business Tips</div>
+            <div class="pl-cat-pill" data-filter="Local Trends">Local Trends</div>
+        </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="pl-main-layout container">
+        <div class="row">
+            
+            <!-- Left: Blog Feed -->
+            <div class="col-md-8">
+                <div class="row" id="blogContainer">
+                    <!-- Cards will be rendered here via JS -->
+                </div>
+
+                <!-- Pagination -->
+                <div class="pl-pagination">
+                    <div class="pl-page-btn"><i class="fa fa-angle-left"></i></div>
+                    <div class="pl-page-btn active">1</div>
+                    <div class="pl-page-btn">2</div>
+                    <div class="pl-page-btn">3</div>
+                    <div class="pl-page-btn"><i class="fa fa-angle-right"></i></div>
+                </div>
+            </div>
+
+            <!-- Right: Editorial Sidebar -->
+            <aside class="col-md-4">
+                <div class="pl-sidebar">
+                    
+                    <!-- Profile Card -->
+                    <div class="pl-sidebar-card pl-profile-block">
+                        <span class="pl-sidebar-title">Editor in Chief</span>
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop" class="pl-profile-img" alt="Editor">
+                        <h4 class="pl-profile-name">Marcus Sterling</h4>
+                        <p class="pl-profile-bio">Verified service industry analyst with 15+ years experience auditing local professional standards and vendor quality.</p>
+                        <div class="pl-social-links">
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-globe"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Featured Posts -->
+                    <div class="pl-sidebar-card">
+                        <span class="pl-sidebar-title">Featured Guides</span>
+                        <div class="pl-mini-post">
+                            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=200&q=80" class="pl-mini-thumb" alt="Thumb">
+                            <div>
+                                <span class="pl-mini-cat">Must Read</span>
+                                <div class="pl-mini-title">The 2024 Guide to Home Insulation ROI</div>
+                            </div>
+                        </div>
+                        <div class="pl-mini-post">
+                            <img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=200&q=80" class="pl-mini-thumb" alt="Thumb">
+                            <div>
+                                <span class="pl-mini-cat">Trends</span>
+                                <div class="pl-mini-title">Sustainable Masonry: Why Granite is Back</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Credibility Block -->
+                    <div class="pl-sidebar-card">
+                        <span class="pl-sidebar-title">Editorial Authority</span>
+                        <div class="pl-exp-item">
+                            <strong>Service Vetting Standards</strong>
+                            <span>Developed the 15-point Prime Audit framework used by 1,200+ local businesses.</span>
+                        </div>
+                        <div class="pl-exp-item">
+                            <strong>Local Market Impact</strong>
+                            <span>Overseeing 40+ neighborhood trend reports across major metropolitan hubs.</span>
+                        </div>
+                    </div>
+
+                    <!-- Tags / Topics -->
+                    <div class="pl-sidebar-card">
+                        <span class="pl-sidebar-title">Trending Tags</span>
+                        <div class="pl-tag-cloud">
+                            <span class="pl-tag">#SmartHome</span>
+                            <span class="pl-tag">#Sustainability</span>
+                            <span class="pl-tag">#LocalSourcing</span>
+                            <span class="pl-tag">#ContractorSafety</span>
+                            <span class="pl-tag">#PriceTransparency</span>
+                            <span class="pl-tag">#MaintenanceTips</span>
+                        </div>
+                    </div>
+
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Newsletter Section -->
+    <!-- <section class="pl-newsletter">
+        <div class="container">
+            <h2>The Prime Report</h2>
+            <p>Get bi-weekly insights on local service pricing, verified vendor alerts, and home management tips delivered directly to your inbox.</p>
+            <form class="pl-news-form" id="newsForm">
+                <input type="email" style="height: 56px;" class="pl-news-input" placeholder="Enter your professional email" required>
+                <button type="submit" class="pl-news-btn">Subscribe</button>
+            </form>
+        </div>
+    </section> -->
+
+    <!-- Footer -->
+    <footer class="pl-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3 style="color:white; font-weight: 900; margin-top: 0;">PRIME<span>LOCAL</span></h3>
+                    <p>Building the world's most trusted local service ecosystem. Every business is manually verified for your peace of mind.</p>
+                        <div style="display: flex; gap: 15px; margin-top: 15px; font-size: 20px;">
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-md-offset-1">
+                    <h5 style="color:white; font-weight: 700;">Marketplace</h5>
+                     <ul class="list-unstyled">
+                        <li><a href="BDGS-T13-PR-core-p2.html" style="color:#94A3B8;">Careers</a></li>
+                        <li><a href="BDGS-T13-PR-core-p1.html" style="color:#94A3B8;">Services</a></li>
+                        <li><a href="BDGS-T13-PR-testimonial.html" style="color:#94A3B8;">Reviews</a></li>
+                        <li><a href="BDGS-T13-PR-how-work.html" style="color:#94A3B8;">How It's work</a></li>
+                        <li><a href="BDGS-T13-PR-get-match.html" style="color:#94A3B8;">Get Match</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h5 style="color:white; font-weight: 700;">Company</h5>
+                     <ul class="list-unstyled">
+                        <li><a href="BDGS-T13-PR-about.html" style="color:#94A3B8;">About Us</a></li>
+                        <li><a href="BDGS-T13-PR-join.html" style="color:#94A3B8;">Join</a></li>
+                        <li><a href="BDGS-T13-PR-contact.html" style="color:#94A3B8;">Contact</a></li>
+                        <li><a href="BDGS-T13-PR-blog-read.html" style="color:#94A3B8;">Blogs</a></li>
+                        <li><a href="BDGS-T13-PR-faq.html" style="color:#94A3B8;">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 style="color:white; font-weight: 700;">Stay Updated</h5>
+                    <div class="input-group">
+                        <input type="text" class="form-control" style="background: rgba(255,255,255,0.05); border: none; color: white; height: 45px;" placeholder="Email">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button" style="background: var(--pl-amber); color: black; border: none; height: 45px; font-weight: 700;">Subscribe</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.05); margin: 40px 0 20px;">
+            <div class="text-center" style="font-size: 12px; opacity: 0.5;">
+                &copy; 2024 Prime Local Platform. All rights reserved. Professional Integrity Guaranteed.
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert@1.1.3/dist/sweetalert.min.js"></script>
+
+<script>
+    const blogPosts = [
+        // HOME SERVICES
+    
+        { cat: "Home Services", title: "Winterizing Your Home: A Professional Checklist", excerpt: "Avoid costly pipe bursts and heating failures with these winter-ready tips from top local contractors.", author: "Marcus Sterling", date: "Oct 10, 2024", img: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&q=80" },
+    
+         { cat: "Home Services", title: "The Psychology of Interior Design: Colors that Calm", excerpt: "Choose the right palette for your master suite to improve sleep quality and reduce daily stress levels.", author: "Marcus Sterling", date: "Oct 01, 2024", img: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=800&q=80" },
+     
+
+        // REPAIRS
+        { cat: "Repairs", title: "The Seasonal Electrical Audit Every Home Needs", excerpt: "Prevent brownouts and panel failure with this 10-step checklist designed by master electricians.", author: "Marcus Sterling", date: "Sep 15, 2024", img: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80" },
+         { cat: "Repairs", title: "Professional Painting Prep: Why Sanding Matters", excerpt: "The secret to a perfect finish isn't the paint—it's the surface prep. A guide to flawless interior results.", author: "Marcus Sterling", date: "Sep 01, 2024", img: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&q=80" },
+      
+
+        // CLEANING
+        { cat: "Cleaning", title: "Deep Cleaning vs. Sanitization: What You Actually Need", excerpt: "Most homeowners overpay for sanitization when a proper deep clean is what the architecture requires.", author: "Marcus Sterling", date: "Sep 28, 2024", img: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=800&q=80" },
+        { cat: "Cleaning", title: "5 Eco-friendly Cleaning Hacks for Modern Kitchens", excerpt: "Switch to sustainable solutions without losing the sparkle. Natural degreasers that actually work.", author: "Marcus Sterling", date: "Sep 22, 2024", img: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80" },
+       
+
+        // APPLIANCES
+        { cat: "Appliances", title: "Is Your Smart Fridge Sending the Right Data?", excerpt: "Smart appliances are efficient, but their connection needs care. Discover how to audit your home tech.", author: "Marcus Sterling", date: "Oct 08, 2024", img: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80" },
+        { cat: "Appliances", title: "How to Double Your Washing Machine's Lifespan", excerpt: "Maintenance routines for drum bearings and pump filters that will save you thousands in replacements.", author: "Marcus Sterling", date: "Oct 04, 2024", img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80" },
+     
+
+        // PERSONAL SERVICES
+        { cat: "Personal Services", title: "Finding the Right Academic Tutor for Your Child", excerpt: "Look beyond the degree. How to evaluate teaching style and student engagement for better results.", author: "Marcus Sterling", date: "Sep 14, 2024", img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80" },
+        { cat: "Personal Services", title: "Setting Realistic Personal Training Milestones", excerpt: "Achieve lasting fitness by tracking the right data. A guide from the city's top-tier physical coaches.", author: "Marcus Sterling", date: "Sep 10, 2024", img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80" },
+      
+
+        // BUSINESS TIPS
+        { cat: "Business Tips", title: "Digital Marketing for Local Service Professionals", excerpt: "Focus your ad spend where it matters. Strategies for high-intent local search visibility.", author: "Marcus Sterling", date: "Aug 20, 2024", img: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80" },
+         { cat: "Business Tips", title: "Service Pricing Strategies: Value-based vs Hourly", excerpt: "Maximize your revenue by aligning your prices with the specific outcomes your clients value most.", author: "Marcus Sterling", date: "Aug 12, 2024", img: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80" },
+     
+
+        // LOCAL TRENDS
+        { cat: "Local Trends", title: "Sustainable Masonry: Why Granite is Back in 2024", excerpt: "Natural stone is outlasting synthetic alternatives. Discover the ROI of choosing granite for your next path.", author: "Marcus Sterling", date: "Jul 27, 2024", img: "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=800&q=80" },
+        { cat: "Local Trends", title: "The ROI of Smart Home Integration in Modern Suburbs", excerpt: "Do smart locks and thermostats really increase property value? We analyze recent sale data.", author: "Marcus Sterling", date: "Jul 23, 2024", img: "https://images.unsplash.com/photo-1558002038-1055907df827?w=800&q=80" },
+     
+    ];
+
+    function renderPosts(filter = "all") {
+        const container = $('#blogContainer');
+        container.fadeOut(200, function() {
+            container.empty();
+            
+            const filtered = filter === "all" ? 
+                blogPosts : 
+                blogPosts.filter(p => p.cat === filter);
+
+            filtered.forEach(post => {
+                const cardHtml = `
+                    <div class="col-sm-6" >
+                        <a id="blog-link" href="BDGS-T13-PR-blog-det.html">
+                            <article class="pl-blog-card">
+                            <div class="pl-card-img-wrap">
+                                <div class="pl-card-img" style="background-image: url('${post.img}')"></div>
+                                <span class="pl-cat-badge">${post.cat}</span>
+                            </div>
+                            <div class="pl-card-body">
+                                <h3 class="pl-card-title">${post.title}</h3>
+                                <p class="pl-card-excerpt">${post.excerpt}</p>
+                                <div class="pl-card-footer">
+                                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop" class="pl-author-img" alt="Author">
+                                    <div class="pl-author-box">
+                                        <div class="pl-author-meta">${post.author}</div>
+                                        <div class="pl-date-meta">${post.date}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        </a>
+                    </div>
+                `;
+                container.append(cardHtml);
+            });
+            container.fadeIn(300);
+        });
+    }
+
+    $(document).ready(function() {
+        // Initial Render
+        renderPosts();
+
+        // Category Filtering Logic
+        $('.pl-cat-pill').on('click', function() {
+            const filter = $(this).data('filter');
+            $('.pl-cat-pill').removeClass('active');
+            $(this).addClass('active');
+            renderPosts(filter);
+        });
+
+        // Newsletter Submission
+        $('#newsForm').on('submit', function(e) {
+            e.preventDefault();
+            swal({
+                title: "Subscription Confirmed",
+                text: "Welcome to The Prime Report. Your first edition arrives Monday.",
+                type: "success",
+                confirmButtonColor: "#0F172A"
+            });
+            this.reset();
+        });
+
+        // Pagination Simulation
+        $('.pl-page-btn').on('click', function() {
+            if(!$(this).hasClass('active')) {
+                $('.pl-page-btn').removeClass('active');
+                $(this).addClass('active');
+                $('html, body').animate({
+                    scrollTop: $(".pl-category-nav").offset().top - 100
+                }, 500);
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

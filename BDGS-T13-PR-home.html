@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <title>BDGS-T13-MO-home | Prime Local Services</title> -->
+    
+    <title>Prime Local | Find Trusted Local Service Experts Near You</title>
+
+<meta name="description" content="Prime Local helps you find verified local service professionals for home repairs, cleaning, appliance repair, and personal services. Compare trusted experts, view reviews, and connect directly with confidence.">
+
+<meta name="keywords" content="local services, home repair services, cleaning services near me, appliance repair experts, verified local professionals, Prime Local">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://www.primelocal.com/" />
+
+<!-- =========================
+Open Graph (Facebook / LinkedIn)
+========================= -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Prime Local | Find Trusted Local Service Experts">
+<meta property="og:description" content="Discover verified local professionals for home repairs, cleaning, appliance repair, and personal services. Trusted experts. Transparent pricing. Fast response.">
+<meta property="og:url" content="https://www.primelocal.com/">
+<meta property="og:image" content="https://www.primelocal.com/assets/og/prime-local-home.jpg">
+<meta property="og:site_name" content="Prime Local">
+
+<!-- =========================
+Twitter Card
+========================= -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prime Local | Find Trusted Local Experts">
+<meta name="twitter:description" content="Find verified local professionals for essential home and personal services. Connect directly with trusted experts near you.">
+<meta name="twitter:image" content="https://www.primelocal.com/assets/og/prime-local-home.jpg">
+    <!-- Bootstrap 3.4.1 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    
+    <!-- Font Awesome 4.7.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+    
+    <!-- SweetAlert -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert@1.1.3/dist/sweetalert.css">
+
+    <style>
+        :root {
+            --bdgs-t13-pr-primary: #0F172A; /* Midnight Navy */
+            --bdgs-t13-pr-secondary: #F59E0B; /* Vibrant Amber */
+            --bdgs-t13-pr-accent: #38BDF8; /* Sky Blue */
+            --bdgs-t13-pr-text: #1E293B;
+            --bdgs-t13-pr-text-light: #64748B;
+            --bdgs-t13-pr-text-muted: #94A3B8;
+            --bdgs-t13-pr-bg-white: #FFFFFF;
+            --bdgs-t13-pr-bg-soft: #F8FAFC;
+            --bdgs-t13-pr-bg-dark: #0F172A;
+            --bdgs-t13-pr-transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --bdgs-t13-pr-shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --bdgs-t13-pr-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        .bdgs-t13-pr-theme-wrapper {
+            color: var(--bdgs-t13-pr-text);
+            overflow-x: hidden;
+        }
+
+        /* --- Navigation --- */
+        .bdgs-t13-pr-navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: none;
+            padding: 10px 0;
+            transition: var(--bdgs-t13-pr-transition);
+            z-index: 1000;
+            box-shadow: var(--bdgs-t13-pr-shadow-sm);
+
+        }
+
+        .bdgs-t13-pr-navbar.scrolled {
+            padding: 12px 0;
+            box-shadow: var(--bdgs-t13-pr-shadow-sm);
+        }
+
+        .bdgs-t13-pr-navbar .navbar-brand {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--bdgs-t13-pr-primary) !important;
+            letter-spacing: -1px;
+            height: auto;
+            padding: 15px;
+        }
+
+        .bdgs-t13-pr-navbar .navbar-brand span {
+            color: var(--bdgs-t13-pr-secondary);
+        }
+        /* .navbar-brand {
+            background-color: #F8FAFC;
+        } */
+        .bdgs-t13-pr-nav-links li a {
+            color: var(--bdgs-t13-pr-text) !important;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--bdgs-t13-pr-transition);
+        }
+
+        .bdgs-t13-pr-btn-cta {
+            background: var(--bdgs-t13-pr-white);
+            color: white !important;
+            border-radius: 50px;
+            padding: 10px 15px !important;
+            margin-left: 1px;
+            margin-top: 5px;
+            transition: var(--bdgs-t13-pr-transition);
+            border: none;
+        }
+
+        .bdgs-t13-pr-btn-cta:hover {
+            background: var(--bdgs-t13-pr-secondary) !important;
+            color: var(--bdgs-t13-pr-primary) !important;
+            transform: scale(1.05);
+        }
+
+        .bdgs-t13-pr-menu-link:hover{
+            color: var(--bdgs-t13-pr-secondary) !important;
+        }
+        /* --- Hero Section --- */
+        .bdgs-t13-pr-hero {
+            height: 90vh;
+            min-height: 700px;
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), 
+                        url('images/herosection1.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            position: relative;
+            color: white;
+            clip-path: ellipse(150% 100% at 50% 0%);
+        }
+
+        .bdgs-t13-pr-hero h1 {
+            font-size: 64px;
+            font-weight: 900;
+            /* margin-bottom: 24px; */
+            line-height: 1.1;
+            color: white;
+        }
+
+        .bdgs-t13-pr-hero p {
+            font-size: 22px;
+            /* margin-bottom: 40px; */
+            opacity: 0.9;
+        }
+
+        .bdgs-t13-pr-search-container {
+            background: white;
+            padding: 10px;
+            border-radius: 100px;
+            display: flex;
+            box-shadow: var(--bdgs-t13-pr-shadow-lg);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .bdgs-t13-pr-search-input {
+            flex: 1;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            color: var(--bdgs-t13-pr-text);
+            border-radius: 100px;
+            outline: none;
+        }
+
+        .bdgs-t13-pr-search-btn {
+            background: var(--bdgs-t13-pr-secondary);
+            color: var(--bdgs-t13-pr-primary);
+            border: none;
+            padding: 15px 45px;
+            border-radius: 100px;
+            font-weight: 800;
+            text-transform: uppercase;
+            transition: var(--bdgs-t13-pr-transition);
+        }
+
+        /* --- Category Section --- */
+        .bdgs-t13-pr-categories {
+            padding: 30px 0;
+            background: var(--bdgs-t13-pr-bg-white);
+        }
+
+        .bdgs-t13-pr-cat-wrapper {
+            perspective: 1000px;
+            /* margin-bottom: 30px; */
+        }
+
+        .bdgs-t13-pr-cat-card {
+            background: var(--bdgs-t13-pr-bg-soft);
+            padding: 40px 20px;
+            border-radius: 24px;
+            text-align: center;
+            transition: var(--bdgs-t13-pr-transition);
+            border: 2px solid transparent;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bdgs-t13-pr-cat-card:hover {
+            background: var(--bdgs-t13-pr-primary);
+            border-color: var(--bdgs-t13-pr-secondary);
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 0 30px 60px rgba(15, 23, 42, 0.2);
+        }
+        .bdgs-t13-pr-cat-wrapper>a{
+            text-decoration: none;
+        }
+        .bdgs-t13-pr-cat-card .icon-box {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 32px;
+            color: var(--bdgs-t13-pr-primary);
+            transition: var(--bdgs-t13-pr-transition);
+            box-shadow: var(--bdgs-t13-pr-shadow-sm);
+        }
+
+        .bdgs-t13-pr-cat-card:hover .icon-box {
+            background: var(--bdgs-t13-pr-secondary);
+            color: var(--bdgs-t13-pr-primary);
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        .bdgs-t13-pr-cat-card h4 {
+            font-weight: 700;
+            margin-bottom: 10px;
+            transition: var(--bdgs-t13-pr-transition);
+        }
+
+        .bdgs-t13-pr-cat-card:hover h4 {
+            color: white;
+        }
+
+        .bdgs-t13-pr-cat-card p {
+            color: var(--bdgs-t13-pr-text-light);
+            font-size: 14px;
+            transition: var(--bdgs-t13-pr-transition);
+        }
+
+        .bdgs-t13-pr-cat-card:hover p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* --- How It Works --- */
+        .bdgs-t13-pr-how-it-works {
+            padding: 30px 0;
+            background: var(--bdgs-t13-pr-bg-dark);
+            color: white;
+            position: relative;
+        }
+
+        .bdgs-t13-pr-how-it-works h2 { color: white; font-size: 42px; margin-bottom: 60px; }
+
+        .bdgs-t13-pr-step-item {
+            padding: 30px;
+            border-left: 2px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            transition: var(--bdgs-t13-pr-transition);
+        }
+
+        .bdgs-t13-pr-step-item:hover {
+            border-left-color: var(--bdgs-t13-pr-secondary);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .bdgs-t13-pr-step-number {
+            font-size: 60px;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.05);
+            position: absolute;
+            top: 0;
+            left: 20px;
+        }
+
+        /* --- Featured Listings --- */
+        .bdgs-t13-pr-featured {
+            padding: 30px 0;
+            background: var(--bdgs-t13-pr-bg-soft);
+        }
+
+        .bdgs-t13-pr-business-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--bdgs-t13-pr-shadow-sm);
+            transition: var(--bdgs-t13-pr-transition);
+            margin-bottom: 30px;
+        }
+
+        .bdgs-t13-pr-business-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--bdgs-t13-pr-shadow-lg);
+        }
+
+        .bdgs-t13-pr-card-header {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .bdgs-t13-pr-price-tag {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: var(--bdgs-t13-pr-primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+        }
+
+        .bdgs-t13-pr-card-body {
+            padding: 25px;
+        }
+
+        /* --- Benefits Section (Fixed) --- */
+        .section-padding { padding: 30px 0; }
+        
+        .bdgs-t13-pr-benefit-img {
+            width: 100%;
+            border-radius: 30px;
+            box-shadow: var(--bdgs-t13-pr-shadow-lg);
+            margin-bottom: 30px;
+        }
+
+        .bdgs-t13-pr-benefit-list {
+            margin-top: 35px;
+        }
+
+        .bdgs-t13-pr-benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 15px;
+            transition: var(--bdgs-t13-pr-transition);
+        }
+
+        .bdgs-t13-pr-benefit-item:hover {
+            background: var(--bdgs-t13-pr-bg-soft);
+            transform: translateX(10px);
+        }
+
+        .bdgs-t13-pr-benefit-check {
+            width: 35px;
+            height: 35px;
+            background: var(--bdgs-t13-pr-secondary);
+            color: var(--bdgs-t13-pr-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+            font-size: 16px;
+        }
+
+        /* --- Testimonials --- */
+        .testimonials {
+            padding: 30px 0;
+            background: var(--bdgs-t13-pr-bg-soft);
+        }
+
+        .testi-card {
+            background: white;
+            padding: 40px;
+            margin: 10px 0px;
+            border-radius: 30px;
+            box-shadow: var(--bdgs-t13-pr-shadow-sm);
+            transition: var(--bdgs-t13-pr-transition);
+            position: relative;
+            height: 100%;
+            border: 1px solid transparent;
+        }
+
+        .testi-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--bdgs-t13-pr-shadow-lg);
+            border-color: rgba(245, 158, 11, 0.2);
+        }
+
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .reviewer-avatar {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 3px solid var(--bdgs-t13-pr-bg-soft);
+        }
+
+        .reviewer-meta h5 {
+            margin: 0;
+            font-weight: 800;
+            font-size: 16px;
+        }
+
+        .reviewer-meta small {
+            color: var(--bdgs-t13-pr-text-light);
+        }
+
+        .stars {
+            color: var(--bdgs-t13-pr-secondary);
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .testi-quote {
+            font-size: 17px;
+            line-height: 1.6;
+            font-style: italic;
+            color: var(--bdgs-t13-pr-text);
+        }
+
+        /* --- Final CTA Banner --- */
+        /* .bdgs-t13-pr-cta-banner {
+            background: var(--bdgs-t13-pr-secondary);
+            padding: 40px 40px;
+            text-align: center;
+            border-radius: 40px;
+            margin: 80px 0;
+            box-shadow: 0 20px 40px rgba(245, 158, 11, 0.2);
+        } */
+
+        .cta-banner {
+            background: var(--bdgs-t13-pr-secondary);
+            padding: 80px 40px;
+            text-align: center;
+            border-radius: 40px;
+            margin: 80px 0;
+        }
+
+        /* --- Footer --- */
+        .bdgs-t13-pr-footer {
+            background: #020617;
+            padding: 20px 0 10px;
+            color: #94A3B8;
+        }
+
+        /* Animations */
+        .reveal { opacity: 0; transform: translateY(40px); transition: 0.8s all ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .bdgs-t13-pr-hero h1 { font-size: 40px; }
+            .bdgs-t13-pr-search-container { border-radius: 20px; flex-direction: column; padding: 15px; }
+            .bdgs-t13-pr-search-btn { width: 100%; margin-top: 10px; }
+            .bdgs-t13-pr-hero { height: auto; padding: 150px 0 100px; clip-path: none; }
+            .bdgs-t13-pr-navbar .navbar-brand { font-size: 20px; }
+            .bdgs-t13-pr-btn-cta { margin-left: 0; margin-top: 10px; display: inline-block; }
+            .section-padding { padding: 60px 0; }
+        }
+        /* =========================
+   FOOTER RESPONSIVE FIX
+========================= */
+
+/* .bdgs-t13-pr-footer {
+    padding: 50px 0 30px;
+} */
+
+/* Tablet & Mobile */
+@media (max-width: 991px) {
+
+    .bdgs-t13-pr-footer .row > div {
+        margin-bottom: 30px;
+    }
+
+    .bdgs-t13-pr-footer h3,
+    .bdgs-t13-pr-footer h5 {
+        margin-bottom: 12px;
+    }
+
+    .bdgs-t13-pr-footer p,
+    .bdgs-t13-pr-footer a {
+        font-size: 14px;
+    }
+
+    /* Center content on mobile */
+    .bdgs-t13-pr-footer {
+        text-align: center;
+    }
+
+    /* Social icons center */
+    .bdgs-t13-pr-footer div[style*="display: flex"] {
+        justify-content: center;
+    }
+
+    /* Remove Bootstrap offset on small screens */
+    .bdgs-t13-pr-footer .col-md-offset-1 {
+        margin-left: 0;
+    }
+}
+
+/* Mobile only */
+@media (max-width: 767px) {
+
+    .bdgs-t13-pr-footer .input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .bdgs-t13-pr-footer .input-group-btn {
+        width: 100%;
+    }
+
+    .bdgs-t13-pr-footer .input-group-btn .btn {
+        width: 100%;
+    }
+
+    .bdgs-t13-pr-footer input.form-control {
+        width: 100%;
+    }
+}
+.reveal>a{
+    text-decoration: none;
+    color: var(--bdgs-t13-pr-primary);
+}
+    </style>
+</head>
+<body>
+
+<div class="bdgs-t13-pr-theme-wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default bdgs-t13-pr-navbar navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="BDGS-T13-PR-home.html">PRIME<span>LOCAL</span></a>
+            </div>
+            <div class="collapse navbar-collapse" id="nav-collapse">
+                <ul class="nav navbar-nav navbar-right bdgs-t13-pr-nav-links">
+                    <li><a href="BDGS-T13-PR-home.html" class="bdgs-t13-pr-menu-link">Home</a></li>
+                    <li><a href="BDGS-T13-PR-core-p1.html" class="bdgs-t13-pr-menu-link">Explore Services</a></li>
+                    
+                    <li><a href="BDGS-T13-PR-about.html" class="bdgs-t13-pr-menu-link">About</a></li>
+                    <li><a href="BDGS-T13-PR-contact.html" class="bdgs-t13-pr-menu-link">Contact</a></li>
+                    <li><a href="BDGS-T13-PR-login-signup.html" class="bdgs-t13-pr-btn-cta">Get Listed</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: Hero Section -->
+    <section class="bdgs-t13-pr-hero">
+        <div class="container text-center">
+            <h1 class="reveal">Find Trusted Local <br>Experts in Seconds.</h1>
+            <p class="reveal">The most comprehensive directory for professional local services in your city.</p>
+            <div class="bdgs-t13-pr-search-container reveal">
+                <input type="text" class="bdgs-t13-pr-search-input" placeholder="What service do you need? (e.g. Legal, Medical, Real Estate)">
+                <button class="bdgs-t13-pr-search-btn">Find Experts</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: Category Section -->
+    <section class="bdgs-t13-pr-categories">
+        <div class="container">
+            <div class="text-center reveal" style="margin-bottom: 70px;">
+                <h2 style="font-weight: 900; font-size: 38px;">Browse Local Industries</h2>
+                <p style="color: var(--bdgs-t13-pr-text-light);">Choose from our hand-picked selection of verified local businesses</p>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-sm-6 bdgs-t13-pr-cat-wrapper reveal">
+                        <a class="main-service" href="BDGS-T13-PR-mem-search.html">
+                    <div class="bdgs-t13-pr-cat-card">
+                        <div class="icon-box"><i class="fa fa-home"></i></div>
+                        <h4>Home Repairs</h4>
+                        <p>Plumbing, Roofing, Painting</p>
+                    </div>
+                        </a>
+                </div>
+                <div class="col-md-3 col-sm-6 bdgs-t13-pr-cat-wrapper reveal">
+                        <a class="main-service" href="BDGS-T13-PR-mem-search.html">
+                    <div class="bdgs-t13-pr-cat-card">
+                        <div class="icon-box"><i class="fa fa-trash"></i></div>
+                        <h4>Cleaning Services</h4>
+                        <p>Deep Clean, Maid, Laundry</p>
+                    </div>
+                        </a>
+                </div>
+                <div class="col-md-3 col-sm-6 bdgs-t13-pr-cat-wrapper reveal">
+                        <a class="main-service" href="BDGS-T13-PR-mem-search.html">
+                    <div class="bdgs-t13-pr-cat-card">
+                        <div class="icon-box"><i class="fa fa-plug"></i></div>
+                        <h4>Appliance Repair</h4>
+                        <p>AC, Fridge, Washing Machine</p>
+                    </div>
+                        </a>
+                </div>
+                <div class="col-md-3 col-sm-6 bdgs-t13-pr-cat-wrapper reveal">
+                        <a class="main-service" href="BDGS-T13-PR-mem-search.html">
+                    <div class="bdgs-t13-pr-cat-card">
+                        <div class="icon-box"><i class="fa fa-user"></i></div>
+                        <h4>Personal Services</h4>
+                        <p>Tutor, Trainer, Chef</p>
+                    </div>
+                        </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: How It Works -->
+    <section class="bdgs-t13-pr-how-it-works">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 reveal">
+                    <h2>How Prime Local <br>Connects You</h2>
+                    <p style="font-size: 18px; opacity: 0.7;">We've simplified the process of finding and hiring local talent. No more endless calling or unverified reviews.</p>
+                    <br>
+                    <a href="BDGS-T13-PR-how-work.html" class="btn btn-lg btn-link" style="color: var(--bdgs-t13-pr-secondary); padding-left: 0;">Learn more about our verification <i class="fa fa-long-arrow-right"></i></a>
+                </div>
+                <div class="col-md-6 col-md-offset-1">
+                    <div class="bdgs-t13-pr-step-item reveal">
+                        <span class="bdgs-t13-pr-step-number">01</span>
+                        <h3 style="color:white;">Search & Filter</h3>
+                        <p>Browse through thousands of businesses based on location, ratings, and specific service needs.</p>
+                    </div>
+                    <div class="bdgs-t13-pr-step-item reveal">
+                        <span class="bdgs-t13-pr-step-number">02</span>
+                        <h3 style="color:white;">Compare Profiles</h3>
+                        <p>View portfolios, license numbers, and real customer reviews to make an informed decision.</p>
+                    </div>
+                    <div class="bdgs-t13-pr-step-item reveal">
+                        <span class="bdgs-t13-pr-step-number">03</span>
+                        <h3 style="color:white;">Direct Contact</h3>
+                        <p>Call or message the business directly through our secure platform to get a quote instantly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: Featured Section -->
+    <section class="bdgs-t13-pr-featured">
+        <div class="container">
+            <div class="text-center reveal" style="margin-bottom: 60px;">
+                <h2 style="font-weight: 900; font-size: 38px;">Top Rated Local Businesses</h2>
+                <p>Businesses with 5-star ratings and 100% response rates</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4 reveal">
+                    <a href="BDGS-T13-PR-mem-search.html">
+                        <div class="bdgs-t13-pr-business-card">
+                        <div class="bdgs-t13-pr-card-header" style="background-image: url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=600&q=80');">
+                            <span class="bdgs-t13-pr-price-tag">Best Value</span>
+                        </div>
+                        <div class="bdgs-t13-pr-card-body">
+                            <h4 style="font-weight: 800;">Apex Legal Consultants</h4>
+                            <p style="color: var(--bdgs-t13-pr-text-light);">Family & Corporate Law Specialists</p>
+                            <hr>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <i class="fa fa-star text-warning"></i> 4.9 (420 Reviews)
+                                </div>
+                                <div class="col-xs-6 text-right">
+                                    <i class="fa fa-map-marker"></i> Downtown, NY
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-md-4 reveal">
+                    <a href="BDGS-T13-PR-mem-search.html">
+                        <div class="bdgs-t13-pr-business-card">
+                        <div class="bdgs-t13-pr-card-header" style="background-image: url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=600&q=80');">
+                            <span class="bdgs-t13-pr-price-tag">Top Rated</span>
+                        </div>
+                        <div class="bdgs-t13-pr-card-body">
+                            <h4 style="font-weight: 800;">Prime Estates Group</h4>
+                            <p style="color: var(--bdgs-t13-pr-text-light);">Luxury Residential Real Estate</p>
+                            <hr>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <i class="fa fa-star text-warning"></i> 5.0 (312 Reviews)
+                                </div>
+                                <div class="col-xs-6 text-right">
+                                    <i class="fa fa-map-marker"></i> Manhattan, NY
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-md-4 reveal">
+                    <a href="BDGS-T13-PR-mem-search.html">
+                        <div class="bdgs-t13-pr-business-card">
+                        <div class="bdgs-t13-pr-card-header" style="background-image: url('images/businesswoman-her-colleague-talking-while-using-touchpad-office-wearing-face-masks.jpg');">
+                            <span class="bdgs-t13-pr-price-tag">Featured</span>
+                        </div>
+                        <div class="bdgs-t13-pr-card-body">
+                            <h4 style="font-weight: 800;">Harmony Health Clinic</h4>
+                            <p style="color: var(--bdgs-t13-pr-text-light);">Multi-specialty Diagnostic Center</p>
+                            <hr>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <i class="fa fa-star text-warning"></i> 4.8 (518 Reviews)
+                                </div>
+                                <div class="col-xs-6 text-right">
+                                    <i class="fa fa-map-marker"></i> Brooklyn, NY
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: BENEFITS / WHY CHOOSE (Styling Fixed) -->
+    <section class="section-padding" style="background: #FFF;">
+        <div class="container">
+            <div class="row bdgs-t13-pr-benefit-row">
+                <div class="col-md-6 reveal">
+                    <img src="images/medium-shot-executive-men.jpg" alt="Trust" class="bdgs-t13-pr-benefit-img">
+                </div>
+                <div class="col-md-6 reveal">
+                    <h2 style="font-size: 42px; font-weight: 800; margin-top: 0;">Why Prime Local?</h2>
+                    <p style="font-size: 18px; color: var(--bdgs-t13-pr-text-light);">We are more than just a directory. We are a community built on trust, quality, and local accountability.</p>
+                    
+                    <div class="bdgs-t13-pr-benefit-list">
+                        <div class="bdgs-t13-pr-benefit-item">
+                            <div class="bdgs-t13-pr-benefit-check"><i class="fa fa-check"></i></div>
+                            <div>
+                                <h4 style="margin: 0 0 5px 0; font-weight: 700;">Verified Professionals</h4>
+                                <p style="margin: 0; color: var(--bdgs-t13-pr-text-light);">Every pro goes through a background check and license verification.</p>
+                            </div>
+                        </div>
+                        <div class="bdgs-t13-pr-benefit-item">
+                            <div class="bdgs-t13-pr-benefit-check"><i class="fa fa-check"></i></div>
+                            <div>
+                                <h4 style="margin: 0 0 5px 0; font-weight: 700;">Transparent Pricing</h4>
+                                <p style="margin: 0; color: var(--bdgs-t13-pr-text-light);">No hidden fees. Get clear quotes before any work begins.</p>
+                            </div>
+                        </div>
+                        <div class="bdgs-t13-pr-benefit-item">
+                            <div class="bdgs-t13-pr-benefit-check"><i class="fa fa-check"></i></div>
+                            <div>
+                                <h4 style="margin: 0 0 5px 0; font-weight: 700;">Fast Response Times</h4>
+                                <p style="margin: 0; color: var(--bdgs-t13-pr-text-light);">Most of our service providers respond within 30 minutes.</p>
+                            </div>
+                        </div>
+                        <div class="bdgs-t13-pr-benefit-item">
+                            <div class="bdgs-t13-pr-benefit-check"><i class="fa fa-check"></i></div>
+                            <div>
+                                <h4 style="margin: 0 0 5px 0; font-weight: 700;">Secure Communication</h4>
+                                <p style="margin: 0; color: var(--bdgs-t13-pr-text-light);">Chat and share documents securely through our platform.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="text-center reveal" style="margin-bottom: 70px;">
+                <h2 style="font-weight: 900; font-size: 38px;">What Your Neighbors Are Saying</h2>
+                <p class="text-muted">Real reviews from people in your community who used Prime Local.</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4 reveal">
+                    <div class="testi-card">
+                        <div class="reviewer-info">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80" class="reviewer-avatar" alt="David K.">
+                            <div class="reviewer-meta">
+                                <h5>David K.</h5>
+                                <small>Electrical Repair, Downtown</small>
+                            </div>
+                        </div>
+                        <div class="stars">
+                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        </div>
+                        <p class="testi-quote">"The electrician arrived within 45 minutes and fixed my wiring perfectly. Truly professional and the pricing was exactly what was quoted."</p>
+                    </div>
+                </div>
+                <div class="col-md-4 reveal">
+                    <div class="testi-card">
+                        <div class="reviewer-info">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80" class="reviewer-avatar" alt="Sarah M.">
+                            <div class="reviewer-meta">
+                                <h5>Sarah M.</h5>
+                                <small>Cleaning Services, North Hills</small>
+                            </div>
+                        </div>
+                        <div class="stars">
+                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        </div>
+                        <p class="testi-quote">"Found a reliable cleaning crew for my move-out on short notice. The quality was outstanding and it was so easy to coordinate everything."</p>
+                    </div>
+                </div>
+                <div class="col-md-4 reveal">
+                    <div class="testi-card">
+                        <div class="reviewer-info">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&h=150&q=80" class="reviewer-avatar" alt="James L.">
+                            <div class="reviewer-meta">
+                                <h5>James L.</h5>
+                                <small>Home Repairs, Eastside</small>
+                            </div>
+                        </div>
+                        <div class="stars">
+                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        </div>
+                        <p class="testi-quote">"Finally, a place where I can find a plumber who actually shows up on time and does great work. No more endless calling around."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: Final CTA (Styling Fixed) -->
+    <div class="container">
+        <div class="cta-banner reveal">
+            <h2 style="font-weight: 900; margin-bottom: 15px; color: var(--bdgs-t13-pr-primary);">Ready to Get Things Done?</h2>
+            <p style="font-size: 18px; margin-bottom: 30px; color: var(--bdgs-t13-pr-primary);">Join thousands of neighbors who trust Prime Local for their essential home and personal services.</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+               <a href="BDGS-T13-PR-mem-search.html"> <button class="btn btn-lg btn-primary" style="background:var(--bdgs-t13-pr-primary); border:none; border-radius:50px; padding:15px 30px;">Find a Service Near You</button>
+                </a>
+                 <a href="BDGS-T13-PR-join.html">
+                <button class="btn btn-lg btn-default" style="border-radius:50px; padding:15px 30px; border: 2px solid var(--bdgs-t13-pr-primary); background: transparent; color: var(--bdgs-t13-pr-primary); font-weight: 600;">List Your Business</button> </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bdgs-t13-pr-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3 style="color:white; font-weight: 900; margin-top: 0;">PRIME<span>LOCAL</span></h3>
+                    <p>Building the world's most trusted local service ecosystem. Every business is manually verified for your peace of mind.</p>
+                        <div style="display: flex; gap: 15px; margin-top: 15px; font-size: 20px;">
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-md-offset-1">
+                    <h5 style="color:white; font-weight: 700;">Marketplace</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="BDGS-T13-PR-core-p2.html" style="color:#94A3B8;">Careers</a></li>
+                        <li><a href="BDGS-T13-PR-core-p1.html" style="color:#94A3B8;">Services</a></li>
+                        <li><a href="BDGS-T13-PR-testimonial.html" style="color:#94A3B8;">Reviews</a></li>
+                        <li><a href="BDGS-T13-PR-how-work.html" style="color:#94A3B8;">How It's work</a></li>
+                        <li><a href="BDGS-T13-PR-get-match.html" style="color:#94A3B8;">Get Match</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h5 style="color:white; font-weight: 700;">Company</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="BDGS-T13-PR-about.html" style="color:#94A3B8;">About Us</a></li>
+                        <li><a href="BDGS-T13-PR-join.html" style="color:#94A3B8;">Join</a></li>
+                        <li><a href="BDGS-T13-PR-contact.html" style="color:#94A3B8;">Contact</a></li>
+                        <li><a href="BDGS-T13-PR-blog-read.html" style="color:#94A3B8;">Blogs</a></li>
+                        <li><a href="BDGS-T13-PR-faq.html" style="color:#94A3B8;">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 style="color:white; font-weight: 700;">Stay Updated</h5>
+                    <div class="input-group">
+                        <input type="text" class="form-control" style="background: rgba(255,255,255,0.05); border: none; color: white; height: 45px;" placeholder="Email">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button" style="background: var(--bdgs-t13-pr-secondary); color: black; border: none; height: 45px; font-weight: 700;">Subscribe</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.1); margin:20px 0 20px; width: 100%;">
+            <div class="text-center">
+                <p>&copy; 2024 Prime Local Directory Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert@1.1.3/dist/sweetalert.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Animation on Scroll
+        function checkScroll() {
+            $('.reveal').each(function() {
+                var elementTop = $(this).offset().top;
+                var windowBottom = $(window).scrollTop() + $(window).height();
+                // Add a small buffer to trigger earlier
+                if (windowBottom > elementTop + 50) {
+                    $(this).addClass('active');
+                }
+            });
+        }
+
+        $(window).on('scroll', function() {
+            checkScroll();
+            // Navbar state
+            if ($(window).scrollTop() > 80) {
+                $('.bdgs-t13-pr-navbar').addClass('scrolled');
+            } else {
+                $('.bdgs-t13-pr-navbar').removeClass('scrolled');
+            }
+        });
+
+        // Trigger initial check
+        checkScroll();
+
+        // Search action
+        $('.bdgs-t13-pr-search-btn').on('click', function() {
+            swal({
+                title: "Searching for Experts...",
+                text: "Connecting to local database",
+                imageUrl: "https://i.gifer.com/ZZ5H.gif",
+                showConfirmButton: false,
+                timer: 2000
+            });
+                // Redirect after loader
+    setTimeout(function () {
+        window.location.href = "BDGS-T13-PR-mem-search.html";
+        // OR: "core-job-listings.html"
+        // OR: "listing.html"
+    }, 2000);
+            
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Job Opportunities | Prime Local Jobs Hub</title>
+
+<meta name="description" content="Browse verified local job opportunities on Prime Local. Explore active job categories across home repairs, cleaning, appliance repair, and personal services posted by real neighborhood demand.">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://www.primelocal.com/jobs" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Local Job Opportunities | Prime Local">
+<meta property="og:description" content="Discover active local job postings across verified service categories. Jobs are posted by real local demand and visible only to vetted professionals.">
+<meta property="og:url" content="https://www.primelocal.com/jobs">
+<meta property="og:image" content="https://www.primelocal.com/assets/og/prime-local-jobs.jpg">
+<meta property="og:site_name" content="Prime Local">
+
+    <!-- Core Assets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert@1.1.3/dist/sweetalert.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        :root {
+            --pl-navy: #0F172A;
+            --pl-amber: #F59E0B;
+            --pl-sky: #38BDF8;
+            --pl-text: #1E293B;
+            --pl-text-light: #64748B;
+            --pl-bg: #F8FAFC;
+            --pl-border: #E2E8F0;
+            --pl-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --pl-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08);
+        }
+
+        body {
+            background-color: var(--pl-bg);
+            font-family: 'Inter', sans-serif;
+            color: var(--pl-text);
+            margin: 0;
+            overflow-x: hidden;
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        /* --- Animation Engine --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Production Navbar --- */
+        .bdgs-t13-pr-navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: none;
+            padding: 10px 0;
+            transition: var(--pr-transition);
+            z-index: 1000;
+            /* box-shadow: var(--pl-shadow-card); */
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+        }
+
+        .bdgs-t13-pr-navbar.scrolled {
+            padding: 12px 0;
+            box-shadow: var(--pl-shadow-card);
+
+        }
+
+        .bdgs-t13-pr-navbar .navbar-brand {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--pl-navy) !important;
+            letter-spacing: -1px;
+            height: auto;
+            padding: 15px;
+        }
+
+        .bdgs-t13-pr-navbar .navbar-brand span {
+            color: var(--pl-amber);
+        }
+        /* .navbar-brand {
+            background-color: #F8FAFC;
+        } */
+        .bdgs-t13-pr-nav-links li a {
+            color: var(--pl-text) !important;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--pl-transition);
+        }
+
+        .bdgs-t13-pr-btn-cta {
+            background: var(--pl-bg);
+            color: white !important;
+            border-radius: 50px;
+            padding: 10px 15px !important;
+            margin-left: 1px;
+            margin-top: 5px;
+            transition: var(--pl-transition);
+            border: none;
+        }
+
+        .bdgs-t13-pr-btn-cta:hover {
+            background: var(--pl-amber) !important;
+            color: var(--pl-navy) !important;
+            transform: scale(1.05);
+        }
+
+        .bdgs-t13-pr-menu-link:hover{
+            color: var(--pl-amber) !important;
+        }
+        /* --- Editorial Hero Section with Background --- */
+        .pl-hero-banner {
+            padding: 140px 0 100px;
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        .pl-hero-banner h1 {
+            font-size: clamp(32px, 5vw, 54px);
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: -1.5px;
+            color: white;
+        }
+        .pl-hero-banner p {
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        /* --- Category Filters --- */
+        .pl-filter-container {
+            padding: 40px 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .pl-filter-pill {
+            padding: 12px 24px;
+            background: white;
+            border: 1px solid var(--pl-border);
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--pl-text-light);
+            cursor: pointer;
+            transition: var(--pl-transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+        .pl-filter-pill:hover { border-color: var(--pl-amber); color: var(--pl-navy); }
+        .pl-filter-pill.active { background: var(--pl-navy); color: white; border-color: var(--pl-navy); box-shadow: 0 4px 10px rgba(15,23,42,0.1); }
+
+        /* --- Job Category Grid --- */
+      
+        /* Ensure equal height cards in row */
+        .pl-job-grid .row { display: flex; flex-wrap: wrap; }
+        .pl-job-grid .col-md-4, .pl-job-grid .col-sm-6 { display: flex; flex-direction: column; margin-bottom: 30px; }
+
+
+        /* --- Platform Standards --- */
+        .pl-trust-section {
+            padding: 30px 0;
+            background: white;
+            border-top: 1px solid var(--pl-border);
+        }
+        .pl-trust-title { text-align: center; margin-bottom: 60px; }
+        .pl-trust-title h2 { font-weight: 900; color: var(--pl-navy); font-size: clamp(28px, 4vw, 36px); letter-spacing: -1.2px; }
+        
+        .pl-standard-item { text-align: center; padding: 25px; }
+        .pl-standard-icon { font-size: 36px; color: var(--pl-amber); margin-bottom: 20px; }
+        .pl-standard-item h4 { font-weight: 800; color: var(--pl-navy); margin-bottom: 15px; font-size: 18px; }
+        .pl-standard-item p { font-size: 14px; color: var(--pl-text-light); line-height: 1.7; }
+
+        /* --- Guidance Copy --- */
+        .pl-guidance-footer {
+            max-width: 700px;
+            margin: 60px auto 100px;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .pl-guidance-footer p { font-size: 16px; color: var(--pl-text-light); font-style: italic; font-weight: 500; }
+
+        /* --- Production Footer --- */
+        .bdgs-t13-pr-footer {
+            background: #020617;
+            padding: 20px 0 10px;
+            color: #94A3B8;
+        }
+        .bdgs-t13-pr-footer h3 { color: white; font-weight: 900; margin-top: 0; }
+        .bdgs-t13-pr-footer h5 { color: white; font-weight: 700; margin-bottom: 25px; }
+        .bdgs-t13-pr-footer a { color: #94A3B8; text-decoration: none; display: block; margin-bottom: 12px; transition: 0.3s; font-size: 14px; }
+        .bdgs-t13-pr-footer a:hover { color: white; padding-left: 5px; }
+
+        /* --- Responsive Styles --- */
+        @media (max-width: 991px) {
+            .pl-hero-banner { padding: 60px 0 30px; background-attachment: scroll; }
+            .pl-hero-banner h1 { font-size: 38px; }
+            .pl-job-grid .col-sm-6 { width: 50%; }
+        }
+
+        @media (max-width: 767px) {
+            body { padding-top: 70px; }
+            .pl-hero-banner h1 { font-size: 32px; letter-spacing: -1px; }
+            .pl-hero-banner p { font-size: 17px; }
+            .pl-filter-container { padding: 30px 15px; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; }
+            .pl-filter-container::-webkit-scrollbar { display: none; }
+            .pl-filter-pill { white-space: nowrap; padding: 10px 20px; }
+            .pl-job-grid .col-sm-6 { width: 100%; }
+            .pl-trust-section { padding: 60px 0; }
+            .pl-standard-item { margin-bottom: 30px; }
+            .bdgs-t13-pr-footer { text-align: center; }
+            .bdgs-t13-pr-footer .col-xs-6 { width: 50%; margin-bottom: 30px; }
+        }
+
+        @media (max-width: 480px) {
+            .pl-hero-banner { padding: 80px 15px 50px; }
+            .pl-hero-banner h1 { font-size: 28px; }
+            .pl-job-card { border-radius: 16px; }
+            .pl-card-img-wrap { height: 180px; margin: 15px; }
+            .pl-card-body { padding: 0 15px 20px; }
+        }
+        .pl-job-card-original {
+    display: block;
+    background:var(--pl-bg);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 14px 34px rgba(0,0,0,0.08);
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Image */
+.pl-job-media {
+    position: relative;
+    height: 210px;
+}
+
+.pl-job-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Floating salary */
+.pl-job-salary-float {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background: var(--pl-navy);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 15px;
+}
+
+/* Content */
+.pl-job-main {
+    padding: 18px;
+    text-align: center;
+}
+
+.pl-job-title {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+
+.pl-job-type-chip {
+    display: inline-block;
+    background: #e0f2fe;
+    color: #0369a1;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.pl-job-company-row {
+    color: #2563eb;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.pl-job-location {
+    font-size: 14px;
+    color: #475569;
+    margin-bottom: 16px;
+}
+
+/* Primary button */
+.pl-job-primary-btn {
+    width: 100%;
+    background: var(--pl-navy);
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+/* Info row */
+.pl-job-info-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #334155;
+}
+
+/* Footer */
+.pl-job-footer {
+    border-top: 1px solid #e5e7eb;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #64748b;
+}
+
+.pl-job-save {
+    background: #f1f5f9;
+    border-radius: 50%;
+    padding: 6px;
+}
+
+.pl-job-card-original {
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.pl-job-card-original:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 22px 45px rgba(0,0,0,0.12);
+}
+
+/* Image zoom on hover */
+.pl-job-card-original:hover .pl-job-media img {
+    transform: scale(1.08);
+}
+
+.pl-job-media img {
+    transition: transform 0.5s ease;
+}
+
+/* Salary badge lift */
+.pl-job-card-original:hover .pl-job-salary-float {
+    transform: translateY(-4px);
+}
+
+.pl-job-salary-float {
+    transition: transform 0.3s ease;
+}
+
+/* Button hover */
+.pl-job-primary-btn {
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.pl-job-primary-btn:hover {
+    background: var(--pl-amber);
+    transform: scale(1.02);
+}
+
+.pl-job-card-original,
+.pl-job-card-original:hover,
+.pl-job-card-original:focus {
+    text-decoration: none;
+    color: inherit;
+}
+.pl-job-card-original * {
+    text-decoration: none;
+}
+
+/* Ensure media is positioning context */
+.pl-job-media {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Job Type badge (LEFT) */
+.pl-job-type-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(255,255,255,0.95);
+    color: #0369a1;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 999px;
+    z-index: 2;
+}
+
+/* Bookmark icon (RIGHT) */
+.pl-job-bookmark {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.pl-job-bookmark:hover {
+    background: #ef4444;
+    color: #fff;
+}
+
+/* Optional: Saved state */
+.pl-job-bookmark.saved {
+    background: #ef4444;
+    color: #fff;
+}
+
+/* Image hover polish */
+.pl-job-card-original:hover .pl-job-media img {
+    transform: scale(1.06);
+}
+
+
+    </style>
+</head>
+<body>
+
+<div class="bdgs-t13-pr-theme-wrapper">
+    <!-- Production Navigation -->
+    <!-- Navigation -->
+    <nav class="navbar navbar-default bdgs-t13-pr-navbar navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="BDGS-T13-PR-home.html">PRIME<span>LOCAL</span></a>
+            </div>
+            <div class="collapse navbar-collapse" id="nav-collapse">
+                 <ul class="nav navbar-nav navbar-right bdgs-t13-pr-nav-links">
+                    <li><a href="BDGS-T13-PR-home.html" class="bdgs-t13-pr-menu-link">Home</a></li>
+                    <li><a href="BDGS-T13-PR-core-p1.html" class="bdgs-t13-pr-menu-link">Explore Services</a></li>
+                    
+                    <li><a href="BDGS-T13-PR-about.html" class="bdgs-t13-pr-menu-link">About</a></li>
+                    <li><a href="BDGS-T13-PR-contact.html" class="bdgs-t13-pr-menu-link">Contact</a></li>
+                    <li><a href="BDGS-T13-PR-login-signup.html" class="bdgs-t13-pr-btn-cta">Get Listed</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Editorial Hero Section -->
+    <header class="pl-hero-banner">
+        <div class="container reveal">
+            <h1>Local Job Opportunities on Prime Local</h1>
+            <p>Explore high-intent job postings across home maintenance, professional technical trades, and specialized services. Every category represents verified demand from our local neighborhood community.</p>
+        </div>
+    </header>
+
+    <!-- Category Filters -->
+    <section class="container">
+        <div class="pl-filter-container reveal">
+            <div class="pl-filter-pill active">All Jobs</div>
+            <div class="pl-filter-pill">Home Repair Jobs</div>
+            <div class="pl-filter-pill">Cleaning Jobs</div>
+            <div class="pl-filter-pill">Appliance Repair Jobs</div>
+            <div class="pl-filter-pill">Personal Service Jobs</div>
+            <div class="pl-filter-pill">Emergency & Short-Term</div>
+            <div class="pl-filter-pill">Vetted Entities Only</div>
+        </div>
+    </section>
+
+    <!-- Job Categories Grid -->
+    <main class="container pl-job-grid">
+        <div class="row">
+            <!-- Electrical -->
+<div class="col-md-4 col-sm-6 col-xs-12 reveal">
+    <a href="BDGS-T13-PR-core-d2.html" class="pl-job-card-original">
+
+        <!-- Image with overlay -->
+        <div class="pl-job-media">
+            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80" alt="Electrical Engineer">
+
+             <!-- Job Type (LEFT) -->
+            <span class="pl-job-type-badge">Full-Time</span>
+
+            <!-- Bookmark (RIGHT) -->
+            <span class="pl-job-bookmark">
+                <i class="fa fa-heart-o"></i>
+            </span>
+
+            <div class="pl-job-salary-float">$200,000</div>
+        </div>
+
+        <!-- Main content -->
+        <div class="pl-job-main">
+            <h3 class="pl-job-title">Electrical Engineer</h3>
+
+            <div class="pl-job-company-row">
+                <i class="fa fa-map-marker"></i>
+                <span class="pl-job-company">Maple Dr, Camillus, NY 13031, USA</span>
+            </div>
+
+            <button class="pl-job-primary-btn">
+                View More
+            </button>
+
+            <!-- Info row -->
+            <div class="pl-job-info-row">
+                <span>
+                    <i class="fa fa-calendar"></i>
+                    Start 01/12/2026
+                </span>
+            <span>Posted 01/12/2026</span>
+               
+            </div>
+        </div>
+    </a>
+</div>
+
+
+            
+            <!-- Plumbing -->
+<div class="col-md-4 col-sm-6 col-xs-12 reveal">
+    <a href="BDGS-T13-PR-core-d2.html" class="pl-job-card-original">
+
+        <div class="pl-job-media">
+            <img src="images/plumbing-tech.jpg" alt="Plumbing Technician">
+
+            <!-- Job Type (LEFT) -->
+            <span class="pl-job-type-badge">Full-Time</span>
+
+            <!-- Bookmark (RIGHT) -->
+            <span class="pl-job-bookmark">
+                <i class="fa fa-heart-o"></i>
+            </span>
+
+            <!-- Salary -->
+            <div class="pl-job-salary-float">$85,000</div>
+        </div>
+
+        <div class="pl-job-main">
+            <h3 class="pl-job-title">Plumbing Technician</h3>
+
+            <div class="pl-job-company-row">
+                <i class="fa fa-map-marker"></i>
+                <span class="pl-job-company">Brooklyn, New York, USA</span>
+            </div>
+
+            <!-- <div class="pl-job-location"></div> -->
+
+            <button class="pl-job-primary-btn">View More</button>
+
+            <div class="pl-job-info-row">
+                <span><i class="fa fa-calendar"></i> Start 05/02/2026</span>
+                <span>Posted 01/02/2026</span>
+            </div>
+        </div>
+
+    </a>
+</div>
+
+
+
+           <!-- Renovation -->
+<div class="col-md-4 col-sm-6 col-xs-12 reveal">
+    <a href="BDGS-T13-PR-core-d2.html" class="pl-job-card-original">
+        <div class="pl-job-media">
+            <img src="images/renovations.jpg" alt="Renovation Supervisor">
+                <!-- Job Type (LEFT) -->
+            <span class="pl-job-type-badge">Contract</span>
+
+            <!-- Bookmark (RIGHT) -->
+            <span class="pl-job-bookmark">
+                <i class="fa fa-heart-o"></i>
+            </span>
+            <div class="pl-job-salary-float">$120,000</div>
+        </div>
+
+        <div class="pl-job-main">
+            <h3 class="pl-job-title">Renovation Supervisor</h3>
+
+            <div class="pl-job-company-row">
+                <i class="fa fa-map-marker"></i>
+                <span class="pl-job-company">Austin, Texas, USA</span>
+            </div>
+
+            <button class="pl-job-primary-btn">View More</button>
+
+            <div class="pl-job-info-row">
+                <span><i class="fa fa-calendar"></i> Start 10/02/2026</span>
+                <span>Posted 03/02/2026</span>
+            </div>
+        </div>
+    </a>
+</div>
+
+
+            <!-- Cleaning -->
+        <!-- Cleaning -->
+<div class="col-md-4 col-sm-6 col-xs-12 reveal">
+    <a href="BDGS-T13-PR-core-d2.html" class="pl-job-card-original">
+        <div class="pl-job-media">
+            <img src="images/Office-Cleaning-Services.jpg" alt="Cleaning Manager">
+             <!-- Job Type (LEFT) -->
+            <span class="pl-job-type-badge">Full-Time</span>
+
+            <!-- Bookmark (RIGHT) -->
+            <span class="pl-job-bookmark">
+                <i class="fa fa-heart-o"></i>
+            </span>
+            <div class="pl-job-salary-float">$60,000</div>
+        </div>
+
+        <div class="pl-job-main">
+            <h3 class="pl-job-title">Cleaning Operations Manager</h3>
+
+            <div class="pl-job-company-row">
+                <i class="fa fa-map-marker"></i>
+                <span class="pl-job-company">London, United Kingdom</span>
+            </div>
+
+
+
+            <button class="pl-job-primary-btn">View More</button>
+
+            <div class="pl-job-info-row">
+                <span><i class="fa fa-calendar"></i> Start 15/02/2026</span>
+                <span>Posted 05/02/2026</span>
+            </div>
+        </div>
+    </a>
+</div>
+
+<!-- Appliance -->
+<div class="col-md-4 col-sm-6 col-xs-12 reveal">
+    <a href="BDGS-T13-PR-core-d2.html" class="pl-job-card-original">
+        <div class="pl-job-media">
+            <img src="images/repair.jpg" alt="Appliance Repair Technician">
+              <!-- Job Type (LEFT) -->
+            <span class="pl-job-type-badge">Full-Time</span>
+
+            <!-- Bookmark (RIGHT) -->
+            <span class="pl-job-bookmark">
+                <i class="fa fa-heart-o"></i>
+            </span>
+            <div class="pl-job-salary-float">$78,000</div>
+        </div>
+
+        <div class="pl-job-main">
+            <h3 class="pl-job-title">Appliance Repair Technician</h3>
+
+            <div class="pl-job-company-row">
+                <i class="fa fa-map-marker"></i>
+                <span class="pl-job-company">Berlin HomeFix, German</span>
+            </div>
+
+
+            <button class="pl-job-primary-btn">View More</button>
+
+            <div class="pl-job-info-row">
+                <span><i class="fa fa-calendar"></i> Start 20/02/2026</span>
+                <span>Posted 06/02/2026</span>
+            </div>
+        </div>
+    </a>
+</div>
+
+
+        <!-- Painting -->
+<div class="col-md-4 col-sm-6 col-xs-12 reveal">
+    <a href="BDGS-T13-PR-core-d2.html" class="pl-job-card-original">
+        <div class="pl-job-media">
+            <img src="images/painting.jpg" alt="Painting Specialist">
+              <!-- Job Type (LEFT) -->
+            <span class="pl-job-type-badge">Project-Based</span>
+
+            <!-- Bookmark (RIGHT) -->
+            <span class="pl-job-bookmark">
+                <i class="fa fa-heart-o"></i>
+            </span>
+            <div class="pl-job-salary-float">$70,000</div>
+        </div>
+
+        <div class="pl-job-main">
+            <h3 class="pl-job-title">Residential Painting Specialist</h3>
+
+            <div class="pl-job-company-row">
+                <i class="fa fa-map-marker"></i>
+                <span class="pl-job-company">Madrid ColorCraft, Spain</span>
+            </div>
+
+            <button class="pl-job-primary-btn">View More</button>
+
+            <div class="pl-job-info-row">
+                <span><i class="fa fa-calendar"></i> Start 25/02/2026</span>
+                <span>Posted 08/02/2026</span>
+            </div>
+        </div>
+    </a>
+</div>
+
+    </main>
+
+    <!-- Platform Standards (Trust Layer) -->
+    <section class="pl-trust-section">
+        <div class="container">
+            <div class="pl-trust-title reveal">
+                <h2>How Job Posts Are Managed</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-4 reveal">
+                    <div class="pl-standard-item">
+                        <div class="pl-standard-icon"><i class="fa fa-shield"></i></div>
+                        <h4>Verified Pro Eligibility</h4>
+                        <p>Only professionals who have passed our manual 15-point audit can view full job details and respond to neighborhood postings.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 reveal">
+                    <div class="pl-standard-item">
+                        <div class="pl-standard-icon"><i class="fa fa-map-marker"></i></div>
+                        <h4>Local Area Enforcement</h4>
+                        <p>All postings are localized. Pros must hold a verified physical office within the service area to ensure rapid response integrity.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 reveal">
+                    <div class="pl-standard-item">
+                        <div class="pl-standard-icon"><i class="fa fa-comments"></i></div>
+                        <h4>Secure Documentation</h4>
+                        <p>Full project scope, visual documentation, and agreed quotes are archived in our secure portal to protect future warranty claims.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guidance Copy -->
+    <div class="pl-guidance-footer reveal">
+        <p>Each job category reflects verified real-world demand within the Prime Local network. Selecting a category provides access to active operational guides and job lists.</p>
+    </div>
+
+    <!-- Production Footer -->
+    <footer class="bdgs-t13-pr-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                     <h3 style="color:white; font-weight: 900; margin-top: 0;">PRIME<span>LOCAL</span></h3>
+                    <p>Building the world's most trusted local service ecosystem. Every business is manually verified for your peace of mind.</p>
+                        <div style="display: flex; gap: 15px; margin-top: 15px; font-size: 20px;">
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        </div>
+                </div>
+                <div class="col-md-2 col-md-offset-1">
+                    <h5 style="color:white; font-weight: 700;">Marketplace</h5>
+                  <ul class="list-unstyled">
+                        <li><a href="BDGS-T13-PR-core-p2.html" style="color:#94A3B8;">Careers</a></li>
+                        <li><a href="BDGS-T13-PR-core-p1.html" style="color:#94A3B8;">Services</a></li>
+                        <li><a href="BDGS-T13-PR-testimonial.html" style="color:#94A3B8;">Reviews</a></li>
+                        <li><a href="BDGS-T13-PR-how-work.html" style="color:#94A3B8;">How It's work</a></li>
+                        <li><a href="BDGS-T13-PR-get-match.html" style="color:#94A3B8;">Get Match</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h5 style="color:white; font-weight: 700;">Company</h5>
+                     <ul class="list-unstyled">
+                        <li><a href="BDGS-T13-PR-about.html" style="color:#94A3B8;">About Us</a></li>
+                        <li><a href="BDGS-T13-PR-join.html" style="color:#94A3B8;">Join</a></li>
+                        <li><a href="BDGS-T13-PR-contact.html" style="color:#94A3B8;">Contact</a></li>
+                        <li><a href="BDGS-T13-PR-blog-read.html" style="color:#94A3B8;">Blogs</a></li>
+                        <li><a href="BDGS-T13-PR-faq.html" style="color:#94A3B8;">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 style="color:white; font-weight: 700;">Stay Updated</h5>
+                    <div class="input-group">
+                        <input type="text" class="form-control" style="background: rgba(255,255,255,0.05); border: none; color: white; height: 45px;" placeholder="Email">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button" style="background: var(--pl-amber); color: black; border: none; height: 45px; font-weight: 700;">Subscribe</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <hr style="border-color: rgba(76, 75, 75, 0.05); margin: 20px 0 20px;">
+            <div class="text-center" style="font-size: 12px; opacity: 0.5;">
+                &copy; 2026 Prime Local Platform. All rights reserved. Professional Integrity Guaranteed.
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Reveal Animation Logic
+        function checkReveal() {
+            var windowHeight = $(window).height();
+            var scrollTop = $(window).scrollTop();
+            var elementVisible = 100;
+
+            $('.reveal').each(function() {
+                var elementTop = $(this).offset().top;
+                if (elementTop < scrollTop + windowHeight - elementVisible) {
+                    $(this).addClass('active');
+                }
+            });
+        }
+
+        $(window).on('scroll', function() {
+            checkReveal();
+        });
+
+        // Initialize view
+        checkReveal();
+    });
+    document.querySelectorAll('.pl-job-bookmark').forEach(icon => {
+    icon.addEventListener('click', function (e) {
+        e.preventDefault(); // stop card navigation
+        this.classList.toggle('saved');
+
+        const i = this.querySelector('i');
+        i.classList.toggle('fa-heart');
+        i.classList.toggle('fa-heart-o');
+    });
+});
+</script>
+
+</body>
+</html>

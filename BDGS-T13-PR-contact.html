@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Prime Local - We're Here to Help</title>
+    
+    <!-- Core Assets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert@1.1.3/dist/sweetalert.css">
+
+    <style>
+        :root {
+            --bdgs-t13-pr-primary: #0F172A; /* Midnight Navy */
+            --bdgs-t13-pr-secondary: #F59E0B; /* Vibrant Amber */
+            --bdgs-t13-pr-accent: #38BDF8; /* Sky Blue */
+            --bdgs-t13-pr-text: #1E293B;
+            --bdgs-t13-pr-text-light: #64748B;
+            --bdgs-t13-pr-bg-white: #FFFFFF;
+            --bdgs-t13-pr-bg-soft: #F8FAFC;
+            --bdgs-t13-pr-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --bdgs-t13-pr-shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --bdgs-t13-pr-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            background-color: var(--bdgs-t13-pr-bg-soft);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--bdgs-t13-pr-text);
+            margin: 0;
+            overflow-x: hidden;
+            line-height: 1.7;
+            padding-top: 80px;
+        }
+
+        .bdgs-t13-pr-theme-wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- Global Reveal Animation --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+       
+ .bdgs-t13-pr-navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: none;
+            padding: 10px 0;
+            transition: var(--bdgs-t13-pr-transition);
+            z-index: 1000;
+            box-shadow: var(--bdgs-t13-pr-shadow-sm);
+
+        }
+
+        .bdgs-t13-pr-navbar.scrolled {
+            padding: 12px 0;
+            box-shadow: var(--bdgs-t13-pr-shadow-sm);
+        }
+
+        .bdgs-t13-pr-navbar .navbar-brand {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--bdgs-t13-pr-primary) !important;
+            letter-spacing: -1px;
+            height: auto;
+            padding: 15px;
+        }
+
+        .bdgs-t13-pr-navbar .navbar-brand span {
+            color: var(--bdgs-t13-pr-secondary);
+        }
+       
+        .bdgs-t13-pr-nav-links li a {
+            color: var(--bdgs-t13-pr-text) !important;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--bdgs-t13-pr-transition);
+        }
+
+        .bdgs-t13-pr-btn-cta {
+            background: var(--bdgs-t13-pr-white);
+            color: white !important;
+            border-radius: 50px;
+            padding: 10px 15px !important;
+            margin-left: 1px;
+            margin-top: 5px;
+            transition: var(--bdgs-t13-pr-transition);
+            border: none;
+        }
+
+        .bdgs-t13-pr-btn-cta:hover {
+            background: var(--bdgs-t13-pr-secondary) !important;
+            color: var(--bdgs-t13-pr-primary) !important;
+            transform: scale(1.05);
+        }
+
+        .bdgs-t13-pr-menu-link:hover{
+            color: var(--bdgs-t13-pr-secondary) !important;
+        }
+        /* --- Hero Section with Background Image --- */
+        .bdgs-t13-pr-contact-hero {
+            padding: 60px 0px;
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.6)), url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        .bdgs-t13-pr-contact-hero h1 {
+            font-size: 48px;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+        .bdgs-t13-pr-contact-hero p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* --- Contact Page Layout --- */
+        .bdgs-t13-pr-contact-section { padding: 80px 0; }
+
+        /* Info Cards */
+        .bdgs-t13-pr-contact-card {
+            background: white;
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: var(--bdgs-t13-pr-shadow-sm);
+            margin-bottom: 30px;
+            border: 1px solid #F1F5F9;
+        }
+        .bdgs-t13-pr-info-title {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--bdgs-t13-pr-primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .bdgs-t13-pr-info-title i { color: var(--bdgs-t13-pr-secondary); }
+
+        .bdgs-t13-pr-contact-list { list-style: none; padding: 0; margin-bottom: 30px; }
+        .bdgs-t13-pr-contact-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 15px;
+        }
+        .bdgs-t13-pr-icon-box {
+            width: 40px; height: 40px;
+            background: #F8FAFC;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--bdgs-t13-pr-primary);
+        }
+
+        /* Hub Links */
+        .bdgs-t13-pr-hub-links { display: flex; flex-direction: column; gap: 10px; }
+        .bdgs-t13-pr-hub-btn {
+            background: #F8FAFC;
+            padding: 15px 20px;
+            border-radius: 12px;
+            color: var(--bdgs-t13-pr-text);
+            text-decoration: none !important;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--bdgs-t13-pr-transition);
+        }
+        .bdgs-t13-pr-hub-btn:hover { background: #F1F5F9; color: var(--bdgs-t13-pr-primary); padding-left: 25px; }
+
+        /* Form Card */
+        .bdgs-t13-pr-form-card {
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: var(--bdgs-t13-pr-shadow-lg);
+        }
+        .bdgs-t13-pr-form-group { margin-bottom: 25px; }
+        .bdgs-t13-pr-label {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--bdgs-t13-pr-primary);
+            margin-bottom: 8px;
+            display: block;
+        }
+        .bdgs-t13-pr-input {
+            width: 100%;
+            height: 52px;
+            border: 2px solid #F1F5F9;
+            border-radius: 12px;
+            padding: 10px 18px;
+            font-size: 15px;
+            outline: none;
+            transition: var(--bdgs-t13-pr-transition);
+        }
+        .bdgs-t13-pr-input:focus { border-color: var(--bdgs-t13-pr-primary); }
+        .bdgs-t13-pr-textarea { height: 150px; resize: none; }
+
+        .bdgs-t13-pr-btn-send {
+            background: var(--bdgs-t13-pr-secondary);
+            color: var(--bdgs-t13-pr-primary);
+            border: none;
+            border-radius: 15px;
+            padding: 16px 40px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+            transition: var(--bdgs-t13-pr-transition);
+            margin-top: 10px;
+        }
+        .bdgs-t13-pr-btn-send:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(245, 158, 11, 0.2); }
+
+        .bdgs-t13-pr-response-notice {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--bdgs-t13-pr-text-light);
+        }
+
+        /* Select2 Theme Override */
+        .select2-container--default .select2-selection--single {
+            border: 2px solid #F1F5F9 !important;
+            height: 52px !important;
+            border-radius: 12px !important;
+            padding: 10px 8px !important;
+        }
+
+        /* --- Footer (Sync with Home) --- */
+        .bdgs-t13-pr-footer {
+            background: #020617;
+            padding: 20px 0 10px;
+            color: #94A3B8;
+        }
+        .bdgs-t13-pr-footer h3 { color: white; font-weight: 900; margin-top: 0; }
+        .bdgs-t13-pr-footer h5 { color: white; font-weight: 700; }
+        .bdgs-t13-pr-footer ul li { margin-bottom: 12px; }
+        .bdgs-t13-pr-footer a { color: #94A3B8; text-decoration: none; transition: 0.3s; }
+        .bdgs-t13-pr-footer a:hover { color: white; }
+
+        @media (max-width: 991px) {
+            .bdgs-t13-pr-form-card { padding: 35px 25px; margin-top: 40px; }
+            .bdgs-t13-pr-contact-hero h1 { font-size: 36px; }
+            .bdgs-t13-pr-contact-hero p { font-size: 18px; }
+            .bdgs-t13-pr-contact-hero { background-attachment: scroll; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bdgs-t13-pr-theme-wrapper">
+    <!-- Navigation (Sync with Home Page) -->
+     <!-- Navigation -->
+    <nav class="navbar navbar-default bdgs-t13-pr-navbar navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="BDGS-T13-PR-home.html">PRIME<span>LOCAL</span></a>
+            </div>
+            <div class="collapse navbar-collapse" id="nav-collapse">
+                 <ul class="nav navbar-nav navbar-right bdgs-t13-pr-nav-links">
+                    <li><a href="BDGS-T13-PR-home.html" class="bdgs-t13-pr-menu-link">Home</a></li>
+                    <li><a href="BDGS-T13-PR-core-p1.html" class="bdgs-t13-pr-menu-link">Explore Services</a></li>
+                    
+                    <li><a href="BDGS-T13-PR-about.html" class="bdgs-t13-pr-menu-link">About</a></li>
+                    <li><a href="BDGS-T13-PR-contact.html" class="bdgs-t13-pr-menu-link">Contact</a></li>
+                    <li><a href="BDGS-T13-PR-login-signup.html" class="bdgs-t13-pr-btn-cta">Get Listed</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Intro with Background Image -->
+    <section class="bdgs-t13-pr-contact-hero">
+        <div class="container">
+            <div class="reveal">
+                <h1>How Can We Help?</h1>
+                <p>Reach out to our team for support, business inquiries, or safety concerns. We are dedicated to ensuring your Prime Local experience is exceptional.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Contact Section -->
+    <section class="bdgs-t13-pr-contact-section">
+        <div class="container">
+            <div class="row">
+                <!-- Left: Support Hubs -->
+                <div class="col-md-5">
+                    <div class="reveal">
+                        <div class="bdgs-t13-pr-contact-card">
+                            <h3 class="bdgs-t13-pr-info-title"><i class="fa fa-envelope-o"></i> Customer Support</h3>
+                            <p class="small text-muted">For assistance with your bookings or profile.</p>
+                            <ul class="bdgs-t13-pr-contact-list">
+                                <li><div class="bdgs-t13-pr-icon-box"><i class="fa fa-paper-plane"></i></div> support@primelocal.com</li>
+                                <li><div class="bdgs-t13-pr-icon-box"><i class="fa fa-clock-o"></i></div> 9:00 AM - 6:00 PM (EST)</li>
+                            </ul>
+                            
+                            <div class="bdgs-t13-pr-hub-links">
+                                <a href="#" class="bdgs-t13-pr-hub-btn">Visit Help Center <i class="fa fa-angle-right"></i></a>
+                                <a href="#" class="bdgs-t13-pr-hub-btn">Browse FAQs <i class="fa fa-angle-right"></i></a>
+                                <a href="#" class="bdgs-t13-pr-hub-btn">Trust & Safety Policy <i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="bdgs-t13-pr-contact-card">
+                            <h3 class="bdgs-t13-pr-info-title"><i class="fa fa-briefcase"></i> Business Support</h3>
+                            <p class="small text-muted">Dedicated help for our verified service providers.</p>
+                            <ul class="bdgs-t13-pr-contact-list">
+                                <li><div class="bdgs-t13-pr-icon-box"><i class="fa fa-id-card-o"></i></div> business@primelocal.com</li>
+                            </ul>
+                            <a href="#" class="bdgs-t13-pr-hub-btn" style="background: var(--bdgs-t13-pr-primary); color: white;">Manage My Business Listing <i class="fa fa-external-link"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Contact Form -->
+                <div class="col-md-7">
+                    <div class="reveal">
+                        <div class="bdgs-t13-pr-form-card">
+                            <h2 style="font-weight: 900; margin-top: 0; margin-bottom: 30px;">Send Us a Message</h2>
+                            
+                            <form id="contactForm">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="bdgs-t13-pr-form-group">
+                                            <label class="bdgs-t13-pr-label">Full Name</label>
+                                            <input type="text" class="bdgs-t13-pr-input" placeholder="Your name" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="bdgs-t13-pr-form-group">
+                                            <label class="bdgs-t13-pr-label">Email Address</label>
+                                            <input type="email" class="bdgs-t13-pr-input" placeholder="name@example.com" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bdgs-t13-pr-form-group">
+                                    <label class="bdgs-t13-pr-label">Inquiry Type</label>
+                                    <select class="form-control bdgs-t13-pr-select" style="width: 100%;" required>
+                                        <option value="general">General Question</option>
+                                        <option value="support">Customer Support</option>
+                                        <option value="business">Business Listing Support</option>
+                                        <option value="safety">Trust & Safety</option>
+                                        <option value="feedback">Feedback / Suggestions</option>
+                                    </select>
+                                </div>
+
+                                <div class="bdgs-t13-pr-form-group">
+                                    <label class="bdgs-t13-pr-label">Message</label>
+                                    <textarea class="bdgs-t13-pr-input bdgs-t13-pr-textarea" placeholder="How can we help you today?" required></textarea>
+                                </div>
+
+                                <div style="margin-top: 30px;">
+                                    <button type="submit" class="bdgs-t13-pr-btn-send">Send Message</button>
+                                    <p class="bdgs-t13-pr-response-notice"><i class="fa fa-shield"></i> Your privacy is our priority. We usually respond within 24 business hours.</p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Sync with Home Page) -->
+    <footer class="bdgs-t13-pr-footer">
+        <div class="container">
+            <div class="row">
+             <div class="col-md-4">
+                     <h3 style="color:white; font-weight: 900; margin-top: 0;">PRIME<span>LOCAL</span></h3>
+                    <p>Building the world's most trusted local service ecosystem. Every business is manually verified for your peace of mind.</p>
+                        <div style="display: flex; gap: 15px; margin-top: 15px; font-size: 20px;">
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        </div>
+                </div>
+                <div class="col-md-2 col-md-offset-1">
+                    <h5 style="color:white; font-weight: 700;">Marketplace</h5>
+                        <ul class="list-unstyled">
+                        <li><a href="BDGS-T13-PR-core-p2.html" style="color:#94A3B8;">Careers</a></li>
+                        <li><a href="BDGS-T13-PR-core-p1.html" style="color:#94A3B8;">Services</a></li>
+                        <li><a href="BDGS-T13-PR-testimonial.html" style="color:#94A3B8;">Reviews</a></li>
+                        <li><a href="BDGS-T13-PR-how-work.html" style="color:#94A3B8;">How It's work</a></li>
+                        <li><a href="BDGS-T13-PR-get-match.html" style="color:#94A3B8;">Get Match</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h5 style="color:white; font-weight: 700;">Company</h5>
+                   <ul class="list-unstyled">
+                        <li><a href="BDGS-T13-PR-about.html" style="color:#94A3B8;">About Us</a></li>
+                        <li><a href="BDGS-T13-PR-join.html" style="color:#94A3B8;">Join</a></li>
+                        <li><a href="BDGS-T13-PR-contact.html" style="color:#94A3B8;">Contact</a></li>
+                        <li><a href="BDGS-T13-PR-blog-read.html" style="color:#94A3B8;">Blogs</a></li>
+                        <li><a href="BDGS-T13-PR-faq.html" style="color:#94A3B8;">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 style="color:white; font-weight: 700;">Stay Updated</h5>
+                    <div class="input-group">
+                        <input type="text" class="form-control" style="background: rgba(255,255,255,0.05); border: none; color: white; height: 45px;" placeholder="Email">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button" style="background: var(--bdgs-t13-pr-secondary); color: black; border: none; height: 45px; font-weight: 700;">Subscribe</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.1); margin: 20px 0 20px;">
+            <div class="text-center">
+                <p>&copy; 2024 Prime Local Directory Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert@1.1.3/dist/sweetalert.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Initialize Select2
+        $('.bdgs-t13-pr-select').select2();
+
+        // Reveal Animation Logic
+        function checkReveal() {
+            var windowHeight = $(window).height();
+            $('.reveal').each(function() {
+                var elementTop = $(this).offset().top;
+                var elementVisible = 80;
+                if (elementTop < $(window).scrollTop() + windowHeight - elementVisible) {
+                    $(this).addClass('active');
+                }
+            });
+        }
+
+        $(window).on('scroll', function() {
+            checkReveal();
+            // Navbar Scrolled State
+            if ($(window).scrollTop() > 50) {
+                $('.bdgs-t13-pr-navbar').addClass('scrolled');
+            } else {
+                $('.bdgs-t13-pr-navbar').removeClass('scrolled');
+            }
+        });
+
+        checkReveal();
+
+        // Form Submission Logic
+        $('#contactForm').on('submit', function(e) {
+            e.preventDefault();
+            swal({
+                title: "Message Sent!",
+                text: "Thank you for reaching out. A team member will respond shortly.",
+                type: "success",
+                confirmButtonColor: "#0F172A"
+            });
+            this.reset();
+            $('.bdgs-t13-pr-select').val('general').trigger('change');
+        });
+    });
+</script>
+
+</body>
+</html>
