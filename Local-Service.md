@@ -24,7 +24,7 @@ Prime Local is a comprehensive, static HTML front-end template for a local servi
 ## 📂 Project File Structure
 
 **Core Pages:**
-- `BDGS-T13-PR-home.html` - Main landing page with hero search, categories, and featured experts.
+- `index.html` - Main landing page with hero search, categories, and featured experts.
 - `BDGS-T13-PR-about.html` - Information about the Prime Local platform.
 - `BDGS-T13-PR-contact.html` - General contact form page.
 - `BDGS-T13-PR-faq.html` - Frequently Asked Questions.
@@ -50,7 +50,7 @@ Prime Local is a comprehensive, static HTML front-end template for a local servi
 Since this is a static HTML template, no build process or server backend is required to view the UI.
 1. Clone or download the repository.
 2. Navigate to the project folder.
-3. Open `BDGS-T13-PR-home.html` (or any other HTML file) directly in any modern web browser (Chrome, Firefox, Safari, Edge).
+3. Open `index.html` (or any other HTML file) directly in any modern web browser (Chrome, Firefox, Safari, Edge).
 
 ## 🔮 Future Enhancements (Potential Migration)
 - Extract embedded `<style>` blocks into a centralized `style.css` file.
