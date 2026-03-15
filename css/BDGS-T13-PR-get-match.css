@@ -102,7 +102,7 @@
 
         .bdgs-t13-pr-image-side {
             flex: 1;
-            background: linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.6)), url('images/getmatch.jpg');
+            background: linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.6)), url(\'../images/getmatch.jpg');
             background-size: cover;
             background-position: center;
             /* padding: 60px; */
