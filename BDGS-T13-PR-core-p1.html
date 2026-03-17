@@ -71,12 +71,12 @@
                     professional.</p>
 
                 <div class="pl-filter-container">
-                    <div class="pl-filter-btn active">All Guides</div>
-                    <div class="pl-filter-btn">Home Repairs</div>
-                    <div class="pl-filter-btn">Cleaning Services</div>
-                    <div class="pl-filter-btn">Appliance Repair</div>
-                    <div class="pl-filter-btn">Personal Services</div>
-                    <div class="pl-filter-btn">Trust & Safety</div>
+                    <div class="pl-filter-btn active" data-filter="all">All Guides</div>
+                    <div class="pl-filter-btn" data-filter="home-repairs">Home Repairs</div>
+                    <div class="pl-filter-btn" data-filter="cleaning-services">Cleaning Services</div>
+                    <div class="pl-filter-btn" data-filter="appliance-repair">Appliance Repair</div>
+                    <div class="pl-filter-btn" data-filter="personal-services">Personal Services</div>
+                    <div class="pl-filter-btn" data-filter="trust-safety">Trust & Safety</div>
                 </div>
             </div>
         </header>
@@ -86,7 +86,7 @@
             <div class="pl-guide-grid">
 
                 <!-- Home Repairs -->
-                <div class="pl-grid-col">
+                <div class="pl-grid-col" data-category="home-repairs">
                     <a href="BDGS-T13-PR-core-d1.html" class="pl-guide-card">
                         <div class="pl-card-img-wrap">
                             <img src="https://images.unsplash.com/photo-1632759145351-1d592919f522?w=400&q=80"
@@ -106,7 +106,7 @@
                 </div>
 
                 <!-- Cleaning Services -->
-                <div class="pl-grid-col">
+                <div class="pl-grid-col" data-category="cleaning-services">
                     <a href="BDGS-T13-PR-core-d1.html" class="pl-guide-card">
                         <div class="pl-card-img-wrap">
                             <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=800&q=80"
@@ -126,7 +126,7 @@
                 </div>
 
                 <!-- Appliance Repair -->
-                <div class="pl-grid-col">
+                <div class="pl-grid-col" data-category="appliance-repair">
                     <a href="BDGS-T13-PR-core-d1.html" class="pl-guide-card">
                         <div class="pl-card-img-wrap">
                             <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400&q=80"
@@ -146,7 +146,7 @@
                 </div>
 
                 <!-- Personal Services -->
-                <div class="pl-grid-col">
+                <div class="pl-grid-col" data-category="personal-services">
                     <a href="BDGS-T13-PR-core-d1.html" class="pl-guide-card">
                         <div class="pl-card-img-wrap">
                             <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80"
@@ -166,7 +166,7 @@
                 </div>
 
                 <!-- Pricing Logic -->
-                <div class="pl-grid-col">
+                <div class="pl-grid-col" data-category="trust-safety">
                     <a href="BDGS-T13-PR-core-d1.html" class="pl-guide-card">
                         <div class="pl-card-img-wrap">
                             <img src="images/businesswoman-her-colleague-talking-while-using-touchpad-office-wearing-face-masks.jpg"
@@ -186,7 +186,7 @@
                 </div>
 
                 <!-- Communication -->
-                <div class="pl-grid-col">
+                <div class="pl-grid-col" data-category="trust-safety">
                     <a href="BDGS-T13-PR-core-d1.html" class="pl-guide-card">
                         <div class="pl-card-img-wrap">
                             <img src="images/medium-shot-executive-men.jpg" alt="Communication" class="pl-card-img">
@@ -303,6 +303,28 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.pl-filter-btn').on('click', function() {
+                // Remove active class from all buttons and add to the clicked one
+                $('.pl-filter-btn').removeClass('active');
+                $(this).addClass('active');
+
+                // Get the intended filter value
+                var filterValue = $(this).attr('data-filter');
+
+                if (filterValue === 'all') {
+                    // Show all guides
+                    $('.pl-guide-grid .pl-grid-col').fadeIn();
+                } else {
+                    // Hide all guides, then show the matched ones
+                    $('.pl-guide-grid .pl-grid-col').hide();
+                    $('.pl-guide-grid .pl-grid-col[data-category="' + filterValue + '"]').fadeIn();
+                }
+            });
+        });
+    </script>
 
 </body>
 
