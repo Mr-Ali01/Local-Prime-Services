@@ -1,7 +1,7 @@
 # Prime Local Services - Directory Platform
 
 ## Overview
-Prime Local is a comprehensive, static HTML front-end template for a local service directory website. The platform is designed to connect users with trusted, verified local experts (such as plumbers, cleaners, appliance repairers, and personal service providers) by offering advanced search, directory listings, public profiles, and booking/contact functionalities.
+Prime Local is a comprehensive, static HTML, CSS, JS front-end template for a local service directory website. The platform is designed to connect users with trusted, verified local experts (such as plumbers, cleaners, appliance repairers, and personal service providers) by offering advanced search, directory listings, public profiles, and booking/contact functionalities.
 
 ## 🚀 Key Features
 - **Dynamic Homepage:** Engaging hero section with simulated search, categorized service grids, and featured top-tier business listings.
